@@ -43,7 +43,6 @@ public abstract class Entity {
 		return grid;
 	}
 		
-	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		
 	}

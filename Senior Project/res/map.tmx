@@ -5,7 +5,7 @@
  </tileset>
  <layer name="Background(Level1)" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NkYGBgHMXDDrPQwCxamDmKR/FgweSmSWz6yM0z+PRR033UwgBc7+FEQAYAAA==
+   H4sIAAAAAAAAC2NkYGBgHMWjeBSP4lE8iknEALhlz4pABgAA
   </data>
  </layer>
  <layer name="ImpedimentLevel3" width="20" height="20">
@@ -21,6 +21,11 @@
  <layer name="Obstructions" width="20" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NjYGBgw4PxAXz6SDGHVPNIAdQ0i5C51ADUNItW5o2CUTAKRgEIAAD9vGyKQAYAAA==
+  </data>
+ </layer>
+ <layer name="Entities" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAXDEbDQwCxamEkOYEKjBwtAdg/7gLkCFQy2MMIHaO1WQuaTmyax6SM3z+DTR033UQsAACc0yhFABgAA
   </data>
  </layer>
 </map>
