@@ -8,11 +8,12 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
 
-public class Entity {
+public abstract class Entity {
 	private Grid grid;
 	private int direction;
 	private int x, y;
 	private Image sprite;
+	private int size;
 	
 	public Entity(){
 		grid = null;
@@ -31,6 +32,7 @@ public class Entity {
 		sprite = img;
 		this.x = x;
 		this.y = y;
+		size = img.getHeight();
 	}
 	
 	public int getDirection(){
@@ -51,5 +53,8 @@ public class Entity {
 	}
 	public Image getSprite() {
 		return sprite;
+	}
+	public int getSize() {
+		return size;
 	}
 }
