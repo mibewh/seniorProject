@@ -5,7 +5,8 @@ import wzh.game.Grid;
 
 /**
  * A MainCastle is the most important building for a player
- * If the MainCastle is captured by another player, 
+ * If the MainCastle is captured by another player, the player will loose
+ * The MainCastle provides a defensive bonus(fortification) of 3
  * @author Harrison
  *
  */
