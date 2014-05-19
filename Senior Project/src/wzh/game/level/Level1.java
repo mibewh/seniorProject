@@ -2,7 +2,6 @@ package wzh.game.level;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
@@ -11,6 +10,7 @@ import org.newdawn.slick.tiled.TiledMap;
 
 import wzh.game.Grid;
 import wzh.game.entity.Unit;
+import wzh.game.input.Cursor;
 
 public class Level1 extends BasicGameState {
 	
@@ -20,6 +20,7 @@ public class Level1 extends BasicGameState {
 		grid = new Grid(new TiledMap("res/map.tmx"));
 		SpriteSheet s = new SpriteSheet("spriteSheetz.png",16,16);
 		grid.add(new Unit(5,5,s.getSubImage(1, 0),grid,0));
+		grid.setCursor(new Cursor(7,7,grid));
 	}
 
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
