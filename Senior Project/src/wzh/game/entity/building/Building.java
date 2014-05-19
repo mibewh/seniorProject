@@ -10,43 +10,12 @@ import wzh.game.Grid;
 import wzh.game.entity.Entity;
 
 public abstract class Building extends Entity {
-
-	private Grid grid;
-	private int x,y;
-	private Image sprite;
-	private int size;
 	
 	public Building(int x, int y, Image img, Grid g) {
 		super(x, y, img, g);
 	}
-
-	public int getX(){
-		return x;
-	}
-	
-	public int getY(){
-		return y;
-	}
-	public Grid getGrid(){
-		return grid;
-	}	
-	
-	public Image getSprite() {
-		return sprite;
-	}
-	public int getSize() {
-		return size;
-	}
 	
 	public int getFortification(){
 		return 0;
-	}
-	
-	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
-		
-	}
-	
-	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		
 	}
 }
