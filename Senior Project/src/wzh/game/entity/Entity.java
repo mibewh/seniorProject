@@ -49,6 +49,11 @@ public abstract class Entity {
 		return size;
 	}
 	public void moveTo(int x, int y) {
-		loc = new Location(x,y);
+		Location moveLoc = new Location(x,y);
+		if(grid.isValid(moveLoc)) {
+			loc=moveLoc;
+			grid.remove(x,y);
+			grid.add(this);
+		}
 	}
 }

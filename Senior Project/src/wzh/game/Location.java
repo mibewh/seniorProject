@@ -1,5 +1,7 @@
 package wzh.game;
 
+import java.util.ArrayList;
+
 public class Location {
 	
 	private int x,y;
@@ -13,5 +15,13 @@ public class Location {
 	}
 	public int getY() {
 		return y;
+	}
+	public ArrayList<Location> getAdjacentLocations() {
+		ArrayList<Location> locs = new ArrayList<Location>();
+		locs.add(new Location(x+1,y));
+		locs.add(new Location(x-1,y));
+		locs.add(new Location(x,y+1));
+		locs.add(new Location(x,y-1));
+		return locs;
 	}
 }

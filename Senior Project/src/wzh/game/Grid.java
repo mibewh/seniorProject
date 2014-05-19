@@ -1,5 +1,7 @@
 package wzh.game;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -25,11 +27,14 @@ public class Grid {
 		return entities[x][y];
 	}
 	public boolean add(Entity e) {
-		if(isEmpty(e.getLoc().getX(),e.getLoc().getY())) {
+		if(isEmpty(e.getLoc())) {
 			entities[e.getLoc().getX()][e.getLoc().getY()] = e;
 			return true;
 		}
 		else return false;
+	}
+	public void remove(int x, int y) {
+		entities[x][y] = null;
 	}
 	public int getRows() {
 		return rows;
@@ -37,24 +42,32 @@ public class Grid {
 	public int getCols() {
 		return cols;
 	}
+	public boolean isEmpty(Location loc) {
+		if(entities[loc.getX()][loc.getY()] == null) return true;
+		else return false;
+	}
 	public boolean isEmpty(int x, int y) {
 		if(entities[x][y] == null) return true;
 		else return false;
 	}
-	public boolean isValid(int x, int y) {
-		if(x<rows && x>=0 && y<cols && y>=0) {
+	public boolean isValid(Location loc) {
+		if(loc.getX()<cols && loc.getX()>=0 && loc.getY()<rows && loc.getY()>=0) {
 			return true;
 		}
 		else
 			return false;
+	}
+	public boolean isValid(int x, int y) {
+		if(x<cols && x>=0 && y<rows && y>=0) return true;
+		else return false;
 	}
 	public TiledMap getMap() {
 		return map;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		cursor.update(gc, game, delta);
-		for(int x = 0; x<rows;x++) {
-			for(int y = 0; y<cols;y++) {
+		for(int x = 0; x<cols;x++) {
+			for(int y = 0; y<rows;y++) {
 				if(entities[x][y] != null) {
 					entities[x][y].update(gc, game, delta);
 				}
@@ -64,8 +77,8 @@ public class Grid {
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		map.render(0, 0, 0, 0, 20, 20);
 		cursor.render(gc, game, g);
-		for(int x = 0; x<rows;x++) {
-			for(int y = 0; y<cols;y++) {
+		for(int x = 0; x<cols;x++) {
+			for(int y = 0; y<rows;y++) {
 				if(entities[x][y] != null) {
 					entities[x][y].render(gc,game,g);
 				}
@@ -78,11 +91,21 @@ public class Grid {
 	public void setCursor(Cursor cursor) {
 		this.cursor = cursor;
 	}
-	public int getMoveCost(int x, int y) {
-		if(map.getTileId(x, y, map.getLayerIndex("ImpedimentLevel2")) != 0) return 2;
-		else if(map.getTileId(x, y, map.getLayerIndex("ImpedimentLevel3")) != 0) return 3;
-		else if(map.getTileId(x, y, map.getLayerIndex("Obstructions")) != 0) return 100;
+	public int getMoveCost(Location loc) {
+		if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("ImpedimentLevel2")) != 0) return 2;
+		else if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("ImpedimentLevel3")) != 0) return 3;
+		else if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Obstructions")) != 0) return 100;
 		else return 1;
 	}
-	
+	public int getPathCost(ArrayList<Location> path) {
+		int cost = 0;
+		for(Location loc:path) {
+			cost += getMoveCost(loc);
+		}
+		return cost;
+	}
+	public ArrayList<Location> getShortestPath(Location start, Location end) {
+		//TODO Algorithm to find shortest path based on movePoints from start location to end location
+		return null;
+	}
 }
