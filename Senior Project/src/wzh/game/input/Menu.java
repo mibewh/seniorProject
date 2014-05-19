@@ -21,6 +21,7 @@ public class Menu{
 		for(Command i: commands){
 			length += 16;
 			g.fillRect(0, 0, 60, length);
+			g.drawString("TEST", 0, 0);
 		}
 	}
 }
