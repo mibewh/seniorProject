@@ -7,10 +7,14 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
+import wzh.game.input.Menu;
 
 public class Unit extends Entity {
 	private int faction;
 	private int movePoints;
+	
+	private Menu premoveMenu;
+	private Menu postmoveMenu;
 	
 	public Unit(int x, int y, Image img, Grid g, int faction) {
 		super(x,y,img,g);
@@ -18,5 +22,15 @@ public class Unit extends Entity {
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
+	}
+	
+	public void displayPremoveMenu() {
+		
+	}
+	public void displayPostmoveMenu() {
+		
+	}
+	public int[][] getMoveLocations() {
+		
 	}
 }

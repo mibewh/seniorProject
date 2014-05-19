@@ -10,12 +10,17 @@ import org.newdawn.slick.state.StateBasedGame;
 import wzh.game.input.command.Command;
 
 public class Menu{
+	private int length = 0;
 	ArrayList<Command> commands = new ArrayList();
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
+		for(Command i: commands){
+			length += 16;
+		}
 		
+		g.drawString()
 	}
 }
