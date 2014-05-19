@@ -8,17 +8,17 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
 
-public abstract class Building {
+public abstract class Castle {
 
 	private Grid grid;
 	private int x,y;
 	private Image sprite;
 	private int size;
 	
-	public Building(){
+	public Castle(){
 		grid = null;
 	}
-	public Building(int x, int y, Image img, Grid g) {
+	public Castle(int x, int y, Image img, Grid g) {
 		grid = g;
 		sprite = img;
 		this.x = x;
@@ -45,7 +45,7 @@ public abstract class Building {
 	}
 	
 	public int getFortification(){
-		return 0;
+		return 1;
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
@@ -56,3 +56,4 @@ public abstract class Building {
 		
 	}
 }
+
