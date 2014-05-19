@@ -5,12 +5,12 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Commands {
+public class Command {
 
 	protected String commandName; 
-	protected Menue menue;
+	protected Menu menu;
 	
-	public Commands(String commandName) {
+	public Command(String commandName) {
 		this.commandName = commandName;
 	}
 	
