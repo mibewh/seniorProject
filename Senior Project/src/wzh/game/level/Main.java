@@ -2,7 +2,6 @@ package wzh.game.level;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -16,16 +15,11 @@ public class Main extends StateBasedGame{
 		// TODO Auto-generated method stub
 		
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SlickException {
 		System.out.println("MAIN METHOD");
-		try {
-			AppGameContainer gc = new AppGameContainer(new Main("Test"));
-			gc.setDisplayMode(500, 500, false);
-			gc.start();
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
-		
+		AppGameContainer gc = new AppGameContainer(new Main("Test"));
+		gc.setDisplayMode(640, 640, false);
+		gc.start();
 	}
 
 }
