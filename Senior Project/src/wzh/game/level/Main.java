@@ -1,29 +1,18 @@
-package wzh.game;
+package wzh.game.level;
 
 import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 
-public class Main extends BasicGame{
+public class Main extends StateBasedGame{
 
 	public Main(String title) {
 		super(title);
 		// TODO Auto-generated constructor stub
 	}
-
-	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void init(GameContainer arg0) throws SlickException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void update(GameContainer arg0, int arg1) throws SlickException {
+	public void initStatesList(GameContainer arg0) throws SlickException {
 		// TODO Auto-generated method stub
 		
 	}
