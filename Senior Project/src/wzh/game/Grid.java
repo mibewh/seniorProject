@@ -51,6 +51,16 @@ public class Grid {
 	public TiledMap getMap() {
 		return map;
 	}
+	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
+		cursor.update(gc, game, delta);
+		for(int x = 0; x<rows;x++) {
+			for(int y = 0; y<cols;y++) {
+				if(entities[x][y] != null) {
+					entities[x][y].update(gc, game, delta);
+				}
+			}
+		}
+	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		map.render(0, 0, 0, 0, 20, 20);
 		cursor.render(gc, game, g);
