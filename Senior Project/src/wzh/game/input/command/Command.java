@@ -1,9 +1,11 @@
-package wzh.game.input;
+package wzh.game.input.command;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+
+import wzh.game.input.Menu;
 
 public class Command {
 
