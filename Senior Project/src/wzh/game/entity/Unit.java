@@ -18,6 +18,5 @@ public class Unit extends Entity {
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
-		System.out.println("Drew");
 	}
 }
