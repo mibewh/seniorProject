@@ -12,12 +12,13 @@ import wzh.game.entity.Entity;
 
 public class Cursor extends Entity{
 	
-	public Cursor(){
-		//SpriteSheet s = new SpriteSheet("SpriteSheetz.png",16,16);
-		//sprite = new Image.SpriteSheetz.getSubImage(7*16, 0, 16, 16);
+	public Cursor() throws SlickException{
+		SpriteSheet s = new SpriteSheet("SpriteSheetz.png",16,16);
+		sprite = s.getSubImage(6, 0);
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
+		super.update(gc, game, delta);
 		Input input = gc.getInput();
 		if(input.isKeyPressed(Input.KEY_RIGHT)){
 			x++;
@@ -32,18 +33,10 @@ public class Cursor extends Entity{
 			y--;
 		}
 		if(input.isKeyPressed(Input.KEY_SPACE)){
-			
+			//Select
 		}
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		//g.d
-	}
-
-//	public SpriteSheet getCursor() {
-		//return Cursor;
-//	}
-
-	public void setCursor(SpriteSheet cursor) {
-		//Cursor = cursor;
+		super.render(gc, game, g);
 	}
 }
