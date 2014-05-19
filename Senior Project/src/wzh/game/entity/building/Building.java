@@ -1,4 +1,4 @@
-package wzh.game.entity;
+package wzh.game.entity.building;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -8,17 +8,20 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
 
-public abstract class Entity {
+public abstract class Building {
+
 	private Grid grid;
-	private int direction;
-	private int x, y;
+	private int x,y;
 	private Image sprite;
 	private int size;
 	
-	public Entity(){
+	public Building(){
 		grid = null;
 	}
-	
+	public Building(int x, int y, Image img, Grid g) {
+		
+	}
+
 	public int getX(){
 		return x;
 	}
@@ -26,34 +29,26 @@ public abstract class Entity {
 	public int getY(){
 		return y;
 	}
-	
-	public Entity(int x, int y, Image img, Grid g){
-		grid = g;
-		sprite = img;
-		this.x = x;
-		this.y = y;
-		size = img.getHeight();
-	}
-	
-	public int getDirection(){
-		return direction;
-	}
-	
 	public Grid getGrid(){
 		return grid;
+	}	
+	
+	public Image getSprite() {
+		return sprite;
 	}
-		
+	public int getSize() {
+		return size;
+	}
+	
+	public int getFortification(){
+		return 0;
+	}
+	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		
 	}
 	
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		
-	}
-	public Image getSprite() {
-		return sprite;
-	}
-	public int getSize() {
-		return size;
 	}
 }
