@@ -17,7 +17,6 @@ public class Grid {
 	
 	public Grid(TiledMap map) {
 		this.map = map;
-		map.
 		rows = map.getWidth();
 		cols = map.getHeight();
 		entities = new Entity[rows][cols];
