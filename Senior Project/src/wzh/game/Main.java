@@ -28,6 +28,7 @@ public class Main extends BasicGame{
 		
 	}
 	public static void main(String[] args) {
+		System.out.println("MAIN METHOD");
 		try {
 			AppGameContainer gc = new AppGameContainer(new Main("Test"));
 			gc.setDisplayMode(500, 500, false);
