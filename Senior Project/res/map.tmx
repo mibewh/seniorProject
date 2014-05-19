@@ -4,18 +4,18 @@
   <image source="SpriteSheetz.png" width="240" height="240"/>
  </tileset>
  <layer name="Background(Level1)" width="20" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjZGBgYBzFww6z0MAsWpg5ikfxYMHkpkls+sjNM/j0UdN91MIAL4sBtQ==
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NkYGBgHMXDDrPQwCxamDmKR/FgweSmSWz6yM0z+PRR033UwgBc7+FEQAYAAA==
   </data>
  </layer>
  <layer name="ImpedimentLevel3" width="20" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYCAdMJOhB5c5MDxczaImoKZ7qOm/wRjug9FNMPMGgxno5g0FMwcKDMa8MljMAgB1DwBw
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgIB0wk6EHlzkwPFzNoiagpnuo6b/BGO6D0U0w8waDGejmDQUzBwoMxrwyWMwCAK5BmidABgAA
   </data>
  </layer>
  <layer name="ImpedimentLevel2" width="20" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApIBwAGQAAB
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkgHADV9EcVABgAA
   </data>
  </layer>
 </map>
