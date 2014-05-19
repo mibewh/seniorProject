@@ -31,6 +31,10 @@ public class Unit extends Entity {
 		
 	}
 	public int[][] getMoveLocations() {
-		
+		int points = movePoints;
+		int numLocs = 0;
+		do {
+			
+		} while(points>0);
 	}
 }
