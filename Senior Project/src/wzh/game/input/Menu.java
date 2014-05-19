@@ -8,10 +8,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Menu{
-	ArrayList commands = new ArrayList();
-	
-	commands.add("Move");
-	commands.add("")
+	ArrayList<Command> commands = new ArrayList();
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		commands.add("Move");
