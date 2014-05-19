@@ -24,21 +24,21 @@ public class Cursor extends Entity{
 		super.update(gc, game, delta);
 		Input input = gc.getInput();
 		if(focus == true) {
-			if((input.isKeyPressed(Input.KEY_RIGHT) | input.isKeyPressed(Input.KEY_D)) && grid.isValid(x+1, y)){
-				x++;
+			if((input.isKeyPressed(Input.KEY_RIGHT) | input.isKeyPressed(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY())){
+				moveTo(loc.getX()+1,loc.getY());
 			}
-			if((input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A)) && grid.isValid(x-1, y)){
-				x--;
+			if((input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A)) && grid.isValid(loc.getX()-1, loc.getY())){
+				moveTo(loc.getX()-1,loc.getY());
 			}
-			if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(x, y+1)){
-				y++;
+			if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1)){
+				moveTo(loc.getX(),loc.getY()+1);
 			}
-			if((input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) && grid.isValid(x, y-1)){
-				y--;
+			if((input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) && grid.isValid(loc.getX(), loc.getY()-1)){
+				moveTo(loc.getX(),loc.getY()-1);
 			}
 			if(input.isKeyPressed(Input.KEY_SPACE)){
-				if(!grid.isEmpty(x, y) && grid.get(x,y) instanceof Unit) {
-					Unit u = (Unit)grid.get(x,y);
+				if(!grid.isEmpty(loc.getX(), loc.getY()) && grid.get(loc.getX(),loc.getY()) instanceof Unit) {
+					Unit u = (Unit)grid.get(loc.getX(),loc.getY());
 					u.displayPremoveMenu();
 				}
 			}
