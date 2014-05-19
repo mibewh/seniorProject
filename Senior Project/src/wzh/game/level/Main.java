@@ -12,7 +12,7 @@ public class Main extends StateBasedGame{
 		// TODO Auto-generated constructor stub
 	}
 	public void initStatesList(GameContainer arg0) throws SlickException {
-		// TODO Auto-generated method stub
+		addState(new Level1());
 		
 	}
 	public static void main(String[] args) throws SlickException {

@@ -14,12 +14,13 @@ public class Level1 extends BasicGameState {
 	Grid grid;
 
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
-		grid = new Grid(new TiledMap("map.tmx"));
+		grid = new Grid(new TiledMap("res/map.tmx"));
 	}
 
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		//Change 3rd and 4th 0's to allow for screen scrolling
-		grid.getMap().render(0, 0, 0, 0, 10, 10);
+		g.scale(2, 2);
+		grid.getMap().render(0, 0, 0, 0, 20, 20);
 	}
 
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {

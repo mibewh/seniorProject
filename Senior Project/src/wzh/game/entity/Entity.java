@@ -2,6 +2,7 @@ package wzh.game.entity;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -11,6 +12,7 @@ public class Entity {
 	private Grid grid;
 	private int direction;
 	private int x, y;
+	private Image sprite;
 	
 	public Entity(){
 		grid = null;
@@ -24,8 +26,9 @@ public class Entity {
 		return y;
 	}
 	
-	public Entity(int x, int y, Grid g){
+	public Entity(int x, int y, Image img, Grid g){
 		grid = g;
+		sprite = img;
 		this.x = x;
 		this.y = y;
 	}
@@ -45,5 +48,8 @@ public class Entity {
 	
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		
+	}
+	public Image getSprite() {
+		return sprite;
 	}
 }
