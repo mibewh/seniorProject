@@ -7,8 +7,9 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
+import wzh.game.entity.Entity;
 
-public abstract class Building {
+public abstract class Building extends Entity {
 
 	private Grid grid;
 	private int x,y;

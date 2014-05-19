@@ -8,7 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
 
-public abstract class Castle {
+public abstract class Castle extends Building {
 
 	private Grid grid;
 	private int x,y;
