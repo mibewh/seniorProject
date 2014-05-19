@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="SpriteSheetz" tilewidth="16" tileheight="16">
+  <image source="SpriteSheetz.png" width="240" height="240"/>
+ </tileset>
+ <layer name="Background" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjZGBgYCQRM5OhB5c5zFQyb7CaRU1MintYiPQjKWbhMpOcsMJmFi3icLClBWq5iRpuoXZY0dpMWmNy0zc2fbjyDLFm4TOT1DAmVBZQEl8AJBoB/w==
+  </data>
+ </layer>
+</map>
