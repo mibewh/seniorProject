@@ -3,9 +3,19 @@
  <tileset firstgid="1" name="SpriteSheetz" tilewidth="16" tileheight="16">
   <image source="SpriteSheetz.png" width="240" height="240"/>
  </tileset>
- <layer name="Background" width="20" height="20">
+ <layer name="Background(Level1)" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYCQRM5OhB5c5zFQyb7CaRU1MintYiPQjKWbhMpOcsMJmFi3icLClBWq5iRpuoXZY0dpMWmNy0zc2fbjyDLFm4TOT1DAmVBZQEl8AJBoB/w==
+   eJxjZGBgYBzFww6z0MAsWpg5ikfxYMHkpkls+sjNM/j0UdN91MIAL4sBtQ==
+  </data>
+ </layer>
+ <layer name="ImpedimentLevel3" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAdMJOhB5c5MDxczaImoKZ7qOm/wRjug9FNMPMGgxno5g0FMwcKDMa8MljMAgB1DwBw
+  </data>
+ </layer>
+ <layer name="ImpedimentLevel2" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApIBwAGQAAB
   </data>
  </layer>
 </map>
