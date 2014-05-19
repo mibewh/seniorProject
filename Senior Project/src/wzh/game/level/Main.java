@@ -9,7 +9,6 @@ public class Main extends StateBasedGame{
 
 	public Main(String title) {
 		super(title);
-		// TODO Auto-generated constructor stub
 	}
 	public void initStatesList(GameContainer arg0) throws SlickException {
 		addState(new Level1());

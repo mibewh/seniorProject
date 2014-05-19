@@ -28,7 +28,7 @@ public class Unit extends Entity {
 	}
 	
 	public void displayPremoveMenu() {
-		
+		//TODO Display Menu
 	}
 	public void displayPostmoveMenu() {
 		

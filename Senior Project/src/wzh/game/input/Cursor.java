@@ -8,6 +8,7 @@ import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
+import wzh.game.Location;
 import wzh.game.entity.Entity;
 import wzh.game.entity.Unit;
 
@@ -25,16 +26,16 @@ public class Cursor extends Entity{
 		Input input = gc.getInput();
 		if(focus == true) {
 			if((input.isKeyPressed(Input.KEY_RIGHT) | input.isKeyPressed(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY())){
-				moveTo(loc.getX()+1,loc.getY());
+				loc = new Location(loc.getX()+1,loc.getY());
 			}
 			if((input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A)) && grid.isValid(loc.getX()-1, loc.getY())){
-				moveTo(loc.getX()-1,loc.getY());
+				loc = new Location(loc.getX()-1,loc.getY());
 			}
 			if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1)){
-				moveTo(loc.getX(),loc.getY()+1);
+				loc = new Location(loc.getX(),loc.getY()+1);
 			}
 			if((input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) && grid.isValid(loc.getX(), loc.getY()-1)){
-				moveTo(loc.getX(),loc.getY()-1);
+				loc = new Location(loc.getX(),loc.getY()-1);
 			}
 			if(input.isKeyPressed(Input.KEY_SPACE)){
 				if(!grid.isEmpty(loc.getX(), loc.getY()) && grid.get(loc.getX(),loc.getY()) instanceof Unit) {

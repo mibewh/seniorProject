@@ -33,14 +33,17 @@ public class Level1 extends BasicGameState {
 		commands.add(new Move());
 		commands.add(new Wait());
 		
-		menu = new Menu(0,0, commands);
+		menu = new Menu(200,200, commands);
 		
+		
+		//TODO HUD (New class(es))
 	}
 
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		//Change 3rd and 4th 0's to allow for screen scrolling
 		g.scale(2, 2);
 		grid.render(gc, game, g);
+		g.scale(.5f, .5f);
 		menu.render(gc,game,g);
 	}
 
@@ -49,7 +52,6 @@ public class Level1 extends BasicGameState {
 	}
 
 	public int getID() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

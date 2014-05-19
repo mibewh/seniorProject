@@ -1,10 +1,6 @@
 package wzh.game.entity.building;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
 import wzh.game.entity.Entity;
