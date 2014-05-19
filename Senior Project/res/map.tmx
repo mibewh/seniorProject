@@ -15,7 +15,12 @@
  </layer>
  <layer name="ImpedimentLevel2" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkgHADV9EcVABgAA
+   H4sIAAAAAAAAC2NgGAWjYHgDViRMLbPQ2ZSahS5GqrmE9JBiJrFqqRGeo4ByQK20TY6ZAHQiGZNABgAA
+  </data>
+ </layer>
+ <layer name="Obstructions" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NjYGBgw4PxAXz6SDGHVPNIAdQ0i5C51ADUNItW5o2CUTAKRgEIAAD9vGyKQAYAAA==
   </data>
  </layer>
 </map>
