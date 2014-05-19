@@ -12,8 +12,8 @@ public class Command {
 	protected String commandName; 
 	protected Menu menu;
 	
-	public Command(String commandName) {
-		this.commandName = commandName;
+	public Command() {
+		this.commandName = "default";
 	}
 	
 	public String getCommand(){

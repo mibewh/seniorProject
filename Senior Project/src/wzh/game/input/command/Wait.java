@@ -2,8 +2,8 @@ package wzh.game.input.command;
 
 public class Wait extends Command {
 	
-	public Wait(String commandName){
-		super(commandName);
+	public Wait(){
+		super();
 		commandName="Wait";
 	}
 	

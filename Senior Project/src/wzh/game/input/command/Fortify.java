@@ -2,8 +2,8 @@ package wzh.game.input.command;
 
 public class Fortify extends Command {
 
-	public Fortify(String commandName){
-		super(commandName);
+	public Fortify(){
+		super();
 		commandName="Fortify";
 	}
 	
