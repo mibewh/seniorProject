@@ -7,27 +7,23 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
+import wzh.game.Location;
 
 public abstract class Entity {
 	protected Grid grid;
 	protected int direction;
-	protected int x, y;
+	protected Location loc;
 	protected Image sprite;
 	protected int size;
 	
 	public Entity(int x, int y, Image img, Grid g){
 		grid = g;
 		sprite = img;
-		this.x = x;
-		this.y = y;
+		loc = new Location(x,y);
 		size = img.getHeight();
 	}
-	public int getX(){
-		return x;
-	}
-	
-	public int getY(){
-		return y;
+	public Location getLoc() {
+		return loc;
 	}
 	
 	
@@ -44,12 +40,15 @@ public abstract class Entity {
 	}
 	
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		sprite.draw(x*size,y*size);
+		sprite.draw(loc.getX()*size,loc.getY()*size);
 	}
 	public Image getSprite() {
 		return sprite;
 	}
 	public int getSize() {
 		return size;
+	}
+	public void moveTo(int x, int y) {
+		loc = new Location(x,y);
 	}
 }

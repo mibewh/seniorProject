@@ -25,8 +25,8 @@ public class Grid {
 		return entities[x][y];
 	}
 	public boolean add(Entity e) {
-		if(isEmpty(e.getX(),e.getY())) {
-			entities[e.getX()][e.getY()] = e;
+		if(isEmpty(e.getLoc().getX(),e.getLoc().getY())) {
+			entities[e.getLoc().getX()][e.getLoc().getY()] = e;
 			return true;
 		}
 		else return false;
