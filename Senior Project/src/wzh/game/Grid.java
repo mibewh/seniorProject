@@ -7,11 +7,13 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import wzh.game.entity.Entity;
+import wzh.game.input.Cursor;
 
 public class Grid {
 	private TiledMap map;
 	private int rows, cols;
 	Entity[][] entities;
+	private Cursor cursor;
 	
 	public Grid(TiledMap map) {
 		this.map = map;
@@ -51,6 +53,7 @@ public class Grid {
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		map.render(0, 0, 0, 0, 20, 20);
+		cursor.render(gc, game, g);
 		for(int x = 0; x<rows;x++) {
 			for(int y = 0; y<cols;y++) {
 				if(entities[x][y] != null) {
@@ -58,6 +61,12 @@ public class Grid {
 				}
 			}
 		}
+	}
+	public Cursor getCursor() {
+		return cursor;
+	}
+	public void setCursor(Cursor cursor) {
+		this.cursor = cursor;
 	}
 	
 	
