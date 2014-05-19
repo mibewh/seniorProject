@@ -17,6 +17,7 @@ public class Grid {
 	
 	public Grid(TiledMap map) {
 		this.map = map;
+		map.
 		rows = map.getWidth();
 		cols = map.getHeight();
 		entities = new Entity[rows][cols];
@@ -78,6 +79,11 @@ public class Grid {
 	public void setCursor(Cursor cursor) {
 		this.cursor = cursor;
 	}
-	
+	public int getMoveCost(int x, int y) {
+		if(map.getTileId(x, y, map.getLayerIndex("ImpedimentLevel2")) != 0) return 2;
+		else if(map.getTileId(x, y, map.getLayerIndex("ImpedimentLevel3")) != 0) return 3;
+		else if(map.getTileId(x, y, map.getLayerIndex("Obstructions")) != 0) return 100;
+		else return 1;
+	}
 	
 }
