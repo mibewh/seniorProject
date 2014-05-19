@@ -30,7 +30,7 @@ public class Level1 extends BasicGameState {
 	}
 
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
-		
+		grid.update(gc, game, delta);
 	}
 
 	public int getID() {
