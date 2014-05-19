@@ -12,9 +12,8 @@ import wzh.game.entity.Entity;
 
 public class Cursor extends Entity{
 	
-	public Cursor() throws SlickException{
-		SpriteSheet s = new SpriteSheet("SpriteSheetz.png",16,16);
-		sprite = s.getSubImage(6, 0);
+	public Cursor(int x, int y) throws SlickException{
+		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(6, 0),null);
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {

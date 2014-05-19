@@ -15,10 +15,13 @@ public abstract class Entity {
 	protected Image sprite;
 	protected int size;
 	
-	public Entity(){
-		grid = null;
+	public Entity(int x, int y, Image img, Grid g){
+		grid = g;
+		sprite = img;
+		this.x = x;
+		this.y = y;
+		size = img.getHeight();
 	}
-	
 	public int getX(){
 		return x;
 	}
@@ -27,13 +30,6 @@ public abstract class Entity {
 		return y;
 	}
 	
-	public Entity(int x, int y, Image img, Grid g){
-		grid = g;
-		sprite = img;
-		this.x = x;
-		this.y = y;
-		size = img.getHeight();
-	}
 	
 	public int getDirection(){
 		return direction;
