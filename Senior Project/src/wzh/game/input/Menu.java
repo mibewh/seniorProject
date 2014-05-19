@@ -11,9 +11,7 @@ public class Menu{
 	ArrayList<Command> commands = new ArrayList();
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
-		commands.add("Move");
-		commands.add("Attack");
-		commands.add("Wait");
+		
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		
