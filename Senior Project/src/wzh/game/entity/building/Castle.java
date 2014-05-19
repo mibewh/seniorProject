@@ -15,15 +15,8 @@ public abstract class Castle extends Building {
 	private Image sprite;
 	private int size;
 	
-	public Castle(){
-		grid = null;
-	}
 	public Castle(int x, int y, Image img, Grid g) {
-		grid = g;
-		sprite = img;
-		this.x = x;
-		this.y = y;
-		size = img.getHeight();
+		super(x, y, img, g);
 	}
 
 	public int getX(){

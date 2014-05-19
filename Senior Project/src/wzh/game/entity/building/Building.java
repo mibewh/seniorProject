@@ -16,15 +16,8 @@ public abstract class Building extends Entity {
 	private Image sprite;
 	private int size;
 	
-	public Building(){
-		grid = null;
-	}
 	public Building(int x, int y, Image img, Grid g) {
-		grid = g;
-		sprite = img;
-		this.x = x;
-		this.y = y;
-		size = img.getHeight();
+		super(x, y, img, g);
 	}
 
 	public int getX(){
