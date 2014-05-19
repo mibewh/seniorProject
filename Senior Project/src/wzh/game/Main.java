@@ -1,8 +1,5 @@
 package wzh.game;
 
-import java.io.File;
-
-import org.lwjgl.LWJGLUtil;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
@@ -31,8 +28,6 @@ public class Main extends BasicGame{
 		
 	}
 	public static void main(String[] args) {
-		//Import system settings
-		System.setProperty("org.lwjgl.librarypath", new File(new File(System.getProperty("user.dir"), "lib/native"), LWJGLUtil.getPlatformName()).getAbsolutePath());
 		try {
 			AppGameContainer gc = new AppGameContainer(new Main("Test"));
 			gc.setDisplayMode(500, 500, false);
@@ -42,5 +37,5 @@ public class Main extends BasicGame{
 		}
 		
 	}
-	
+
 }
