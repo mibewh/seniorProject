@@ -11,7 +11,7 @@ import wzh.game.input.command.Command;
 
 public class Menu{
 	private int length = 0;
-	ArrayList<Command> commands = new ArrayList();
+	ArrayList<Command> commands = new ArrayList<Command>();
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		
@@ -21,6 +21,6 @@ public class Menu{
 			length += 16;
 		}
 		
-		g.drawString()
+		g.drawString("", length, length);
 	}
 }
