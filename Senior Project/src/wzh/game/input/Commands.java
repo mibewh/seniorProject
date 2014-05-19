@@ -8,6 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Commands {
 
 	protected String commandName; 
+	protected Menue menue;
 	
 	public Commands(String commandName) {
 		this.commandName = commandName;
@@ -26,6 +27,6 @@ public class Commands {
 	}
 
     public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-    	sprite.draw(x*size,y*size);
+    
     }
 }
