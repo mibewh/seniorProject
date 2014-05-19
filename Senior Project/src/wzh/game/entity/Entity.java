@@ -9,11 +9,11 @@ import org.newdawn.slick.state.StateBasedGame;
 import wzh.game.Grid;
 
 public abstract class Entity {
-	private Grid grid;
-	private int direction;
-	private int x, y;
-	private Image sprite;
-	private int size;
+	protected Grid grid;
+	protected int direction;
+	protected int x, y;
+	protected Image sprite;
+	protected int size;
 	
 	public Entity(){
 		grid = null;
