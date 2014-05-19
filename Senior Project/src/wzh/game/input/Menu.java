@@ -10,8 +10,9 @@ import org.newdawn.slick.state.StateBasedGame;
 import wzh.game.input.command.Command;
 
 public class Menu{
-	private int length = 0;
-	ArrayList<Command> commands = new ArrayList<Command>();
+	private int length;
+	
+	private ArrayList<Command> commands = new ArrayList<Command>();
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		
@@ -19,8 +20,7 @@ public class Menu{
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		for(Command i: commands){
 			length += 16;
+			g.fillRect(0, 0, 60, length);
 		}
-		
-		g.drawString("", length, length);
 	}
 }
