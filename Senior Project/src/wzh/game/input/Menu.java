@@ -7,6 +7,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import wzh.game.input.command.Command;
+
 public class Menu{
 	ArrayList<Command> commands = new ArrayList();
 	
