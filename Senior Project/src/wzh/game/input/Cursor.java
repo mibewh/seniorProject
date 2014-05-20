@@ -23,6 +23,7 @@ public class Cursor extends Entity{
 	public boolean unitSelect=false;
 	private Unit u;
 	private Menu menu;
+	private String mode;
 	
 	public Cursor(int x, int y, Grid g) throws SlickException{
 		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(6, 0),g);
@@ -73,5 +74,11 @@ public class Cursor extends Entity{
 	}
 	public void setFocus(boolean focus){
 		this.focus = focus;
+	}
+	public Entity getAtPos() {
+		return grid.get(loc.getX(), loc.getY());
+	}
+	public void setMode(String mode) {
+		this.mode = mode;
 	}
 }
