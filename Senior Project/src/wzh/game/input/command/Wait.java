@@ -10,6 +10,8 @@ public class Wait extends Command {
 		commandName="Wait";
 	}
 	
+	public void setImageColor(float r, float g, float b, float a)
+	
 	public void select(Unit u, Cursor c){
 		
 	}
