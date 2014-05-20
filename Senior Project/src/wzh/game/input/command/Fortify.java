@@ -7,7 +7,7 @@ public class Fortify extends Command {
 		commandName="Fortify";
 	}
 	
-	public void select(){
-		if(input.isKeyPressed())
-	}
+//	public void select(){
+//	if(input.isKeyPressed())
+//	}
 }
