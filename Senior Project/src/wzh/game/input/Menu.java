@@ -16,16 +16,18 @@ import wzh.game.input.command.Command;
 
 public class Menu{
 	private int x,y;
+	private Cursor cursor;
 	private TrueTypeFont font;
 	
 	private final String FONT_STYLE = "Minecraft";
 	
 	private ArrayList<Command> commands;
 	
-	public Menu(int x, int y, ArrayList<Command> commands){
+	public Menu(Cursor c , ArrayList<Command> commands){
 		this.commands = commands;
-		this.x = x;
-		this.y = y;
+		x = c.getLoc().getX()*c.getSize()*2;
+		y = c.getLoc().getX()*c.getSize()*2;
+		cursor = c;
 		InputStream is = ResourceLoader.getResourceAsStream("Fonts/Minecraft.ttf");
 		try {
 			Font f = Font.createFont(Font.TRUETYPE_FONT, is);
@@ -50,5 +52,8 @@ public class Menu{
 			curY+=16;
 		}
 		g.scale(2f, 2f);
+	}
+	public void destroy() {
+		this = null;
 	}
 }

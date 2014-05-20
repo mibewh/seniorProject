@@ -53,13 +53,14 @@ public class Cursor extends Entity{
 					ArrayList<Command> commands = new ArrayList<Command>();
 					commands.add(new Move());
 					commands.add(new Wait());
-					menu = new Menu(100,100, commands);
-					focus = false;
+					menu = new Menu(this, commands);
+					//focus = false;
 				}
 				else if(unitSelect){
 					if(unitSelect && grid.isEmpty(loc.getX(), loc.getY())){
 						u.moveTo(loc.getX(), loc.getY());
 						unitSelect=false;
+						menu = null;
 					}
 				}
 			}
