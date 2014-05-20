@@ -15,6 +15,7 @@ import wzh.game.input.Menu;
 public class Unit extends Entity {
 	private int faction;
 	private int movePoints;
+	private int hp;
 	
 	private Menu premoveMenu;
 	private Menu postmoveMenu;
@@ -50,5 +51,14 @@ public class Unit extends Entity {
 			}
 		}
 		return locs;
+	}
+	
+	public int getHp(){
+		return hp;
+	}
+
+	
+	public void setHp(int hpChanged){
+		hp=hpChanged;
 	}
 }

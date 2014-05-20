@@ -53,13 +53,12 @@ public class Cursor extends Entity{
 					unitSelect=false;
 				}
 			}
-			
 		}
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
 	}
-	public void setFocus(boolean focus) {
+	public void setFocus(boolean focus){
 		this.focus = focus;
 	}
 }
