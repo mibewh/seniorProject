@@ -76,7 +76,7 @@ public class Menu{
 		if(selected<0) selected=commands.size()-1;
 		else if (selected>=commands.size()) selected=0;
 		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
-			
+			commands.get(selected).select();
 		}
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {

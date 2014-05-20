@@ -51,5 +51,9 @@ public class Location {
 	public String toString() {
 		return "("+x+","+y+")";
 	}
+	public boolean equals(Location other) {
+		if(x==other.getX() && y==other.getY()) return true;
+		else return false;
+	}
 	
 }

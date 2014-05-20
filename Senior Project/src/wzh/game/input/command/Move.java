@@ -9,12 +9,15 @@ public class Move extends Command {
 	
 	public Move(Unit u, Cursor c){
 	 super();
+	 this.u = u;
+	 this.c = c;
 	 commandName="Move";
 	}
 	
 	public void select(){
 		u.setDisplayMoves(true);
 		c.setMode("Move");
-		System.out.println("DID IT");
+		u.hideMenus();
+		c.setFocus(true);
 	}
 }

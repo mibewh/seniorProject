@@ -35,6 +35,8 @@ public class Unit extends Entity {
 		this.faction = faction;
 		movePoints = 3;
 		moveLocs = getMoveLocations();
+		for(Location loc:moveLocs)
+			System.out.println(loc);
 		displayMoves = false;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException{
@@ -47,13 +49,14 @@ public class Unit extends Entity {
 		g.setColor(new Color(0,0,1,.3f));
 		if(displayMoves) {
 			for(Location loc:moveLocs) {
-				g.drawRect(loc.getX()*size,loc.getY()*size,size,size);
+				g.fillRect(loc.getX()*size,loc.getY()*size,size,size);
 			}
 		}
 		if(premoveMenu!=null)
 			premoveMenu.render(gc, game, g);
 	}
 	public void displayPremoveMenu(Cursor c, GameContainer gc) {
+		moveLocs = getMoveLocations();
 		ArrayList<Command> commands = new ArrayList<Command>();
 		commands.add(new Move(this, c));
 		commands.add(new Wait());
@@ -72,11 +75,18 @@ public class Unit extends Entity {
 		for(int x=0;x<grid.getCols();x++) {
 			for(int y=0;y<grid.getRows();y++){
 				Location moveLoc = new Location(x,y);
-				if(loc.getTileDistance(moveLoc)<=movePoints && grid.isEmpty(moveLoc) && grid.getMoveCost(moveLoc)!=100)
+				if(loc.getTileDistance(moveLoc)<=movePoints && grid.isEmpty(moveLoc) && grid.getMoveCost(moveLoc)!=100) {
 					locs.add(moveLoc);
+				}
 			}
 		}
 		return locs;
+	}
+	/*
+	 * @return Stored list of move locations
+	 */
+	public ArrayList<Location> getMoveLocsList() {
+		return moveLocs;
 	}
 	public void setDisplayMoves(boolean b) {
 		displayMoves = b;
