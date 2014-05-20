@@ -3,27 +3,17 @@
  <tileset firstgid="1" name="SpriteSheetz" tilewidth="16" tileheight="16">
   <image source="SpriteSheetz.png" width="240" height="240"/>
  </tileset>
- <layer name="Background(Level1)" width="20" height="20">
+ <layer name="Passable" width="20" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NkYGBgHMWjeBSP4lE8iknEALhlz4pABgAA
   </data>
  </layer>
- <layer name="ImpedimentLevel3" width="20" height="20">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgIB0wk6EHlzkwPFzNoiagpnuo6b/BGO6D0U0w8waDGejmDQUzBwoMxrwyWMwCAK5BmidABgAA
-  </data>
- </layer>
- <layer name="ImpedimentLevel2" width="20" height="20">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYHgDViRMLbPQ2ZSahS5GqrmE9JBiJrFqqRGeo4ByQK20TY6ZAHQiGZNABgAA
-  </data>
- </layer>
  <layer name="Obstructions" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NjYGBgw4PxAXz6SDGHVPNIAdQ0i5C51ADUNItW5o2CUTAKRgEIAAD9vGyKQAYAAA==
+   H4sIAAAAAAAAC83QwQoAIQhFUSHw/z+5lRCi9iylLsxihjpNMhFx8KwN9R7tixyxTj3P0h5iZqyda4VYlltVh2eVuWMUOv8qCzlrEP5fu7UZy9unv99UOe9OU9wXdczmN0u8bBMjlt0SQAYAAA==
   </data>
  </layer>
- <layer name="Entities" width="20" height="20">
+ <layer name="Objects" width="20" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgGAXDEbDQwCxamDkKRsFgAeSmSWz6yM0z+PRR033UAgDad0yBQAYAAA==
   </data>
