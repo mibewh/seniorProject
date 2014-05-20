@@ -1,5 +1,7 @@
 package wzh.game.input.command;
 
+import org.newdawn.slick.Input;
+
 public class Fortify extends Command {
 
 	public Fortify(){
@@ -7,7 +9,7 @@ public class Fortify extends Command {
 		commandName="Fortify";
 	}
 	
-//	public void select(){
-//	if(input.isKeyPressed())
-//	}
+	public void select(){
+
+	}
 }
