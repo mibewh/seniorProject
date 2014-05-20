@@ -96,11 +96,56 @@ public class Grid {
 		else if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Obstructions")) != 0) return 100;
 		else return 1;
 	}
+	public boolean isObstructed(Location loc) {
+		if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Obstructions")) != 0 || !isEmpty(loc)) return true;
+		else return false;
+	}
 	public int getPathCost(ArrayList<Location> path) {
 		int cost = 0;
 		for(Location loc:path) {
 			cost += getMoveCost(loc);
 		}
 		return cost;
+	}
+//	public boolean hasPathOfLength(Location start, Location end, ArrayList<Location> moveLocs, int len) {
+//		ArrayList<Location> path = new ArrayList<Location>();
+//		Location curLoc = start;
+//		Location nextLoc;
+//		int total = 0;
+//		while(!curLoc.equals(end)) {
+//			if(curLoc.getX()<end.getX()) {
+//				nextLoc = new Location(curLoc.getX()+1,curLoc.getY());
+//				if(!nextLoc.isIn(moveLocs)) {
+//					int counter=0;
+//					Location best;
+//					for(int y=nextLoc.getY();nextLoc.isIn(moveLocs);counter++) {
+//						if(!this.isObstructed(nextLoc)) {
+//							best = nextLoc;
+//							break;
+//						}
+//					}
+//				}
+//			}
+//		}
+//			
+//	}
+	/*
+	 * Recursive method giving unobstructed neighbors within a range to a location
+	 */
+	public ArrayList<Location> neighborsInRange(Location init, int n) {
+		ArrayList<Location> neighbors = new ArrayList<Location>();
+		if(n>0) {
+			for(Location loc:init.getAdjacentLocations()) {
+				if(isValid(loc) && !isObstructed(loc)) {
+					neighbors.add(loc);
+					neighbors.addAll(neighborsInRange(loc,n-1)); //Recursive call to branch out and get more neighbors
+				}
+			}
+			return neighbors;
+		}
+		else {
+			neighbors.add(init);
+			return neighbors;
+		}
 	}
 }

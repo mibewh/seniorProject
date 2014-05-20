@@ -1,6 +1,7 @@
 package wzh.game.entity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -35,8 +36,6 @@ public class Unit extends Entity {
 		this.faction = faction;
 		movePoints = 3;
 		moveLocs = getMoveLocations();
-		for(Location loc:moveLocs)
-			System.out.println(loc);
 		displayMoves = false;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException{
@@ -71,17 +70,11 @@ public class Unit extends Entity {
 	}
 	//Returns all existent, non-obstructed locations that are either adjacent or within movePoint radius of the unit
 	public ArrayList<Location> getMoveLocations() {
-		ArrayList<Location> locs = new ArrayList<Location>();
-		for(int x=0;x<grid.getCols();x++) {
-			for(int y=0;y<grid.getRows();y++){
-				Location moveLoc = new Location(x,y);
-				if(loc.getTileDistance(moveLoc)<=movePoints && grid.isEmpty(moveLoc) && grid.getMoveCost(moveLoc)!=100) {
-					locs.add(moveLoc);
-				}
-			}
-		}
-		return locs;
+		
+		ArrayList<Location> locs = grid.neighborsInRange(loc, movePoints);
+		return Location.removeDuplicates(locs);
 	}
+	
 	/*
 	 * @return Stored list of move locations
 	 */

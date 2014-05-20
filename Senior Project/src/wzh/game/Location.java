@@ -55,5 +55,20 @@ public class Location {
 		if(x==other.getX() && y==other.getY()) return true;
 		else return false;
 	}
+	public boolean isIn(ArrayList<Location> arr) {
+		for(Location other:arr) {
+			if(other.equals(this)) return true;
+		}
+		return false;
+	}
 	
+	public static ArrayList<Location> removeDuplicates(ArrayList<Location> locs) {
+		for(int i=0;i<locs.size()-1;i++) {
+			for(int r=locs.size()-1;r>i;r--) {
+				if(locs.get(r).equals(locs.get(i))) 
+					locs.remove(r);
+			}
+		}
+		return locs;
+	}
 }
