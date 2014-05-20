@@ -54,6 +54,8 @@ public class Menu{
 		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
 			
 		}
+		
+		
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.setColor(Color.white);
