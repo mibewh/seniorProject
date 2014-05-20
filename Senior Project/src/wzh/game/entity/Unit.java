@@ -31,9 +31,6 @@ public class Unit extends Entity {
 		this.faction = faction;
 		movePoints = 3;
 		moveLocs = getMoveLocations();
-		for(Location loc:moveLocs) { 
-			System.out.println(loc);
-		}
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);

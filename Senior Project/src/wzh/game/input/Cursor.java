@@ -50,13 +50,13 @@ public class Cursor extends Entity{
 					unitSelect=true;
 					u = (Unit)grid.get(loc.getX(),loc.getY());
 					//u.displayPremoveMenu();		
-				}
-				if(unitSelect){
 					ArrayList<Command> commands = new ArrayList<Command>();
 					commands.add(new Move());
 					commands.add(new Wait());
 					menu = new Menu(100,100, commands);
-					
+					focus = false;
+				}
+				else if(unitSelect){
 					if(unitSelect && grid.isEmpty(loc.getX(), loc.getY())){
 						u.moveTo(loc.getX(), loc.getY());
 						unitSelect=false;
@@ -64,7 +64,6 @@ public class Cursor extends Entity{
 				}
 			}
 		}
-			
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
