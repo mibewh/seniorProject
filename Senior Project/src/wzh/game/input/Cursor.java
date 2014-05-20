@@ -15,6 +15,8 @@ import wzh.game.entity.Unit;
 public class Cursor extends Entity{
 	
 	public boolean focus;
+	public boolean unitSelect=false;
+	private Unit u;
 	
 	public Cursor(int x, int y, Grid g) throws SlickException{
 		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(6, 0),g);
@@ -38,11 +40,20 @@ public class Cursor extends Entity{
 				loc = new Location(loc.getX(),loc.getY()-1);
 			}
 			if(input.isKeyPressed(Input.KEY_SPACE)){
-				if(!grid.isEmpty(loc.getX(), loc.getY()) && grid.get(loc.getX(),loc.getY()) instanceof Unit) {
-					Unit u = (Unit)grid.get(loc.getX(),loc.getY());
-					u.displayPremoveMenu();
+				if(!unitSelect &&!grid.isEmpty(loc.getX(), loc.getY()) && grid.get(loc.getX(),loc.getY()) instanceof Unit) {
+					unitSelect=true;
+					u = (Unit)grid.get(loc.getX(),loc.getY());
+					System.out.println("unitSelect is true");
+					//u.displayPremoveMenu();		
+				}
+				
+				if(unitSelect && grid.isEmpty(loc.getX(), loc.getY())){				
+					System.out.println("unitSelect is working");
+					u.moveTo(loc.getX(), loc.getY());
+					unitSelect=false;
 				}
 			}
+			
 		}
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {

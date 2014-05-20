@@ -10,5 +10,4 @@ public class Attack extends Command {
 	public void select(){
 		
 	}
-
 }

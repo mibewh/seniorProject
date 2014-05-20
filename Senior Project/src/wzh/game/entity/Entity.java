@@ -26,7 +26,6 @@ public abstract class Entity {
 		return loc;
 	}
 	
-	
 	public int getDirection(){
 		return direction;
 	}
