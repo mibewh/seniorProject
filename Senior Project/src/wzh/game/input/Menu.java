@@ -44,6 +44,7 @@ public class Menu{
 			x = c.getLoc().getX()*c.getSize()*2+32;
 			y = c.getLoc().getY()*c.getSize()*2+32;
 		}
+		//TODO Make sure that the menu changes location depending on character
 		cursor = c;
 		InputStream is = ResourceLoader.getResourceAsStream("Fonts/Minecraft.ttf");
 		try {
