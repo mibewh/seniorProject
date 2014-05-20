@@ -74,7 +74,7 @@ public class Cursor extends Entity{
 			menu.render(gc,game,g);
 		}
 	}
-	public void setFocus(boolean focus) {
+	public void setFocus(boolean focus){
 		this.focus = focus;
 	}
 }
