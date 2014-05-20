@@ -45,6 +45,8 @@ public class Unit extends Entity {
 				g.drawRect(loc.getX()*size,loc.getY()*size,size,size);
 			}
 		}
+		if(premoveMenu!=null)
+			premoveMenu.render(gc, game, g);
 	}
 	public void displayPremoveMenu(Cursor c, GameContainer gc) {
 		ArrayList<Command> commands = new ArrayList<Command>();

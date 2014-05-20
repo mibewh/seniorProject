@@ -50,13 +50,15 @@ public class Cursor extends Entity{
 				if(!unitSelect &&!grid.isEmpty(loc.getX(), loc.getY()) && grid.get(loc.getX(),loc.getY()) instanceof Unit) {
 					unitSelect=true;
 					u = (Unit)grid.get(loc.getX(),loc.getY());
-					u.displayPremoveMenu(this, gc);		
+					u.displayPremoveMenu(this, gc);	
+					System.out.println("Here");
 					//focus = false;
 				}
 				else if(unitSelect){
 					if(unitSelect && grid.isEmpty(loc.getX(), loc.getY())){
 						u.moveTo(loc.getX(), loc.getY());
 						unitSelect=false;
+						u.hideMenus();
 						u.displayPostmoveMenu(this, gc);
 					}
 				}
@@ -65,9 +67,6 @@ public class Cursor extends Entity{
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
-		if(unitSelect){
-			menu.render(gc,game,g);
-		}
 	}
 	public void setFocus(boolean focus){
 		this.focus = focus;
