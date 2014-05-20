@@ -33,7 +33,7 @@ public class Menu{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		font = new TrueTypeFont(new Font(FONT_STYLE, Font.PLAIN , 7), false);
+		font = new TrueTypeFont(new Font(FONT_STYLE, Font.PLAIN , 12), false);
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
@@ -42,12 +42,12 @@ public class Menu{
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.setColor(Color.white);
 		g.scale(.5f, .5f);
-		g.fillRect(x, y, 32, commands.size()*8);
+		g.fillRect(x-5, y, 64, commands.size()*16);
 		int curY = y;
 		for(Command c: commands){
 			//BE SERIF NOOOOOOOOOOOOOOW... or not
 			font.drawString(x, curY, c.getCommand(),Color.black);
-			curY+=8;
+			curY+=16;
 		}
 		g.scale(2f, 2f);
 	}
