@@ -37,4 +37,16 @@ public class Location {
 		else if(yDif<0 && Math.abs(yDif)>Math.abs(xDif)) return Location.UP;
 		else return Location.DOWN;
 	}
+	public int getTileDistance(Location loc) {
+		int xDif = loc.getX()-x;
+		int yDif = loc.getY()-y;
+		return Math.abs(xDif) + Math.abs(yDif);
+	}
+	public Location getLocationInDir(int dir) {
+		if(dir==Location.LEFT) return new Location(x-1,y);
+		else if(dir==Location.RIGHT) return new Location(x+1,y);
+		else if(dir==Location.UP) return new Location(x,y-1);
+		else return new Location(x,y+1);
+	}
+	
 }

@@ -104,8 +104,56 @@ public class Grid {
 		}
 		return cost;
 	}
+	/*
+	 * Find the shortest path between two locations using the the A* and Manhattan algorithms.
+	 * @author Michael
+	 * @param start startring location
+	 * @param end ending location
+	 * @return List containing the shortest path of locations from start to end.
+	 */
 	public ArrayList<Location> getShortestPath(Location start, Location end) {
 		//TODO Algorithm to find shortest path based on movePoints from start location to end location
+		ArrayList<Location> arr = new ArrayList<Location>();
+		Location curLoc = start;
+		while(!curLoc.equals(end)) {
+			
+		}
+		
 		return null;
+	}
+	/*
+	 * Approximate the remaining distance between two Locations
+	 * @param start starting location
+	 * @param end end location
+	 * @return Approximate min. distance between the two locations
+	 */
+	public int getManhattanCost(Location start, Location end) {
+		Location curLoc = start;
+		int total = 0;
+		if(start.getX()<end.getX()) {
+			while(curLoc.getX()!=end.getX()) {
+				curLoc = new Location(curLoc.getX()+1,curLoc.getY());
+				total+=getMoveCost(curLoc);
+			}
+		}
+		else if(start.getX()>end.getX()) {
+			while(curLoc.getX()!=end.getX()) {
+				curLoc = new Location(curLoc.getX()-1,curLoc.getY());
+				total+=getMoveCost(curLoc);
+			}
+		}
+		if(start.getY()<end.getY()) {
+			while(curLoc.getY()!=end.getY()) {
+				curLoc = new Location(curLoc.getX(),curLoc.getY()+1);
+				total+=getMoveCost(curLoc);
+			}
+		}
+		else if(start.getY()>end.getY()) {
+			while(curLoc.getY()!=end.getY()) {
+				curLoc = new Location(curLoc.getX(),curLoc.getY()-1);
+				total+=getMoveCost(curLoc);
+			}
+		}
+		return total;
 	}
 }
