@@ -116,10 +116,20 @@ public class Grid {
 		ArrayList<Location> arr = new ArrayList<Location>();
 		Location curLoc = start;
 		while(!curLoc.equals(end)) {
-			
+			int min=1000;
+			ArrayList<Location> possibles = curLoc.getAdjacentLocations();
+			curLoc = possibles.get(0);
+			for(Location loc:possibles) {
+				if(getMoveCost(loc)!=100) {
+					int curLocf = getMoveCost(curLoc) + getManhattanCost(curLoc,end);
+					int f = getMoveCost(loc) + getManhattanCost(loc, end);
+					if(f<curLocf)
+						curLoc=loc;
+				}
+			}
+			arr.add(curLoc);
 		}
-		
-		return null;
+		return arr;
 	}
 	/*
 	 * Approximate the remaining distance between two Locations
