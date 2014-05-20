@@ -8,6 +8,6 @@ public class Fortify extends Command {
 	}
 	
 	public void select(){
-		
+		if(input.isKeyPressed())
 	}
 }
