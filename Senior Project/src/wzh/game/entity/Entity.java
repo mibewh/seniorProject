@@ -49,6 +49,7 @@ public abstract class Entity {
 	}
 	public void moveTo(int x, int y) {
 		Location moveLoc = new Location(x,y);
+		grid.remove(loc.getX(), loc.getY());
 		if(grid.isValid(moveLoc)) {
 			loc=moveLoc;
 			grid.remove(x,y);
