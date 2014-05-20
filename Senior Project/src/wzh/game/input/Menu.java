@@ -25,8 +25,22 @@ public class Menu{
 	
 	public Menu(Cursor c , ArrayList<Command> commands, GameContainer gc){
 		this.commands = commands;
-		x = c.getLoc().getX()*c.getSize()*2-32;
-		y = c.getLoc().getY()*c.getSize()*2-32;
+		if(c.getLoc().getX()*c.getSize()*2-64 >= 0 && c.getLoc().getY()*c.getSize()*2-32 >= 0){
+			x = c.getLoc().getX()*c.getSize()*2-64;
+			y = c.getLoc().getY()*c.getSize()*2-32;
+		}
+		else if(c.getLoc().getX()*c.getSize()*2-64 <= 0 && c.getLoc().getY()*c.getSize()*2-32 >= 0){
+			x = c.getLoc().getX()*c.getSize()*2+32;
+			y = c.getLoc().getY()*c.getSize()*2-32;
+		}
+		else if(c.getLoc().getX()*c.getSize()*2-64 >= 0 && c.getLoc().getY()*c.getSize()*2-32 <= 0){
+			x = c.getLoc().getX()*c.getSize()*2-64;
+			y = c.getLoc().getY()*c.getSize()*2+32;
+		}
+		else if(c.getLoc().getX()*c.getSize()*2-64 <= 0 && c.getLoc().getY()*c.getSize()*2-32 <= 0){
+			x = c.getLoc().getX()*c.getSize()*2+32;
+			y = c.getLoc().getY()*c.getSize()*2+32;
+		}
 		cursor = c;
 		InputStream is = ResourceLoader.getResourceAsStream("Fonts/Minecraft.ttf");
 		try {
