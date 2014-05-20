@@ -33,20 +33,20 @@ public class Menu{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		font = new TrueTypeFont(new Font(FONT_STYLE, Font.PLAIN , 13), true);
+		font = new TrueTypeFont(new Font(FONT_STYLE, Font.PLAIN , 7), false);
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		//TODO Determine what is selected
 	}
-	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		g.setColor(Color.white);
-		g.fillRect(x, y, 64, commands.size()*16);
+	public void render(GameContainer gc, StateBasedGame game, Graphics f) throws SlickException {
+		f.setColor(Color.white);
+		f.fillRect(x, y, 32, commands.size()*8);
 		int curY = y;
 		for(Command c: commands){
 			//BE SERIF NOOOOOOOOOOOOOOW... or not
-			font.drawString(x+10, curY, c.getCommand(),Color.black);
-			curY+=16;
+			font.drawString(x, curY, c.getCommand(),Color.black);
+			curY+=8;
 		}
 	}
 }
