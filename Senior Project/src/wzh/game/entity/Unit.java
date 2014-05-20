@@ -25,15 +25,23 @@ public class Unit extends Entity {
 	private Menu postmoveMenu;
 	
 	private ArrayList<Location> moveLocs;
+	private boolean displayMoves;
 	
 	public Unit(int x, int y, Image img, Grid g, int faction) {
 		super(x,y,img,g);
 		this.faction = faction;
 		movePoints = 3;
 		moveLocs = getMoveLocations();
+		displayMoves = false;
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
+		g.setColor(new Color(0,0,1,.3f));
+		if(displayMoves) {
+			for(Location loc:moveLocs) {
+				g.drawRect(loc.getX()*size,loc.getY()*size,size,size);
+			}
+		}
 	}
 	
 	public void displayPremoveMenu() {
@@ -54,7 +62,9 @@ public class Unit extends Entity {
 		}
 		return locs;
 	}
-	
+	public void setDisplayMoves(boolean b) {
+		displayMoves = b;
+	}
 	public int getHp(){
 		return hp;
 	}
