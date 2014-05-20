@@ -49,7 +49,6 @@ public class Cursor extends Entity{
 				if(!unitSelect &&!grid.isEmpty(loc.getX(), loc.getY()) && grid.get(loc.getX(),loc.getY()) instanceof Unit) {
 					unitSelect=true;
 					u = (Unit)grid.get(loc.getX(),loc.getY());
-					System.out.println("unitSelect is true");
 					//u.displayPremoveMenu();		
 				}
 				if(unitSelect){
@@ -58,8 +57,7 @@ public class Cursor extends Entity{
 					commands.add(new Wait());
 					menu = new Menu(100,100, commands);
 					
-					if(unitSelect && grid.isEmpty(loc.getX(), loc.getY())){				
-						System.out.println("unitSelect is working");
+					if(unitSelect && grid.isEmpty(loc.getX(), loc.getY())){
 						u.moveTo(loc.getX(), loc.getY());
 						unitSelect=false;
 					}

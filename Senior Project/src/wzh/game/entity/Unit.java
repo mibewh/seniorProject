@@ -16,6 +16,8 @@ public class Unit extends Entity {
 	private int faction;
 	private int movePoints;
 	private int hp;
+	private int attack;
+	private int defense;
 	
 	private Menu premoveMenu;
 	private Menu postmoveMenu;
@@ -56,9 +58,24 @@ public class Unit extends Entity {
 	public int getHp(){
 		return hp;
 	}
-
 	
-	public void setHp(int hpChanged){
-		hp=hpChanged;
+	public void setHp(int hpChange){
+		hp=hpChange;
+	}
+	
+	public int getattack(){
+		return attack;
+	}
+	
+	public void setAttack(int attackChange){
+		attack=attackChange;
+	}
+	
+	public int getDefense(){
+		return defense;
+	}
+	
+	public void setDefense(int defenseChange){
+		defense=defenseChange;
 	}
 }
