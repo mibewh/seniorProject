@@ -58,7 +58,7 @@ public class Unit extends Entity {
 		moveLocs = getMoveLocations();
 		ArrayList<Command> commands = new ArrayList<Command>();
 		commands.add(new Move(this, c));
-		commands.add(new Wait());
+		commands.add(new Wait(this, c));
 		premoveMenu = new Menu(c, commands, gc);
 	}
 	public void hideMenus() {
