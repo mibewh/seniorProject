@@ -1,5 +1,7 @@
 package wzh.game.input;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -11,12 +13,16 @@ import wzh.game.Grid;
 import wzh.game.Location;
 import wzh.game.entity.Entity;
 import wzh.game.entity.Unit;
+import wzh.game.input.command.Command;
+import wzh.game.input.command.Move;
+import wzh.game.input.command.Wait;
 
 public class Cursor extends Entity{
 	
 	public boolean focus;
 	public boolean unitSelect=false;
 	private Unit u;
+	private Menu menu;
 	
 	public Cursor(int x, int y, Grid g) throws SlickException{
 		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(6, 0),g);
@@ -46,18 +52,27 @@ public class Cursor extends Entity{
 					System.out.println("unitSelect is true");
 					//u.displayPremoveMenu();		
 				}
-				
-				if(unitSelect && grid.isEmpty(loc.getX(), loc.getY())){				
-					System.out.println("unitSelect is working");
-					u.moveTo(loc.getX(), loc.getY());
-					unitSelect=false;
+				if(unitSelect){
+					ArrayList<Command> commands = new ArrayList<Command>();
+					commands.add(new Move());
+					commands.add(new Wait());
+					menu = new Menu(200,200, commands);
+					
+					if(unitSelect && grid.isEmpty(loc.getX(), loc.getY())){				
+						System.out.println("unitSelect is working");
+						u.moveTo(loc.getX(), loc.getY());
+						unitSelect=false;
+					}
 				}
 			}
-			
 		}
+			
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
+		if(unitSelect){
+			menu.render(gc,game,g);
+		}
 	}
 	public void setFocus(boolean focus) {
 		this.focus = focus;
