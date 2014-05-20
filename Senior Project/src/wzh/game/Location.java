@@ -48,5 +48,8 @@ public class Location {
 		else if(dir==Location.UP) return new Location(x,y-1);
 		else return new Location(x,y+1);
 	}
+	public String toString() {
+		return "("+x+","+y+")";
+	}
 	
 }

@@ -92,8 +92,7 @@ public class Grid {
 		this.cursor = cursor;
 	}
 	public int getMoveCost(Location loc) {
-		if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("ImpedimentLevel2")) != 0) return 2;
-		else if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("ImpedimentLevel3")) != 0) return 3;
+		if(!isEmpty(loc)) return 100;
 		else if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Obstructions")) != 0) return 100;
 		else return 1;
 	}
@@ -116,7 +115,6 @@ public class Grid {
 		ArrayList<Location> arr = new ArrayList<Location>();
 		Location curLoc = start;
 		while(!curLoc.equals(end)) {
-			int min=1000;
 			ArrayList<Location> possibles = curLoc.getAdjacentLocations();
 			curLoc = possibles.get(0);
 			for(Location loc:possibles) {
@@ -127,6 +125,7 @@ public class Grid {
 						curLoc=loc;
 				}
 			}
+			//System.out.println(curLoc);
 			arr.add(curLoc);
 		}
 		return arr;

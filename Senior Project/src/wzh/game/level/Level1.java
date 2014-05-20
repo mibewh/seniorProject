@@ -9,9 +9,9 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import wzh.game.Grid;
+import wzh.game.Location;
 import wzh.game.entity.Unit;
 import wzh.game.input.Cursor;
-import wzh.game.input.Menu;
 
 public class Level1 extends BasicGameState {
 	
@@ -23,6 +23,7 @@ public class Level1 extends BasicGameState {
 		grid.add(new Unit(5,5,s.getSubImage(1, 0),grid,0));
 		grid.setCursor(new Cursor(7,7,grid));
 		grid.getCursor().setFocus(true);
+		
 		//TODO HUD (New class(es))
 	}
 
