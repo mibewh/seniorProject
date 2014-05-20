@@ -23,10 +23,10 @@ public class Menu{
 	
 	private ArrayList<Command> commands;
 	
-	public Menu(Cursor c , ArrayList<Command> commands){
+	public Menu(Cursor c , ArrayList<Command> commands, GameContainer gc){
 		this.commands = commands;
 		x = c.getLoc().getX()*c.getSize()*2;
-		y = c.getLoc().getX()*c.getSize()*2;
+		y = c.getLoc().getY()*c.getSize()*2;
 		cursor = c;
 		InputStream is = ResourceLoader.getResourceAsStream("Fonts/Minecraft.ttf");
 		try {
@@ -44,7 +44,7 @@ public class Menu{
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.setColor(Color.white);
 		g.scale(.5f, .5f);
-		g.fillRect(x-5, y, 64, commands.size()*16);
+		g.fillRect(x, y, 64, commands.size()*16);
 		int curY = y;
 		for(Command c: commands){
 			//BE SERIF NOOOOOOOOOOOOOOW... or not
@@ -52,8 +52,5 @@ public class Menu{
 			curY+=16;
 		}
 		g.scale(2f, 2f);
-	}
-	public void destroy() {
-		this = null;
 	}
 }

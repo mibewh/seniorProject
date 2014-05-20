@@ -54,7 +54,7 @@ public class Cursor extends Entity{
 					ArrayList<Command> commands = new ArrayList<Command>();
 					commands.add(new Move(u, this));
 					commands.add(new Wait());
-					menu = new Menu(this, commands);
+					menu = new Menu(this, commands, gc);
 					//focus = false;
 				}
 				else if(unitSelect){
