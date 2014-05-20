@@ -1,5 +1,8 @@
 package wzh.game.input.command;
 
+import wzh.game.entity.Unit;
+import wzh.game.input.Cursor;
+
 public class Wait extends Command {
 	
 	public Wait(){
@@ -7,7 +10,7 @@ public class Wait extends Command {
 		commandName="Wait";
 	}
 	
-	public void select(){
+	public void select(Unit u, Cursor c){
 		
 	}
 
