@@ -51,8 +51,7 @@ public class Cursor extends Entity{
 					unitSelect=true;
 					u = (Unit)grid.get(loc.getX(),loc.getY());
 					u.displayPremoveMenu(this, gc);	
-					System.out.println("Here");
-					//focus = false;
+					focus = false;
 				}
 				else if(unitSelect){
 					if(unitSelect && grid.isEmpty(loc.getX(), loc.getY())){

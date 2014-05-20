@@ -37,6 +37,11 @@ public class Unit extends Entity {
 		moveLocs = getMoveLocations();
 		displayMoves = false;
 	}
+	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException{
+		super.update(gc, game, delta);
+		if(premoveMenu!=null)
+			premoveMenu.update(gc, game, delta);
+	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
 		g.setColor(new Color(0,0,1,.3f));

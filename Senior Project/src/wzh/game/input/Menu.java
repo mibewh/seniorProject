@@ -16,6 +16,12 @@ import org.newdawn.slick.util.ResourceLoader;
 import wzh.game.input.command.Command;
 
 public class Menu{
+	private static final int TILE_HEIGHT = 32;
+
+
+	private static final int COMMAND_HEIGHT = 16;
+	
+	
 	private int x,y;
 	private Cursor cursor;
 	private TrueTypeFont font;
@@ -28,21 +34,24 @@ public class Menu{
 	public Menu(Cursor c , ArrayList<Command> commands, GameContainer gc){
 		this.commands = commands;
 		selected = 0;
-		if(c.getLoc().getX()*c.getSize()*2-64 >= 0 && c.getLoc().getY()*c.getSize()*2-32 >= 0){
-			x = c.getLoc().getX()*c.getSize()*2-64;
-			y = c.getLoc().getY()*c.getSize()*2-32;
+		int cursorX = c.getLoc().getX();
+		int cursorY = c.getLoc().getY();
+		int cursorSize = c.getSize();
+		if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-32 >= 0){
+			x = cursorX*cursorSize*2-TILE_HEIGHT*2;
+			y = cursorY*cursorSize*2-TILE_HEIGHT;
 		}
-		else if(c.getLoc().getX()*c.getSize()*2-64 <= 0 && c.getLoc().getY()*c.getSize()*2-32 >= 0){
-			x = c.getLoc().getX()*c.getSize()*2+32;
-			y = c.getLoc().getY()*c.getSize()*2-32;
+		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-32 >= 0){
+			x = cursorX*cursorSize*2+32;
+			y = cursorY*cursorSize*2-32;
 		}
-		else if(c.getLoc().getX()*c.getSize()*2-64 >= 0 && c.getLoc().getY()*c.getSize()*2-32 <= 0){
-			x = c.getLoc().getX()*c.getSize()*2-64;
-			y = c.getLoc().getY()*c.getSize()*2+32;
+		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-32 <= 0){
+			x = cursorX*cursorSize*2-TILE_HEIGHT*2;
+			y = cursorY*cursorSize*2+32;
 		}
-		else if(c.getLoc().getX()*c.getSize()*2-64 <= 0 && c.getLoc().getY()*c.getSize()*2-32 <= 0){
-			x = c.getLoc().getX()*c.getSize()*2+32;
-			y = c.getLoc().getY()*c.getSize()*2+32;
+		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-32 <= 0){
+			x = cursorX*cursorSize*2+32;
+			y = cursorY*cursorSize*2+32;
 		}
 		//TODO Make sure that the menu changes location depending on character
 		cursor = c;
@@ -73,13 +82,17 @@ public class Menu{
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.setColor(Color.white);
 		g.scale(.5f, .5f);
-		g.fillRect(x, y, 64, commands.size()*16);
+		g.fillRect(x, y, TILE_HEIGHT*2, commands.size()*COMMAND_HEIGHT);
 		int curY = y;
 		for(Command c: commands){
 			//BE SERIF NOOOOOOOOOOOOOOW... or not
 			font.drawString(x, curY, c.getCommand(),Color.black);
 			curY+=16;
 		}
+		Color color = new Color(128, 128, 128, 128);
+		g.setColor(color);
+		g.fillRect(x, y+selected*COMMAND_HEIGHT,TILE_HEIGHT*2,COMMAND_HEIGHT);
+		
 		g.scale(2f, 2f);
 	}
 }

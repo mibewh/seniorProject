@@ -15,5 +15,6 @@ public class Move extends Command {
 	public void select(){
 		u.setDisplayMoves(true);
 		c.setMode("Move");
+		System.out.println("DID IT");
 	}
 }
