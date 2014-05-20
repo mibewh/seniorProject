@@ -56,7 +56,7 @@ public class Cursor extends Entity{
 					ArrayList<Command> commands = new ArrayList<Command>();
 					commands.add(new Move());
 					commands.add(new Wait());
-					menu = new Menu(200,200, commands);
+					menu = new Menu(100,100, commands);
 					
 					if(unitSelect && grid.isEmpty(loc.getX(), loc.getY())){				
 						System.out.println("unitSelect is working");
