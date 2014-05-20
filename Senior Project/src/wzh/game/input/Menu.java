@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.StateBasedGame;
@@ -21,10 +22,12 @@ public class Menu{
 	
 	private final String FONT_STYLE = "Minecraft";
 	
+	private int selected;	
 	private ArrayList<Command> commands;
 	
 	public Menu(Cursor c , ArrayList<Command> commands, GameContainer gc){
 		this.commands = commands;
+		selected = 0;
 		x = c.getLoc().getX()*c.getSize()*2-32;
 		y = c.getLoc().getY()*c.getSize()*2-32;
 		cursor = c;
@@ -40,6 +43,20 @@ public class Menu{
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		//TODO Determine what is selected
+		if(gc.getInput().isKeyPressed(Input.KEY_UP) || gc.getInput().isKeyPressed(Input.KEY_W)) {
+			selected--;
+		}
+		else if(gc.getInput().isKeyPressed(Input.KEY_DOWN) || gc.getInput().isKeyPressed(Input.KEY_S)) {
+			selected++;
+		}
+		if(selected<0) selected=commands.size()-1;
+		else if (selected>=commands.size()) selected=0;
+		
+		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
+			
+		}
+		
+		
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.setColor(Color.white);
