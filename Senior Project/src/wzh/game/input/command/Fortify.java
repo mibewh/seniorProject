@@ -10,6 +10,5 @@ public class Fortify extends Command {
 	}
 	
 	public void select(){
-
 	}
 }
