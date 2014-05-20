@@ -7,12 +7,15 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
 import wzh.game.Location;
+import wzh.game.input.Cursor;
 import wzh.game.input.Menu;
+import wzh.game.input.command.Command;
+import wzh.game.input.command.Move;
+import wzh.game.input.command.Wait;
 
 public class Unit extends Entity {
 	private int faction;
@@ -43,11 +46,17 @@ public class Unit extends Entity {
 			}
 		}
 	}
-	
-	public void displayPremoveMenu() {
-		//TODO Display Menu
+	public void displayPremoveMenu(Cursor c, GameContainer gc) {
+		ArrayList<Command> commands = new ArrayList<Command>();
+		commands.add(new Move(this, c));
+		commands.add(new Wait());
+		premoveMenu = new Menu(c, commands, gc);
 	}
-	public void displayPostmoveMenu() {
+	public void hideMenus() {
+		premoveMenu = null;
+		postmoveMenu = null;
+	}
+	public void displayPostmoveMenu(Cursor c, GameContainer gc) {
 		
 	}
 	//Returns all existent, non-obstructed locations that are either adjacent or within movePoint radius of the unit
