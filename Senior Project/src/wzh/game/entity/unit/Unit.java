@@ -70,10 +70,10 @@ public abstract class Unit extends Entity {
 				g.fillRect(loc.getX()*size,loc.getY()*size,size,size);
 			}
 		}
-		if(premoveMenu!=null)
-			premoveMenu.render(gc, game, g);
-		else if(postmoveMenu!=null)
-			postmoveMenu.render(gc, game, g);
+//		if(premoveMenu!=null)
+//			premoveMenu.render(gc, game, g);
+//		else if(postmoveMenu!=null)
+//			postmoveMenu.render(gc, game, g);
 	}
 	public void displayPremoveMenu(Cursor c, GameContainer gc) {
 		moveLocs = getMoveLocations();

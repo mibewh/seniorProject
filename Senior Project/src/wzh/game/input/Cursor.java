@@ -161,9 +161,9 @@ public class Cursor extends Entity{
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
-		if(menuSelect) {
-			optionsMenu.render(gc, game, g);
-		}
+//		if(menuSelect) {
+//			optionsMenu.render(gc, game, g);
+//		}
 	}
 	public void setFocus(boolean focus){
 		this.focus = focus;
@@ -204,5 +204,9 @@ public class Cursor extends Entity{
 	}
 	public void setPostMove(boolean b) {
 		postMove=b;
+	}
+
+	public Menu getMenu() {
+		return optionsMenu;
 	}
 }

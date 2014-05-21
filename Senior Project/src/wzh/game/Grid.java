@@ -78,7 +78,8 @@ public class Grid {
 		ArrayList<Entity> arr = new ArrayList<Entity>();
 		for(int x=0;x<cols;x++) {
 			for(int y=0;y<rows;y++) {
-				arr.add(entities[x][y]);
+				if(!isEmpty(x,y)) //Remove this line if there are complications
+					arr.add(entities[x][y]);
 			}
 		}
 		return arr;
