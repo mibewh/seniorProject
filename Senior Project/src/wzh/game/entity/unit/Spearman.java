@@ -10,5 +10,16 @@ public class Spearman extends Unit {
 		super(x, y, img, g, faction);
 		// TODO Auto-generated constructor stub
 	}
-
+	@Override
+	public void attack(Unit other) {
+		double startAttack = attack;
+		if(other instanceof Horseman) {
+			attack *= 2;
+		}
+		else if(other instanceof Swordsman) {
+			attack /= 2;
+		}
+		super.attack(other);
+		attack = startAttack;
+	}
 }
