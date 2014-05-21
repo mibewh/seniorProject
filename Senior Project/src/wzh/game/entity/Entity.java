@@ -15,12 +15,14 @@ public abstract class Entity {
 	protected Location loc;
 	protected Image sprite;
 	protected int size;
+	protected boolean active;
 	
 	public Entity(int x, int y, Image img, Grid g){
 		grid = g;
 		sprite = img;
 		loc = new Location(x,y);
 		size = img.getHeight();
+		active = true;
 	}
 	public Location getLoc() {
 		return loc;
@@ -55,5 +57,11 @@ public abstract class Entity {
 			grid.remove(x,y);
 			grid.add(this);
 		}
+	}
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean a) {
+		active = a;
 	}
 }
