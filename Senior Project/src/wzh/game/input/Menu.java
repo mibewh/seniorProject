@@ -43,15 +43,15 @@ public class Menu{
 		int cursorX = c.getLoc().getX();
 		int cursorY = c.getLoc().getY();
 		int cursorSize = c.getSize();
-		if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-32 >= 0 && gc.getWidth()/2 > cursorX*cursorSize*2){
+		if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-height >= 0 && gc.getWidth()/2 > cursorX*cursorSize*2){
 			x = cursorX*cursorSize*2+TILE_HEIGHT;
-			y = cursorY*cursorSize*2-TILE_HEIGHT;
+			y = cursorY*cursorSize*2-height;
 		}
-		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-32 >= 0){
+		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-height >= 0){
 			x = cursorX*cursorSize*2+TILE_HEIGHT;
-			y = cursorY*cursorSize*2-TILE_HEIGHT;
+			y = cursorY*cursorSize*2-height;
 		}
-		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-32 <= 0){
+		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-height <= 0){
 			if(cursorX*cursorSize*2 < gc.getWidth()/2){
 				x = cursorX*cursorSize*2+TILE_HEIGHT;
 				y = cursorY*cursorSize*2+TILE_HEIGHT;
@@ -61,18 +61,18 @@ public class Menu{
 				y = cursorY*cursorSize*2+TILE_HEIGHT;
 			}
 		}
-		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-32 <= 0){
+		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-height <= 0){
 			x = cursorX*cursorSize*2+TILE_HEIGHT;
 			y = cursorY*cursorSize*2+TILE_HEIGHT;
 		}
 		else if(gc.getWidth()/2 <= cursorX*cursorSize*2){
 			if(cursorX*cursorSize*2+TILE_HEIGHT*2 < gc.getWidth()){
 				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
-				y = cursorY*cursorSize*2-TILE_HEIGHT;
+				y = cursorY*cursorSize*2-height;
 			}
 			else{
 				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
-				y = cursorY*cursorSize*2-TILE_HEIGHT;
+				y = cursorY*cursorSize*2-height;
 			}
 		}
 	}
