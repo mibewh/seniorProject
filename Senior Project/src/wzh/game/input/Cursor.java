@@ -22,7 +22,7 @@ public class Cursor extends Entity{
 	private String mode;
 	
 	public Cursor(int x, int y, Grid g) throws SlickException{
-		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(6, 0),g);
+		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(7, 0),g);
 		focus = false;
 		mode = "Normal";
 	}
@@ -66,11 +66,11 @@ public class Cursor extends Entity{
 					}
 				}
 			}
-			if(grid.isEmpty(loc.getX(), loc.getY()))
-			{
-				menuSelect=true;
-				focus = false;
-			}
+//			if(grid.isEmpty(loc.getX(), loc.getY()))
+//			{
+//				menuSelect=true;
+//				focus = false;
+//			}
 			else if(menuSelect && mode.equals("End")){
 				
 			}
