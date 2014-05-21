@@ -34,11 +34,17 @@ public abstract class Level extends BasicGameState {
 		grid.update(gc, game, delta);
 	}
 	public void changeTurn() {
-		if(turn==1) turn=2;
+		if(turn==1) {
+			turn=2;
+		}
 		else  {
 			turn=1;
 			turnNumber++;
 		}
+		grid.getCursor().setFaction(turn);
+	}
+	public Grid getGrid() {
+		return grid;
 	}
 	public abstract int getID();
 

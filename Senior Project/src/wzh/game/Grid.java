@@ -74,6 +74,15 @@ public class Grid {
 	public Entity get(Location loc) {
 		return entities[loc.getX()][loc.getY()];
 	}
+	public ArrayList<Entity> getAllEntities() {
+		ArrayList<Entity> arr = new ArrayList<Entity>();
+		for(int x=0;x<cols;x++) {
+			for(int y=0;y<rows;y++) {
+				arr.add(entities[x][y]);
+			}
+		}
+		return arr;
+	}
 	public boolean add(Entity e) {
 		if(isEmpty(e.getLoc())) {
 			entities[e.getLoc().getX()][e.getLoc().getY()] = e;
@@ -126,7 +135,6 @@ public class Grid {
 		for(int l=0;l<map.getLayerCount()-1;l++) {
 			map.render(0,0,0,0,20,20,l,false);
 		}//map.render(0, 0, 0, 0, 20, 20);
-		cursor.render(gc, game, g);
 		for(int x = 0; x<cols;x++) {
 			for(int y = 0; y<rows;y++) {
 				if(entities[x][y] != null) {
@@ -134,6 +142,7 @@ public class Grid {
 				}
 			}
 		}
+		cursor.render(gc, game, g);
 	}
 	public Cursor getCursor() {
 		return cursor;

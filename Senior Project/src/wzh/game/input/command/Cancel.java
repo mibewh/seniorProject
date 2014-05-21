@@ -17,6 +17,10 @@ public class Cancel extends Command {
 			Unit u = (Unit)e;
 			u.revertToLastLoc();
 		}
+		else if(e instanceof Cursor) {
+			c.hideMenus();
+			c.setMenuSelect(false);
+		}
 		c.setFocus(true);
 		c.setUnitSelect(false);
 	}
