@@ -10,19 +10,24 @@
  <tileset firstgid="226" name="Units" tilewidth="16" tileheight="16">
   <image source="Unitz.png" width="240" height="240"/>
  </tileset>
- <layer name="Passable" width="20" height="20" visible="0">
+ <layer name="Passable" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NkYGBgHMWjeBSP4lE8iknEALhlz4pABgAA
+   H4sIAAAAAAAAC42U0Q3DMAhEMV6lG3T/3dpItURfHzQfyAnG5+MMZESst+VnvWwX43/1n71sfAc3gbWG2A4z45tjjSVX89dzW77JxfiQi2nGs5ZPF0tM2qT9Duc1aTZhmlaGTf/EP+NXC/Lv6s7uSGDWGOIRkzyZ53Rv9x7HnsO+6TdpebcmqIG9q/UHc7d3os6cBVZXnY7MZeJa9x7gaPOIeViPn/ex3OxumwGMt7qd5si/Hrs7f4nHel0x52hzqesny/taX9NOHchABgAA
+  </data>
+ </layer>
+ <layer name="Difficult" width="20" height="20" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkgHADV9EcVABgAA
   </data>
  </layer>
  <layer name="Obstructions" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC73TMQoAIAwDQAeh4P8f7KIgIdbaVgNZz4goxZ4GZZFRr4nuKy/LlJJrohc1Ix4zmWcx66jV08xpsY23HlprvJ6WX543P7zTnTB1KdukveHOw327M63bsjzM6R9kep50aQJTdkAGAAA=
+   H4sIAAAAAAAAC73S0QqAMAgFUB9Wwuqt+v9fbYHBEF1OpQuXvYyDjiHYU1s36q7cQWqWGfEkEyHXRMg1uRc1I55kSp7VLBPel/lYpzCjx+utPjUwnxaPdzk8b/7wRvtIKXSuykxH6xKcj8dq8r8zeq/ZvV8vM9neDYq+r4dABgAA
   </data>
  </layer>
  <layer name="Objects" width="20" height="20" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAUwwDvQDiAD8Ay0A4YgeDzQDhhmYDQNkgeGQ7gBAKVmu1VABgAA
+   H4sIAAAAAAAAC2NgGAWjYGSBxwPtgFEwCoYJAAAjK/l1QAYAAA==
   </data>
  </layer>
 </map>
