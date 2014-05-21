@@ -11,6 +11,7 @@ public class Move extends Command {
 	}
 	
 	public void select(){
+		Unit u = (Unit)e;
 		u.setDisplayMoves(true);
 		c.setMode("Move");
 		u.hideMenus();

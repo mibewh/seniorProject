@@ -1,7 +1,5 @@
 package wzh.game.input;
 
-import java.util.ArrayList;
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -13,9 +11,6 @@ import wzh.game.Grid;
 import wzh.game.Location;
 import wzh.game.entity.Entity;
 import wzh.game.entity.Unit;
-import wzh.game.input.command.Command;
-import wzh.game.input.command.Move;
-import wzh.game.input.command.Wait;
 
 public class Cursor extends Entity{
 	
@@ -101,5 +96,12 @@ public class Cursor extends Entity{
 	}
 	public void setLoc(Location loc) {
 		this.loc = loc;
+	}
+	public void setUnitSelect(boolean s) {
+		unitSelect = s;
+	}
+
+	public void hideMenus() {
+		// TODO Auto-generated method stub
 	}
 }

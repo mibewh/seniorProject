@@ -1,7 +1,6 @@
 package wzh.game.input;
 
 import java.awt.Font;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 import org.newdawn.slick.Color;
@@ -11,9 +10,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.util.ResourceLoader;
 
-import wzh.game.Grid;
 import wzh.game.input.command.Command;
 
 public class Menu{
@@ -47,7 +44,6 @@ public class Menu{
 		if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-32 >= 0 && gc.getWidth()/2 > cursorX*cursorSize*2){
 			x = cursorX*cursorSize*2+TILE_HEIGHT;
 			y = cursorY*cursorSize*2-TILE_HEIGHT;
-			System.out.println("ugly");
 		}
 		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-32 >= 0){
 			x = cursorX*cursorSize*2+TILE_HEIGHT;
@@ -57,7 +53,6 @@ public class Menu{
 			if(cursorX*cursorSize*2 < gc.getWidth()/2){
 				x = cursorX*cursorSize*2+TILE_HEIGHT;
 				y = cursorY*cursorSize*2+TILE_HEIGHT;
-				System.out.println("good");
 			}
 			else{
 				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
@@ -72,12 +67,10 @@ public class Menu{
 			if(cursorX*cursorSize*2+TILE_HEIGHT*2 < gc.getWidth()){
 				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
 				y = cursorY*cursorSize*2-TILE_HEIGHT;
-	//			System.out.println("good");
 			}
 			else{
 				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
 				y = cursorY*cursorSize*2-TILE_HEIGHT;
-				System.out.println("bad");
 			}
 		}
 	}

@@ -1,7 +1,6 @@
 package wzh.game.entity;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -15,6 +14,7 @@ import wzh.game.Location;
 import wzh.game.input.Cursor;
 import wzh.game.input.Menu;
 import wzh.game.input.command.Attack;
+import wzh.game.input.command.Cancel;
 import wzh.game.input.command.Command;
 import wzh.game.input.command.Move;
 import wzh.game.input.command.Wait;
@@ -61,6 +61,8 @@ public class Unit extends Entity {
 		ArrayList<Command> commands = new ArrayList<Command>();
 		commands.add(new Move(this, c));
 		commands.add(new Wait(this, c));
+		commands.add(new Cancel(this,c));
+		setLastLoc(loc);
 		premoveMenu = new Menu(c, commands, gc);
 	}
 	public void hideMenus() {

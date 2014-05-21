@@ -12,6 +12,7 @@ public class Wait extends Command {
 		}
 
 	public void select(){
+		Unit u = (Unit)e;
 		u.hideMenus();
 		c.setFocus(true);
 		u.setActive(false);

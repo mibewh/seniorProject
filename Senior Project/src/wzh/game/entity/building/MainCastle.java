@@ -20,4 +20,9 @@ public class MainCastle extends Building {
 	public int getFortification(){
 		return 3;
 	}
+
+	public void hideMenus() {
+		// TODO Auto-generated method stub
+		
+	}
 }

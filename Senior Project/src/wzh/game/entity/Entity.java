@@ -64,4 +64,5 @@ public abstract class Entity {
 	public void setActive(boolean a) {
 		active = a;
 	}
+	public abstract void hideMenus();
 }
