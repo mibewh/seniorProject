@@ -150,6 +150,18 @@ public abstract class Unit extends Entity {
 		}
 		else return false;
 	}
+	public int getFaction() {
+		return faction;
+	}
+	public Menu getMenu() {
+		if(premoveMenu!=null){
+			return premoveMenu;
+		}
+		else if(postmoveMenu!=null) {
+			return postmoveMenu;
+		}
+		else return null;
+	}
 	public abstract void goGray();
 	public abstract void goColor();
 }
