@@ -17,10 +17,11 @@ import wzh.game.input.Menu;
 import wzh.game.input.command.Attack;
 import wzh.game.input.command.Cancel;
 import wzh.game.input.command.Command;
+import wzh.game.input.command.Fortify;
 import wzh.game.input.command.Move;
 import wzh.game.input.command.Wait;
 
-public class Unit extends Entity {
+public abstract class Unit extends Entity {
 	protected int faction;
 	protected int movePoints;
 	protected int hp;
@@ -64,6 +65,8 @@ public class Unit extends Entity {
 		moveLocs = getMoveLocations();
 		ArrayList<Command> commands = new ArrayList<Command>();
 		commands.add(new Move(this, c));
+		commands.add(new Attack(this, c));
+		commands.add(new Fortify(this, c));
 		commands.add(new Wait(this, c));
 		commands.add(new Cancel(this,c));
 		setLastLoc(loc);
@@ -77,14 +80,24 @@ public class Unit extends Entity {
 		moveLocs = getMoveLocations();
 		ArrayList<Command> commands = new ArrayList<Command>();
 		commands.add(new Attack(this, c));
-		commands.add(new Attack(this, c));
+		commands.add(new Cancel(this, c));
+		commands.add(new Wait(this, c));
 		
 	}
 	//Returns all existent, non-obstructed locations that are either adjacent or within movePoint radius of the unit
 	public ArrayList<Location> getMoveLocations() {
-		
 		ArrayList<Location> locs = grid.neighborsInRange(loc, movePoints);
 		return Location.removeDuplicates(locs);
+	}
+	public ArrayList<Location> getAttackLocations() {
+		ArrayList<Location> locs = new ArrayList<Location>();
+		locs = loc.getAdjacentLocations();
+		for(int i=locs.size()-1;i>=0;i--) {
+			if(!grid.isValid(locs.get(i)) || !(grid.get(locs.get(i)) instanceof Unit)) {
+				locs.remove(i);
+			}
+		}
+		return locs;
 	}
 	
 	/*
@@ -137,4 +150,5 @@ public class Unit extends Entity {
 		}
 		else return false;
 	}
+	public abstrac
 }

@@ -21,6 +21,7 @@ public class Menu{
 	
 	
 	private int x,y;
+	private int height;
 	private Cursor cursor;
 	private TrueTypeFont font;
 	
@@ -31,6 +32,7 @@ public class Menu{
 	
 	public Menu(Cursor c , ArrayList<Command> commands, GameContainer gc){
 		this.commands = commands;
+		height = COMMAND_HEIGHT * commands.size();
 		selected = 0;
 		setPos(c, gc);
 		cursor = c;
@@ -92,7 +94,7 @@ public class Menu{
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.setColor(Color.white);
 		g.scale(.5f, .5f);
-		g.fillRect(x, y, TILE_HEIGHT*2, commands.size()*COMMAND_HEIGHT);
+		g.fillRect(x, y, TILE_HEIGHT*2, height);
 		int curY = y;
 		for(Command c: commands){
 			//BE SERIF NOOOOOOOOOOOOOOW... or not
