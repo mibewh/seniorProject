@@ -113,8 +113,10 @@ public class Unit extends Entity {
 	public int getAttack(){
 		return (int)(attack * (double)(hp/10+(int)Math.sqrt(hp)*2));
 	}
-	
-	public void setAttack(int attackChange){
+	public double getAttackMult() {
+		return attack;
+	}
+	public void setAttack(double attackChange){
 		attack=attackChange;
 	}
 	

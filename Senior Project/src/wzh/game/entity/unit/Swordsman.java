@@ -12,14 +12,18 @@ public class Swordsman extends Unit{
 	
 	@Override 
 	public void attack(Unit other){
-			double startAttack = attack;
-			if(other instanceof Spearman) {
-				attack *= 2;
-			}
-			else if(other instanceof Horseman) {
-				attack /= 2;
-			}
-			super.attack(other);
-			attack = startAttack;
+		double startAttack = attack;
+		double otherStartAttack = other.getAttackMult();
+		if(other instanceof Spearman) {
+			attack *= 2;
+			other.setAttack(other.getAttackMult()*2);
+		}
+		else if(other instanceof Horseman) {
+			attack /= 2;
+			other.setAttack(other.getAttackMult()/2);
+		}
+		super.attack(other);
+		attack = startAttack;
+		other.setAttack(otherStartAttack);
 	}
 }
