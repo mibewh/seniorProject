@@ -16,6 +16,7 @@ public class Cursor extends Entity{
 	
 	public boolean focus;
 	public boolean unitSelect=false;
+	public boolean menuSelect=true;
 	private Unit u;
 	private Menu menu;
 	private String mode;
@@ -65,6 +66,20 @@ public class Cursor extends Entity{
 					}
 				}
 			}
+			if(grid.isEmpty(loc.getX(), loc.getY()))
+			{
+				menuSelect=true;
+				focus = false;
+			}
+			else if(menuSelect && mode.equals("End")){
+				
+			}
+			else if(menuSelect && mode.equals("Exit")){
+				
+			}
+			else if(menuSelect && mode.equals("Cancel")){
+				
+			}
 		}
 	}
 
@@ -99,6 +114,9 @@ public class Cursor extends Entity{
 	}
 	public void setUnitSelect(boolean s) {
 		unitSelect = s;
+	}
+	public void setMenuSelect(boolean m) {
+		menuSelect = m;
 	}
 
 	public void hideMenus() {
