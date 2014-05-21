@@ -71,6 +71,9 @@ public class Grid {
 	public Entity get(int x, int y) {
 		return entities[x][y];
 	}
+	public Entity get(Location loc) {
+		return entities[loc.getX()][loc.getY()];
+	}
 	public boolean add(Entity e) {
 		if(isEmpty(e.getLoc())) {
 			entities[e.getLoc().getX()][e.getLoc().getY()] = e;
@@ -171,7 +174,7 @@ public class Grid {
 			return neighbors;
 		}
 		else {
-			//neighbors.add(init); BRING THIS BACK IF THERE ARE ISSUES
+			//neighbors.add(init); //BRING THIS BACK IF THERE ARE ISSUES
 			return neighbors;
 		}
 	}

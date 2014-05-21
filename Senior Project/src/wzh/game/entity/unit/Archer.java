@@ -1,8 +1,11 @@
 package wzh.game.entity.unit;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.Image;
 
 import wzh.game.Grid;
+import wzh.game.Location;
 
 public class Archer extends Unit {
 	
@@ -20,6 +23,19 @@ public class Archer extends Unit {
 			other.setHp(other.getHp() - (int)((double)getAttack() * ATTACK_BUFF * (double)(10-other.getDefense())/10.0));
 			other.checkKill();
 		}
+	}
+	//TODO attack locations
+	@Override
+	public ArrayList<Location> getAttackLocations() {
+		ArrayList<Location> locs = new ArrayList<Location>();
+		locs = grid.neighborsInRange(loc, 2);
+		for(int i=locs.size()-1;i>=0;i--) {
+			Location testLoc = locs.get(i);
+			if(!grid.isValid(testLoc) || !(grid.get(testLoc) instanceof Unit) || testLoc.isIn(testLoc.getAdjacentLocations())) {
+				locs.remove(i);
+			}
+		}
+		return locs;
 	}
 
 }
