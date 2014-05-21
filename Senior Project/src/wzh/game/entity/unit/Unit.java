@@ -117,9 +117,9 @@ public abstract class Unit extends Entity {
 		hp=hpChange;
 	}
 	public void attack(Unit other) {
-		other.setHp(other.getHp() - (int)((double)getAttack() * (double)(10-other.getDefense())/10.0));
+		other.setHp(other.getHp() - (int)((double)getAttack() * (double)((10-other.getDefense()))/10.0));
 		if(!other.checkKill()) {
-			setHp(getHp() - (int)((double)other.getAttack() * (double)(10-getDefense())/10));
+			setHp(getHp() - (int)((double)other.getAttack() * (double)((10-getDefense()))/10));
 			checkKill();
 		}
 	}
@@ -134,7 +134,8 @@ public abstract class Unit extends Entity {
 	}
 	
 	public int getDefense(){
-		return 1+fortification+tileDefense;
+		//possibility for game balance
+		return (1+fortification+tileDefense)*(hp/100);
 	}
 	
 	public void setLastLoc(Location loc) {

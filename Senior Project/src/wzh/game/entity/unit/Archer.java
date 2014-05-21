@@ -22,7 +22,7 @@ public class Archer extends Unit {
 			super.attack(other);
 		}
 		else {
-			other.setHp(other.getHp() - (int)((double)getAttack() * ATTACK_BUFF * (double)(10-other.getDefense())/10.0));
+			other.setHp(other.getHp() - (int)((double)getAttack() * ATTACK_BUFF * (double)((10-other.getDefense()))/10.0));
 			other.checkKill();
 		}
 	}
