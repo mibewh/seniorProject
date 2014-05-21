@@ -6,6 +6,6 @@ public class Turns {
 	private int timer;
 	
 	public void switchFaction(){
-		
+		curFaction++;
 	}
 }

@@ -2,6 +2,7 @@ package wzh.game.input.command;
 
 import wzh.game.entity.Entity;
 import wzh.game.input.Cursor;
+import wzh.game.level.Turns;
 
 public class End extends Command {
 	
@@ -12,6 +13,6 @@ public class End extends Command {
 	}
 	
 	public void select(){
-		
+//		timer++;
 	}
 }

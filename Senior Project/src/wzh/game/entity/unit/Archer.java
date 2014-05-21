@@ -1,8 +1,13 @@
 package wzh.game.entity.unit;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 
 import wzh.game.Grid;
+import wzh.game.Location;
 
 public class Archer extends Unit {
 	
@@ -20,6 +25,39 @@ public class Archer extends Unit {
 			other.setHp(other.getHp() - (int)((double)getAttack() * ATTACK_BUFF * (double)(10-other.getDefense())/10.0));
 			other.checkKill();
 		}
+	}
+	//TODO attack locations
+	@Override
+	public ArrayList<Location> getAttackLocations() {
+		ArrayList<Location> locs = new ArrayList<Location>();
+		locs = grid.neighborsInRange(loc, 2);
+		for(int i=locs.size()-1;i>=0;i--) {
+			Location testLoc = locs.get(i);
+			if(!grid.isValid(testLoc) || !(grid.get(testLoc) instanceof Unit) || testLoc.isIn(testLoc.getAdjacentLocations())) {
+				locs.remove(i);
+			}
+		}
+		return locs;
+	}
+	public void goGray() {
+		try {
+			SpriteSheet ss = new SpriteSheet("Unitz.png",16,16);
+			sprite = ss.getSubImage(0, 2);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
+	}
+	public void goColor() {
+		try {
+			SpriteSheet ss = new SpriteSheet("Unitz.png",16,16);
+			if(faction==1)
+				sprite = ss.getSubImage(2, 2);
+			else
+				sprite = ss.getSubImage(1, 2);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

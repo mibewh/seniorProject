@@ -21,6 +21,7 @@ public class Menu{
 	
 	
 	private int x,y;
+	private int height;
 	private Cursor cursor;
 	private TrueTypeFont font;
 	
@@ -31,6 +32,7 @@ public class Menu{
 	
 	public Menu(Cursor c , ArrayList<Command> commands, GameContainer gc){
 		this.commands = commands;
+		height = COMMAND_HEIGHT * commands.size();
 		selected = 0;
 		setPos(c, gc);
 		cursor = c;
@@ -41,15 +43,15 @@ public class Menu{
 		int cursorX = c.getLoc().getX();
 		int cursorY = c.getLoc().getY();
 		int cursorSize = c.getSize();
-		if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-32 >= 0 && gc.getWidth()/2 > cursorX*cursorSize*2){
+		if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-height >= 0 && gc.getWidth()/2 > cursorX*cursorSize*2){
 			x = cursorX*cursorSize*2+TILE_HEIGHT;
-			y = cursorY*cursorSize*2-TILE_HEIGHT;
+			y = cursorY*cursorSize*2-height;
 		}
-		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-32 >= 0){
+		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-height >= 0){
 			x = cursorX*cursorSize*2+TILE_HEIGHT;
-			y = cursorY*cursorSize*2-TILE_HEIGHT;
+			y = cursorY*cursorSize*2-height;
 		}
-		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-32 <= 0){
+		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-height <= 0){
 			if(cursorX*cursorSize*2 < gc.getWidth()/2){
 				x = cursorX*cursorSize*2+TILE_HEIGHT;
 				y = cursorY*cursorSize*2+TILE_HEIGHT;
@@ -59,18 +61,18 @@ public class Menu{
 				y = cursorY*cursorSize*2+TILE_HEIGHT;
 			}
 		}
-		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-32 <= 0){
+		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-height <= 0){
 			x = cursorX*cursorSize*2+TILE_HEIGHT;
 			y = cursorY*cursorSize*2+TILE_HEIGHT;
 		}
 		else if(gc.getWidth()/2 <= cursorX*cursorSize*2){
 			if(cursorX*cursorSize*2+TILE_HEIGHT*2 < gc.getWidth()){
 				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
-				y = cursorY*cursorSize*2-TILE_HEIGHT;
+				y = cursorY*cursorSize*2-height;
 			}
 			else{
 				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
-				y = cursorY*cursorSize*2-TILE_HEIGHT;
+				y = cursorY*cursorSize*2-height;
 			}
 		}
 	}
@@ -92,7 +94,7 @@ public class Menu{
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.setColor(Color.white);
 		g.scale(.5f, .5f);
-		g.fillRect(x, y, TILE_HEIGHT*2, commands.size()*COMMAND_HEIGHT);
+		g.fillRect(x, y, TILE_HEIGHT*2, height);
 		int curY = y;
 		for(Command c: commands){
 			//BE SERIF NOOOOOOOOOOOOOOW... or not

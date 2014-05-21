@@ -65,20 +65,11 @@ public class Cursor extends Entity{
 						mode = "Normal";
 					}
 				}
-			}
-//			if(grid.isEmpty(loc.getX(), loc.getY()))
-//			{
-//				menuSelect=true;
-//				focus = false;
-//			}
-			else if(menuSelect && mode.equals("End")){
-				
-			}
-			else if(menuSelect && mode.equals("Exit")){
-				
-			}
-			else if(menuSelect && mode.equals("Cancel")){
-				
+				else if(!unitSelect && grid.isEmpty(loc.getX(), loc.getY()))
+				{
+		//			u.display
+					menuSelect=true;
+				}
 			}
 		}
 	}
