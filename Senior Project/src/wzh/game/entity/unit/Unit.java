@@ -1,4 +1,4 @@
-package wzh.game.entity;
+package wzh.game.entity.unit;
 
 import java.util.ArrayList;
 
@@ -11,6 +11,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
 import wzh.game.Location;
+import wzh.game.entity.Entity;
 import wzh.game.input.Cursor;
 import wzh.game.input.Menu;
 import wzh.game.input.command.Attack;
@@ -20,18 +21,20 @@ import wzh.game.input.command.Move;
 import wzh.game.input.command.Wait;
 
 public class Unit extends Entity {
-	private int faction;
-	private int movePoints;
-	private int hp;
-	private int attack;
-	private int defense;
-	private Location lastLoc;
+	protected int faction;
+	protected int movePoints;
+	protected int hp;
+	protected int attack;
+	protected int tileDefense;
+	protected int fortification;
 	
-	private Menu premoveMenu;
-	private Menu postmoveMenu;
+	protected Location lastLoc;
 	
-	private ArrayList<Location> moveLocs;
-	private boolean displayMoves;
+	protected Menu premoveMenu;
+	protected Menu postmoveMenu;
+	
+	protected ArrayList<Location> moveLocs;
+	protected boolean displayMoves;
 	
 	public Unit(int x, int y, Image img, Grid g, int faction) {
 		super(x,y,img,g);
@@ -39,6 +42,7 @@ public class Unit extends Entity {
 		movePoints = 3;
 		moveLocs = getMoveLocations();
 		displayMoves = false;
+		hp = 100;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException{
 		super.update(gc, game, delta);
@@ -109,12 +113,9 @@ public class Unit extends Entity {
 	}
 	
 	public int getDefense(){
-		return defense;
+		return 1+fortification+tileDefense;
 	}
 	
-	public void setDefense(int defenseChange){
-		defense=defenseChange;
-	}
 	public void setLastLoc(Location loc) {
 		lastLoc = loc;
 	}

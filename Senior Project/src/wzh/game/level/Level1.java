@@ -8,7 +8,7 @@ import org.newdawn.slick.tiled.TiledMap;
 
 import wzh.game.Grid;
 import wzh.game.Location;
-import wzh.game.entity.Unit;
+import wzh.game.entity.unit.Unit;
 import wzh.game.input.Cursor;
 
 public class Level1 extends Level {

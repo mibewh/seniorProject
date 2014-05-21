@@ -10,7 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import wzh.game.Grid;
 import wzh.game.Location;
 import wzh.game.entity.Entity;
-import wzh.game.entity.Unit;
+import wzh.game.entity.unit.Unit;
 
 public class Cursor extends Entity{
 	
