@@ -10,19 +10,19 @@
  <tileset firstgid="226" name="Units" tilewidth="16" tileheight="16">
   <image source="Unitz.png" width="240" height="240"/>
  </tileset>
- <layer name="Passable" width="20" height="20">
+ <layer name="Passable" width="20" height="20" visible="0">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NkYGBgHMWjeBSP4lE8iknEALhlz4pABgAA
   </data>
  </layer>
  <layer name="Obstructions" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC63TUQrAIAwD0MJkhd3/wENQKCFtrRrI33hWnSoib1CbD8q+19HI6XlG0USXeZ5V8dSxrOft25oKZRYLM4V4zPTCzBOPmczr9fY500ZXvWjOabEZqx5aNrtelFMPz7l6dllueHZGZmVnhGmmbKboDj0P5/PW7In+bVx7xaskewc3vewNs/wFKBznQAYAAA==
+   H4sIAAAAAAAAC73TMQoAIAwDQAeh4P8f7KIgIdbaVgNZz4goxZ4GZZFRr4nuKy/LlJJrohc1Ix4zmWcx66jV08xpsY23HlprvJ6WX543P7zTnTB1KdukveHOw327M63bsjzM6R9kep50aQJTdkAGAAA=
   </data>
  </layer>
- <layer name="Objects" width="20" height="20">
+ <layer name="Objects" width="20" height="20" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAUwwDvQDiAD8Ay0A4YgeDzQDhhmYLCnwU8D7QAcYLCGGynhBQC9WA7AQAYAAA==
+   H4sIAAAAAAAAC2NgGAUwwDvQDiAD8Ay0A4YgeDzQDhhmYDQNkgeGQ7gBAKVmu1VABgAA
   </data>
  </layer>
 </map>
