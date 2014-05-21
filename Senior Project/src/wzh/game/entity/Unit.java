@@ -14,6 +14,7 @@ import wzh.game.Grid;
 import wzh.game.Location;
 import wzh.game.input.Cursor;
 import wzh.game.input.Menu;
+import wzh.game.input.command.Attack;
 import wzh.game.input.command.Command;
 import wzh.game.input.command.Move;
 import wzh.game.input.command.Wait;
@@ -24,6 +25,7 @@ public class Unit extends Entity {
 	private int hp;
 	private int attack;
 	private int defense;
+	private Location lastLoc;
 	
 	private Menu premoveMenu;
 	private Menu postmoveMenu;
@@ -66,6 +68,10 @@ public class Unit extends Entity {
 		postmoveMenu = null;
 	}
 	public void displayPostmoveMenu(Cursor c, GameContainer gc) {
+		moveLocs = getMoveLocations();
+		ArrayList<Command> commands = new ArrayList<Command>();
+		commands.add(new Attack(this, c));
+		commands.add(new Attack(this, c));
 		
 	}
 	//Returns all existent, non-obstructed locations that are either adjacent or within movePoint radius of the unit
@@ -106,5 +112,11 @@ public class Unit extends Entity {
 	
 	public void setDefense(int defenseChange){
 		defense=defenseChange;
+	}
+	public void setLastLoc(Location loc) {
+		lastLoc = loc;
+	}
+	public void revertToLastLoc() {
+		loc = lastLoc;
 	}
 }

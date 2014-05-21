@@ -1,10 +1,8 @@
 package wzh.game.level;
 
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
@@ -13,9 +11,8 @@ import wzh.game.Location;
 import wzh.game.entity.Unit;
 import wzh.game.input.Cursor;
 
-public class Level1 extends BasicGameState {
+public class Level1 extends Level {
 	
-	private Grid grid;
 
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		grid = new Grid(new TiledMap("res/map.tmx"));
@@ -26,19 +23,8 @@ public class Level1 extends BasicGameState {
 		
 		//TODO HUD (New class(es))
 	}
-
-	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		//Change 3rd and 4th 0's to allow for screen scrolling
-		g.scale(2, 2);
-		grid.render(gc, game, g);
-	}
-
-	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
-		grid.update(gc, game, delta);
-	}
-
 	public int getID() {
-		return 0;
+		return 1;
 	}
 
 }
