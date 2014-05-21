@@ -38,21 +38,41 @@ public class Menu{
 		int cursorX = c.getLoc().getX();
 		int cursorY = c.getLoc().getY();
 		int cursorSize = c.getSize();
-		if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-32 >= 0){
-			x = cursorX*cursorSize*2-TILE_HEIGHT*2;
+		if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-32 >= 0 && gc.getWidth()/2 > cursorX*cursorSize*2){
+			x = cursorX*cursorSize*2+TILE_HEIGHT;
 			y = cursorY*cursorSize*2-TILE_HEIGHT;
+			System.out.println("ugly");
 		}
 		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-32 >= 0){
-			x = cursorX*cursorSize*2+32;
-			y = cursorY*cursorSize*2-32;
+			x = cursorX*cursorSize*2+TILE_HEIGHT;
+			y = cursorY*cursorSize*2-TILE_HEIGHT;
 		}
 		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-32 <= 0){
-			x = cursorX*cursorSize*2-TILE_HEIGHT*2;
-			y = cursorY*cursorSize*2+32;
+			if(cursorX*cursorSize*2 < gc.getWidth()/2){
+				x = cursorX*cursorSize*2+TILE_HEIGHT;
+				y = cursorY*cursorSize*2+TILE_HEIGHT;
+				System.out.println("good");
+			}
+			else{
+				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
+				y = cursorY*cursorSize*2+TILE_HEIGHT;
+			}
 		}
 		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-32 <= 0){
-			x = cursorX*cursorSize*2+32;
-			y = cursorY*cursorSize*2+32;
+			x = cursorX*cursorSize*2+TILE_HEIGHT;
+			y = cursorY*cursorSize*2+TILE_HEIGHT;
+		}
+		else if(gc.getWidth()/2 <= cursorX*cursorSize*2){
+			if(cursorX*cursorSize*2+TILE_HEIGHT*2 < gc.getWidth()){
+				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
+				y = cursorY*cursorSize*2-TILE_HEIGHT;
+	//			System.out.println("good");
+			}
+			else{
+				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
+				y = cursorY*cursorSize*2-TILE_HEIGHT;
+				System.out.println("bad");
+			}
 		}
 		//TODO Make sure that the menu changes location depending on character
 		cursor = c;
