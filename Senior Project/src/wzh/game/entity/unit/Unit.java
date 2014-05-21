@@ -24,7 +24,7 @@ public class Unit extends Entity {
 	protected int faction;
 	protected int movePoints;
 	protected int hp;
-	protected int attack;
+	protected double attack;
 	protected int tileDefense;
 	protected int fortification;
 	
@@ -39,7 +39,7 @@ public class Unit extends Entity {
 	public Unit(int x, int y, Image img, Grid g, int faction) {
 		super(x,y,img,g);
 		this.faction = faction;
-		movePoints = 3;
+		movePoints = 4;
 		moveLocs = getMoveLocations();
 		displayMoves = false;
 		hp = 100;
@@ -104,14 +104,14 @@ public class Unit extends Entity {
 		hp=hpChange;
 	}
 	public void attack(Unit other) {
-		other.setHp(other.getHp() - (int)((double)attack * (double)(10-other.getDefense())/10.0));
+		other.setHp(other.getHp() - (int)((double)getAttack() * (double)(10-other.getDefense())/10.0));
 		if(!other.checkKill()) {
-			setHp(getHp() - (int)((double)other.getattack() * (double)(10-getDefense())/10));
+			setHp(getHp() - (int)((double)other.getAttack() * (double)(10-getDefense())/10));
 			checkKill();
 		}
 	}
-	public int getattack(){
-		return attack;
+	public int getAttack(){
+		return (int)(attack * (double)(hp/10+(int)Math.sqrt(hp)*2));
 	}
 	
 	public void setAttack(int attackChange){
