@@ -103,7 +103,13 @@ public class Unit extends Entity {
 	public void setHp(int hpChange){
 		hp=hpChange;
 	}
-	
+	public void attack(Unit other) {
+		other.setHp(other.getHp() - (int)((double)attack * (double)(10-other.getDefense())/10.0));
+		if(!other.checkKill()) {
+			setHp(getHp() - (int)((double)other.getattack() * (double)(10-getDefense())/10));
+			checkKill();
+		}
+	}
 	public int getattack(){
 		return attack;
 	}
@@ -121,5 +127,12 @@ public class Unit extends Entity {
 	}
 	public void revertToLastLoc() {
 		loc = lastLoc;
+	}
+	public boolean checkKill() {
+		if(hp<=0) {
+			grid.remove(loc.getX(), loc.getY());
+			return true;
+		}
+		else return false;
 	}
 }
