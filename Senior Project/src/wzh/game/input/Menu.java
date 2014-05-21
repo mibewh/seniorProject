@@ -13,6 +13,7 @@ import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.util.ResourceLoader;
 
+import wzh.game.Grid;
 import wzh.game.input.command.Command;
 
 public class Menu{
