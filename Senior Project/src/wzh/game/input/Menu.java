@@ -78,7 +78,6 @@ public class Menu{
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
-		//TODO Determine what is selected
 		if(gc.getInput().isKeyPressed(Input.KEY_UP) || gc.getInput().isKeyPressed(Input.KEY_W)) {
 			selected--;
 		}

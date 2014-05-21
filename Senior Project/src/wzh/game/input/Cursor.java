@@ -1,5 +1,7 @@
 package wzh.game.input;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -11,42 +13,32 @@ import wzh.game.Grid;
 import wzh.game.Location;
 import wzh.game.entity.Entity;
 import wzh.game.entity.unit.Unit;
+import wzh.game.input.command.Command;
+import wzh.game.input.command.End;
+import wzh.game.level.Level;
 
 public class Cursor extends Entity{
 	
-	public boolean focus;
-	public boolean unitSelect=false;
-	public boolean menuSelect=true;
+	private boolean focus;
+	private boolean unitSelect;
+	private boolean menuSelect;
 	private Unit u;
-	private Menu menu;
 	private String mode;
+	private Menu optionsMenu;
 	
 	public Cursor(int x, int y, Grid g) throws SlickException{
 		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(7, 0),g);
 		focus = false;
 		mode = "Normal";
+		unitSelect=false;
+		menuSelect=false;
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		super.update(gc, game, delta);
 		Input input = gc.getInput();
 		if(focus == true) {
-			if((input.isKeyPressed(Input.KEY_RIGHT) | input.isKeyPressed(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY())){
-				Location moveLoc = new Location(loc.getX()+1,loc.getY());
-				checkMove(moveLoc);
-			}
-			if((input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A)) && grid.isValid(loc.getX()-1, loc.getY())){
-				Location moveLoc = new Location(loc.getX()-1,loc.getY());
-				checkMove(moveLoc);
-			}
-			if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1)){
-				Location moveLoc =new Location(loc.getX(),loc.getY()+1);
-				checkMove(moveLoc);
-			}
-			if((input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) && grid.isValid(loc.getX(), loc.getY()-1)){
-				Location moveLoc = new Location(loc.getX(),loc.getY()-1);
-				checkMove(moveLoc);
-			}
+			processMoveKeys(input);
 			if(input.isKeyPressed(Input.KEY_SPACE)){
 				if(!unitSelect &&!grid.isEmpty(loc.getX(), loc.getY()) && grid.get(loc.getX(),loc.getY()) instanceof Unit
 						&& grid.get(loc.getX(),loc.getY()).isActive()) {
@@ -67,11 +59,41 @@ public class Cursor extends Entity{
 				}
 				else if(!unitSelect && grid.isEmpty(loc.getX(), loc.getY()))
 				{
-		//			u.display
+					displayOptionsMenu(this,gc,game);
 					menuSelect=true;
+					focus=false;
 				}
 			}
 		}
+		else if(menuSelect) {
+			optionsMenu.update(gc, game, delta);
+		}
+	}
+
+	private void processMoveKeys(Input input) {
+		if((input.isKeyPressed(Input.KEY_RIGHT) | input.isKeyPressed(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY())){
+			Location moveLoc = new Location(loc.getX()+1,loc.getY());
+			checkMove(moveLoc);
+		}
+		if((input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A)) && grid.isValid(loc.getX()-1, loc.getY())){
+			Location moveLoc = new Location(loc.getX()-1,loc.getY());
+			checkMove(moveLoc);
+		}
+		if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1)){
+			Location moveLoc =new Location(loc.getX(),loc.getY()+1);
+			checkMove(moveLoc);
+		}
+		if((input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) && grid.isValid(loc.getX(), loc.getY()-1)){
+			Location moveLoc = new Location(loc.getX(),loc.getY()-1);
+			checkMove(moveLoc);
+		}
+	}
+
+	private void displayOptionsMenu(Cursor cursor, GameContainer gc, StateBasedGame game) {
+		ArrayList<Command> commands = new ArrayList<Command>();
+		Level level = (Level)game.getCurrentState();
+		commands.add(new End(level,this));
+		optionsMenu = new Menu(this,commands,gc);
 	}
 
 	private void checkMove(Location moveLoc) {
@@ -90,6 +112,9 @@ public class Cursor extends Entity{
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
+		if(menuSelect) {
+			optionsMenu.render(gc, game, g);
+		}
 	}
 	public void setFocus(boolean focus){
 		this.focus = focus;
@@ -111,6 +136,7 @@ public class Cursor extends Entity{
 	}
 
 	public void hideMenus() {
-		// TODO Auto-generated method stub
+		optionsMenu=null;
+		menuSelect=false;
 	}
 }
