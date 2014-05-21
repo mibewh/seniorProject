@@ -2,6 +2,13 @@
 <map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="SpriteSheetz" tilewidth="16" tileheight="16">
   <image source="SpriteSheetz.png" width="240" height="240"/>
+  <terraintypes>
+   <terrain name="New Terrain" tile="-1"/>
+   <terrain name="New Terrain" tile="-1"/>
+  </terraintypes>
+ </tileset>
+ <tileset firstgid="226" name="Units" tilewidth="16" tileheight="16">
+  <image source="Unitz.png" width="240" height="240"/>
  </tileset>
  <layer name="Passable" width="20" height="20">
   <data encoding="base64" compression="gzip">
@@ -15,7 +22,7 @@
  </layer>
  <layer name="Objects" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAXDEbDQwCxamDkKRsFgAeSmSWz6yM0z+PRR033UAgDad0yBQAYAAA==
+   H4sIAAAAAAAAC2NgGAUwwEtAnpMurkAFXATkeejiioEB+OKDlv4ejPE8WMwEAfR4GUppcCDiFhcYSuGGCwAARvKwrkAGAAA=
   </data>
  </layer>
 </map>

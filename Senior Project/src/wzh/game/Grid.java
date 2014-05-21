@@ -5,10 +5,15 @@ import java.util.ArrayList;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import wzh.game.entity.Entity;
+import wzh.game.entity.unit.Archer;
+import wzh.game.entity.unit.Horseman;
+import wzh.game.entity.unit.Spearman;
+import wzh.game.entity.unit.Swordsman;
 import wzh.game.input.Cursor;
 
 public class Grid {
@@ -17,21 +22,45 @@ public class Grid {
 	Entity[][] entities;
 	private Cursor cursor;
 	
-	public Grid(TiledMap map) {
+	public Grid(TiledMap map) throws SlickException {
 		this.map = map;
 		rows = map.getWidth();
 		cols = map.getHeight();
 		entities = new Entity[rows][cols];
 		loadEntities();
 	}
-	public void loadEntities() {
+	public void loadEntities() throws SlickException{
 		int layer = map.getLayerIndex("Objects");
+		SpriteSheet ss = new SpriteSheet("Unitz.png",16,16);
 		for(int x=0;x<cols;x++) {
 			for(int y=0;y<rows;y++) {
 				int ID = map.getTileId(x, y, layer);
 				Entity toAdd;
 				switch(ID) {
-					
+				case 227://Red Sword
+					toAdd = new Swordsman(x,y,ss.getSubImage(1, 0),this,2);
+					break;
+				case 228://Blue Sword
+					toAdd = new Swordsman(x,y,ss.getSubImage(2, 0),this,1);
+					break;
+				case 242://Red Spear
+					toAdd = new Spearman(x,y,ss.getSubImage(1, 1),this,2);
+					break;
+				case 243://Blue Spear
+					toAdd = new Spearman(x,y,ss.getSubImage(2, 1),this,1);
+					break;
+				case 257://Red Archer
+					toAdd = new Archer(x,y,ss.getSubImage(1, 2),this,2);
+					break;
+				case 258://Blue Archer
+					toAdd = new Archer(x,y,ss.getSubImage(2, 2),this,1);
+					break;
+				case 272://Red Horse
+					toAdd = new Horseman(x,y,ss.getSubImage(1, 3),this,2);
+					break;
+				case 273://Blue Horse
+					toAdd = new Archer(x,y,ss.getSubImage(2, 3),this,1);
+					break;
 				default:
 					toAdd=null;
 				}
@@ -91,7 +120,9 @@ public class Grid {
 		}
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		map.render(0, 0, 0, 0, 20, 20);
+		for(int l=0;l<map.getLayerCount()-1;l++) {
+			map.render(0,0,0,0,20,20,l,false);
+		}//map.render(0, 0, 0, 0, 20, 20);
 		cursor.render(gc, game, g);
 		for(int x = 0; x<cols;x++) {
 			for(int y = 0; y<rows;y++) {

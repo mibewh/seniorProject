@@ -17,7 +17,7 @@ public class Level1 extends Level {
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		grid = new Grid(new TiledMap("res/map.tmx"));
 		SpriteSheet s = new SpriteSheet("spriteSheetz.png",16,16);
-		grid.add(new Unit(5,5,s.getSubImage(1, 0),grid,0));
+		//grid.add(new Unit(5,5,s.getSubImage(1, 0),grid,0));
 		grid.setCursor(new Cursor(7,7,grid));
 		grid.getCursor().setFocus(true);
 		
