@@ -144,7 +144,7 @@ public class Grid {
 			return neighbors;
 		}
 		else {
-			neighbors.add(init);
+			//neighbors.add(init); BRING THIS BACK IF THERE ARE ISSUES
 			return neighbors;
 		}
 	}

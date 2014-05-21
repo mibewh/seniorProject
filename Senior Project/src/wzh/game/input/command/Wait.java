@@ -22,6 +22,7 @@ public class Wait extends Command {
 	  /*DOES NOT WORK
 	   *u.getSprite().getSubImage(1, 0, 16, 16).draw((float)c.getLoc().getX(), (float)c.getLoc().getY(), org.newdawn.slick.Color.gray);
 	   */
+		//Comment
 		//TODO FIX THE GRAYNESS
 	}
 }
