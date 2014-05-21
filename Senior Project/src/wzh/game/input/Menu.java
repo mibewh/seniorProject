@@ -27,7 +27,7 @@ public class Menu{
 	private Cursor cursor;
 	private TrueTypeFont font;
 	
-	private final String FONT_STYLE = "Minecraft";
+	private final String FONT_STYLE = "Euphemia";
 	
 	private int selected;	
 	private ArrayList<Command> commands;
@@ -35,6 +35,12 @@ public class Menu{
 	public Menu(Cursor c , ArrayList<Command> commands, GameContainer gc){
 		this.commands = commands;
 		selected = 0;
+		setPos(c, gc);
+		cursor = c;
+		font = new TrueTypeFont(new Font(FONT_STYLE, Font.BOLD , 12), false);
+	}
+
+	private void setPos(Cursor c, GameContainer gc) {
 		int cursorX = c.getLoc().getX();
 		int cursorY = c.getLoc().getY();
 		int cursorSize = c.getSize();
@@ -74,16 +80,6 @@ public class Menu{
 				System.out.println("bad");
 			}
 		}
-		//TODO Make sure that the menu changes location depending on character
-		cursor = c;
-		InputStream is = ResourceLoader.getResourceAsStream("Fonts/Minecraft.ttf");
-		try {
-			Font f = Font.createFont(Font.TRUETYPE_FONT, is);
-			font = new TrueTypeFont(f, true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		font = new TrueTypeFont(new Font(FONT_STYLE, Font.PLAIN , 12), false);
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
