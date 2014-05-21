@@ -150,5 +150,6 @@ public abstract class Unit extends Entity {
 		}
 		else return false;
 	}
-//	public abstrac
+	public abstract void goGray();
+	public abstract void goColor();
 }
