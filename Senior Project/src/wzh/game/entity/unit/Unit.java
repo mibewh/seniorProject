@@ -35,6 +35,7 @@ public abstract class Unit extends Entity {
 	protected Menu postmoveMenu;
 	
 	protected ArrayList<Location> moveLocs;
+	private ArrayList<Location> attackLocs;
 	protected boolean displayMoves;
 	private boolean displayAttacks;
 	
@@ -43,7 +44,9 @@ public abstract class Unit extends Entity {
 		this.faction = faction;
 		movePoints = 4;
 		moveLocs = getMoveLocations();
+		attackLocs = getAttackLocations();
 		displayMoves = false;
+		displayAttacks = false;
 		hp = 100;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException{
@@ -55,14 +58,17 @@ public abstract class Unit extends Entity {
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
-		g.setColor(new Color(0,0,1,.3f));
 		if(displayMoves) {
+			g.setColor(new Color(0,0,1,.3f));
 			for(Location loc:moveLocs) {
 				g.fillRect(loc.getX()*size,loc.getY()*size,size,size);
 			}
 		}
 		else if(displayAttacks) {
-			
+			g.setColor(new Color(1,0,0,.3f));
+			for(Location loc:attackLocs) {
+				g.fillRect(loc.getX()*size,loc.getY()*size,size,size);
+			}
 		}
 		if(premoveMenu!=null)
 			premoveMenu.render(gc, game, g);
@@ -95,18 +101,11 @@ public abstract class Unit extends Entity {
 	}
 	//Returns all existent, non-obstructed locations that are either adjacent or within movePoint radius of the unit
 	public ArrayList<Location> getMoveLocations() {
-		ArrayList<Location> locs = grid.neighborsInRange(loc, movePoints);
+		ArrayList<Location> locs = grid.emptyTilesInRange(loc, movePoints);
 		return Location.removeDuplicates(locs);
 	}
 	public ArrayList<Location> getAttackLocations() {
-		ArrayList<Location> locs = new ArrayList<Location>();
-		locs = loc.getAdjacentLocations();
-		for(int i=locs.size()-1;i>=0;i--) {
-			if(!grid.isValid(locs.get(i)) || !(grid.get(locs.get(i)) instanceof Unit)) {
-				locs.remove(i);
-			}
-		}
-		return locs;
+		return grid.getAdjacentNeighbors(loc);
 	}
 	
 	/*
@@ -116,7 +115,12 @@ public abstract class Unit extends Entity {
 		return moveLocs;
 	}
 	public void setDisplayMoves(boolean b) {
+		moveLocs = getMoveLocations();
 		displayMoves = b;
+	}
+	public void setDisplayAttacks(boolean b) {
+		attackLocs = getAttackLocations();
+		displayAttacks = b;
 	}
 	public int getHp(){
 		return hp;

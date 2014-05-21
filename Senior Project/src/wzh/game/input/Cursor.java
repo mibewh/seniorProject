@@ -75,7 +75,7 @@ public class Cursor extends Entity{
 	}
 
 	private void checkSpaceBar(Input input, GameContainer gc, StateBasedGame game) {
-		if(input.isKeyPressed(Input.KEY_SPACE)){
+		if(input.isKeyPressed(Input.KEY_SPACE) || input.isKeyPressed(Input.KEY_ENTER)){
 			if(!unitSelect &&!grid.isEmpty(loc.getX(), loc.getY()) && grid.get(loc.getX(),loc.getY()) instanceof Unit
 					&& grid.get(loc.getX(),loc.getY()).isActive()) {
 				u = (Unit)grid.get(loc.getX(),loc.getY());
