@@ -13,6 +13,6 @@ public class End extends Command {
 	}
 	
 	public void select(){
-		timer++;
+//		timer++;
 	}
 }

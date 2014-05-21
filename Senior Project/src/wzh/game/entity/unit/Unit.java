@@ -150,5 +150,5 @@ public abstract class Unit extends Entity {
 		}
 		else return false;
 	}
-	public abstrac
+//	public abstrac
 }

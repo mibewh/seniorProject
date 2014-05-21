@@ -67,7 +67,7 @@ public class Cursor extends Entity{
 				}
 				else if(!unitSelect && grid.isEmpty(loc.getX(), loc.getY()))
 				{
-					u.display
+		//			u.display
 					menuSelect=true;
 				}
 			}
