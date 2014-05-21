@@ -27,6 +27,7 @@ public class Cursor extends Entity{
 	private Unit u;
 	private String mode;
 	private Menu optionsMenu;
+	private boolean postMove;
 	
 	public Cursor(int x, int y, Grid g, int initFaction) throws SlickException{
 		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(7, 0),g);
@@ -35,6 +36,7 @@ public class Cursor extends Entity{
 		setFaction(initFaction);
 		unitSelect=false;
 		menuSelect=false;
+		postMove=false;
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
@@ -86,9 +88,11 @@ public class Cursor extends Entity{
 			else if(unitSelect && mode.equals("Move")){
 				if(grid.isEmpty(loc.getX(), loc.getY())){
 					u.moveTo(loc.getX(), loc.getY());
-					unitSelect=false;
+					//unitSelect=false;
 					//u.hideMenus();
 					u.setDisplayMoves(false);
+					focus=false;
+					postMove=true;
 					u.displayPostmoveMenu(this, gc);
 					mode = "Normal";
 				}
@@ -137,7 +141,7 @@ public class Cursor extends Entity{
 		ArrayList<Command> commands = new ArrayList<Command>();
 		Level level = (Level)game.getCurrentState();
 		commands.add(new End(level,this));
-		commands.add(new Cancel(this,this));
+		commands.add(new Cancel(this,this,gc));
 		optionsMenu = new Menu(this,commands,gc);
 	}
 
@@ -194,5 +198,11 @@ public class Cursor extends Entity{
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
+	}
+	public boolean isPostMove() {
+		return postMove;
+	}
+	public void setPostMove(boolean b) {
+		postMove=b;
 	}
 }
