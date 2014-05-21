@@ -22,6 +22,22 @@ public class Grid {
 		rows = map.getWidth();
 		cols = map.getHeight();
 		entities = new Entity[rows][cols];
+		loadEntities();
+	}
+	public void loadEntities() {
+		int layer = map.getLayerIndex("Objects");
+		for(int x=0;x<cols;x++) {
+			for(int y=0;y<rows;y++) {
+				int ID = map.getTileId(x, y, layer);
+				Entity toAdd;
+				switch(ID) {
+					
+				default:
+					toAdd=null;
+				}
+				entities[x][y] = toAdd;
+			}
+		}
 	}
 	public Entity get(int x, int y) {
 		return entities[x][y];
@@ -107,30 +123,10 @@ public class Grid {
 		}
 		return cost;
 	}
-//	public boolean hasPathOfLength(Location start, Location end, ArrayList<Location> moveLocs, int len) {
-//		ArrayList<Location> path = new ArrayList<Location>();
-//		Location curLoc = start;
-//		Location nextLoc;
-//		int total = 0;
-//		while(!curLoc.equals(end)) {
-//			if(curLoc.getX()<end.getX()) {
-//				nextLoc = new Location(curLoc.getX()+1,curLoc.getY());
-//				if(!nextLoc.isIn(moveLocs)) {
-//					int counter=0;
-//					Location best;
-//					for(int y=nextLoc.getY();nextLoc.isIn(moveLocs);counter++) {
-//						if(!this.isObstructed(nextLoc)) {
-//							best = nextLoc;
-//							break;
-//						}
-//					}
-//				}
-//			}
-//		}
-//			
-//	}
+
 	/*
 	 * Recursive method giving unobstructed neighbors within a range to a location
+	 * @Author Michael
 	 */
 	public ArrayList<Location> neighborsInRange(Location init, int n) {
 		ArrayList<Location> neighbors = new ArrayList<Location>();

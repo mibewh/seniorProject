@@ -4,13 +4,9 @@ import wzh.game.input.Cursor;
 
 public class Move extends Command {
 	
-	private Unit u;
-	private Cursor c;
 	
 	public Move(Unit u, Cursor c){
-	 super();
-	 this.u = u;
-	 this.c = c;
+	 super(u,c);;
 	 commandName="Move";
 	}
 	

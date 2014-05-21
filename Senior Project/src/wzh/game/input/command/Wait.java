@@ -5,13 +5,9 @@ import wzh.game.input.Cursor;
 
 public class Wait extends Command {
 	
-	private Cursor c;
-	private Unit u;
 
 	public Wait(Unit u, Cursor c){
-		 super();
-		 this.u=u;
-		 this.c=c;
+		 super(u,c);
 		 commandName="Wait";
 		}
 
