@@ -7,6 +7,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
@@ -70,10 +71,11 @@ public abstract class Unit extends Entity {
 				g.fillRect(loc.getX()*size,loc.getY()*size,size,size);
 			}
 		}
-//		if(premoveMenu!=null)
-//			premoveMenu.render(gc, game, g);
-//		else if(postmoveMenu!=null)
-//			postmoveMenu.render(gc, game, g);
+		Color health = new Color(1,0,0,.8f);
+		g.setColor(health);
+		Rectangle healthBar = getHealthBar();
+		g.fill(healthBar);
+		g.draw(healthBar);
 	}
 	public void displayPremoveMenu(Cursor c, GameContainer gc) {
 		moveLocs = getMoveLocations();
@@ -105,7 +107,13 @@ public abstract class Unit extends Entity {
 		return Location.removeDuplicates(locs);
 	}
 	public ArrayList<Location> getAttackLocations() {
-		return grid.getAdjacentNeighbors(loc);
+		ArrayList<Location> arr = grid.getAdjacentNeighbors(loc);
+		for(int i = arr.size()-1;i>=0;i--) {
+			Unit u = (Unit)grid.get(arr.get(i));
+			if(u.getFaction()==faction)
+				arr.remove(i);
+		}
+		return arr;
 	}
 	
 	/*
@@ -160,6 +168,7 @@ public abstract class Unit extends Entity {
 	}
 	public boolean checkKill() {
 		if(hp<=0) {
+			setDisplayAttacks(false);
 			grid.remove(loc.getX(), loc.getY());
 			return true;
 		}
@@ -176,6 +185,9 @@ public abstract class Unit extends Entity {
 			return postmoveMenu;
 		}
 		else return null;
+	}
+	public Rectangle getHealthBar() {
+		return new Rectangle(loc.getX()*size+1, loc.getY()*size+size-2, hp/100*size-1, 2);
 	}
 	public abstract void goGray();
 	public abstract void goColor();
