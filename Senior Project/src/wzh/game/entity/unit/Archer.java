@@ -11,6 +11,7 @@ import wzh.game.Location;
 public class Archer extends Unit {
 	
 	public final double ATTACK_BUFF = 1.5;
+	public static final int COST = 50;
 
 	public Archer(int x, int y, Grid g, int faction) {
 		super(x, y, null, g, faction);

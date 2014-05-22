@@ -13,12 +13,15 @@ import wzh.game.Grid;
 import wzh.game.entity.Entity;
 import wzh.game.entity.building.Building;
 import wzh.game.entity.building.Castle;
+import wzh.game.entity.building.Village;
 
 public abstract class Level extends BasicGameState {
 
 	protected Grid grid;
 	protected int turn;
 	protected int turnNumber;
+	protected int treasury1;
+	protected int treasury2;
 
 	public Level() {
 		super();
@@ -26,6 +29,8 @@ public abstract class Level extends BasicGameState {
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		turn = 1;
 		turnNumber=1;
+		treasury1=20;
+		treasury2=20;
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.scale(2, 2);
@@ -61,8 +66,25 @@ public abstract class Level extends BasicGameState {
 		else  {
 			turn=1;
 			turnNumber++;
+			calculateGold();
 		}
 		grid.getCursor().setFaction(turn);
+	}
+	private void calculateGold() {
+		for(Building b:grid.getAllBuildings()) {
+			if(b instanceof Village) {
+				if(b.getFaction()==1)
+					treasury1+=20;
+				if(b.getFaction()==2)
+					treasury2+=20;
+			}
+		}
+		treasury1+=50;
+		treasury2+=50;
+	}
+	public int getTreasury(int faction) {
+		if(faction==1) return treasury1;
+		else return treasury2;
 	}
 	public Grid getGrid() {
 		return grid;
