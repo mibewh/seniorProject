@@ -11,6 +11,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.StateBasedGame;
 
+import wzh.game.input.command.BuyCommand;
 import wzh.game.input.command.Command;
 
 public class Menu{
@@ -29,9 +30,18 @@ public class Menu{
 	
 	private int selected;	
 	private ArrayList<Command> commands;
+
+
+	private int width;
 	
 	public Menu(Cursor c , ArrayList<Command> commands, GameContainer gc){
 		this.commands = commands;
+		boolean hasBuy=false;
+		for(Command command:commands) {
+			if(command instanceof BuyCommand) hasBuy=true;
+		}
+		if(hasBuy) width=128;
+		else width = TILE_HEIGHT*2;
 		height = COMMAND_HEIGHT * commands.size();
 		selected = 0;
 		setPos(c, gc);
@@ -49,35 +59,35 @@ public class Menu{
 		int cursorX = c.getLoc().getX();
 		int cursorY = c.getLoc().getY();
 		int cursorSize = c.getSize();
-		if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-height >= 0 && gc.getWidth()/2 > cursorX*cursorSize*2){
+		if(cursorX*cursorSize*2-width >= 0 && cursorY*cursorSize*2-height >= 0 && gc.getWidth()/2 > cursorX*cursorSize*2){
 			x = cursorX*cursorSize*2+TILE_HEIGHT;
 			y = cursorY*cursorSize*2-height;
 		}
-		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-height >= 0){
+		else if(cursorX*cursorSize*2-width <= 0 && cursorY*cursorSize*2-height >= 0){
 			x = cursorX*cursorSize*2+TILE_HEIGHT;
 			y = cursorY*cursorSize*2-height;
 		}
-		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 >= 0 && cursorY*cursorSize*2-height <= 0){
+		else if(cursorX*cursorSize*2-width >= 0 && cursorY*cursorSize*2-height <= 0){
 			if(cursorX*cursorSize*2 < gc.getWidth()/2){
 				x = cursorX*cursorSize*2+TILE_HEIGHT;
 				y = cursorY*cursorSize*2+TILE_HEIGHT;
 			}
 			else{
-				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
+				x = cursorX*cursorSize*2 - width;
 				y = cursorY*cursorSize*2+TILE_HEIGHT;
 			}
 		}
-		else if(cursorX*cursorSize*2-TILE_HEIGHT*2 <= 0 && cursorY*cursorSize*2-height <= 0){
+		else if(cursorX*cursorSize*2-width <= 0 && cursorY*cursorSize*2-height <= 0){
 			x = cursorX*cursorSize*2+TILE_HEIGHT;
 			y = cursorY*cursorSize*2+TILE_HEIGHT;
 		}
 		else if(gc.getWidth()/2 <= cursorX*cursorSize*2){
-			if(cursorX*cursorSize*2+TILE_HEIGHT*2 < gc.getWidth()){
-				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
+			if(cursorX*cursorSize*2+width < gc.getWidth()){
+				x = cursorX*cursorSize*2-width;
 				y = cursorY*cursorSize*2-height;
 			}
 			else{
-				x = cursorX*cursorSize*2-TILE_HEIGHT*2;
+				x = cursorX*cursorSize*2-width;
 				y = cursorY*cursorSize*2-height;
 			}
 		}
@@ -101,7 +111,7 @@ public class Menu{
 		int y = this.y - (c.getGrid().getUpperLeftY()*16);
 		g.setColor(Color.white);
 		g.scale(.5f, .5f);
-		g.fillRect(x, y, TILE_HEIGHT*2, height);
+		g.fillRect(x, y, width, height);
 		int curY = y;
 		for(Command c: commands){
 			//BE SERIF NOOOOOOOOOOOOOOW... or not
@@ -110,7 +120,7 @@ public class Menu{
 		}
 		Color color = new Color(128, 128, 128, 128);
 		g.setColor(color);
-		g.fillRect(x, y+selected*COMMAND_HEIGHT,TILE_HEIGHT*2,COMMAND_HEIGHT);
+		g.fillRect(x, y+selected*COMMAND_HEIGHT,width,COMMAND_HEIGHT);
 		g.scale(2f, 2f);
 	}
 }
