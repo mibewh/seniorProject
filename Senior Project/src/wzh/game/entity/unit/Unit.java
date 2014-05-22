@@ -81,7 +81,8 @@ public abstract class Unit extends Entity {
 		moveLocs = getMoveLocations();
 		ArrayList<Command> commands = new ArrayList<Command>();
 		commands.add(new Move(this, c));
-		commands.add(new Attack(this, c));
+		if(getAttackLocations().size()>0)
+			commands.add(new Attack(this, c));
 		commands.add(new Fortify(this, c));
 		commands.add(new Wait(this, c));
 		commands.add(new Cancel(this,c,gc));
@@ -95,7 +96,8 @@ public abstract class Unit extends Entity {
 	public void displayPostmoveMenu(Cursor c, GameContainer gc) {
 		moveLocs = getMoveLocations();
 		ArrayList<Command> commands = new ArrayList<Command>();
-		commands.add(new Attack(this, c));
+		if(getAttackLocations().size()>0)
+			commands.add(new Attack(this, c));
 		commands.add(new Wait(this, c));
 		commands.add(new Cancel(this, c,gc));
 		postmoveMenu = new Menu(c,commands,gc);
