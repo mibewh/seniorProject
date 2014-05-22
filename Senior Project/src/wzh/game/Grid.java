@@ -10,6 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import wzh.game.entity.Entity;
+import wzh.game.entity.building.Building;
 import wzh.game.entity.building.Castle;
 import wzh.game.entity.building.Fort;
 import wzh.game.entity.building.MainCastle;
@@ -24,6 +25,7 @@ public class Grid {
 	private TiledMap map;
 	private int rows, cols;
 	Entity[][] entities;
+	Building[][] buildings;
 	private Cursor cursor;
 	
 	public Grid(TiledMap map) throws SlickException {
@@ -31,6 +33,7 @@ public class Grid {
 		rows = map.getWidth();
 		cols = map.getHeight();
 		entities = new Entity[rows][cols];
+		buildings = new Building[rows][cols];
 		loadEntities();
 	}
 	public void loadEntities() throws SlickException{
@@ -40,7 +43,8 @@ public class Grid {
 		for(int x=0;x<cols;x++) {
 			for(int y=0;y<rows;y++) {
 				int ID = map.getTileId(x, y, layer);
-				Entity toAdd;
+				Entity toAdd = null;
+				Building build = null;
 				switch(ID) {
 				case 227://Red Sword
 					toAdd = new Swordsman(x,y,units.getSubImage(1, 0),this,2);
@@ -64,34 +68,38 @@ public class Grid {
 					toAdd = new Horseman(x,y,units.getSubImage(1, 3),this,2);
 					break;
 				case 273://Blue Horse
-					toAdd = new Archer(x,y,units.getSubImage(2, 3),this,1);
+					toAdd = new Horseman(x,y,units.getSubImage(2, 3),this,1);
 					break;
 				case 16:
-					toAdd = new Village(x,y,tiles.getSubImage(0, 1),this,0);
+					build = new Village(x,y,tiles.getSubImage(0, 1),this,0);
 					break;
 				case 31:
-					toAdd = new Castle(x,y,tiles.getSubImage(0,2),this,0);
+					build = new Castle(x,y,tiles.getSubImage(0,2),this,0);
 					break;
 				case 32:
-					toAdd = new Castle(x,y,tiles.getSubImage(1,2),this,2);
+					build = new Castle(x,y,tiles.getSubImage(1,2),this,2);
 					break;
 				case 33:
-					toAdd = new Castle(x,y,tiles.getSubImage(2,2),this,1);
+					build = new Castle(x,y,tiles.getSubImage(2,2),this,1);
 					break;
 				case 46:
-					toAdd = new Fort(x,y,tiles.getSubImage(0,3),this,0);
+					build = new Fort(x,y,tiles.getSubImage(0,3),this,0);
 					break;
 				case 61:
-					toAdd = new MainCastle(x,y,tiles.getSubImage(0,4),this,2);
+					build = new MainCastle(x,y,tiles.getSubImage(0,4),this,2);
 					break;
 				case 62:
-					toAdd = new MainCastle(x,y,tiles.getSubImage(1,4),this,1);
+					build = new MainCastle(x,y,tiles.getSubImage(1,4),this,1);
 					break;
 				default:
+					build = null;
 					toAdd=null;
 					break;
 				}
-				entities[x][y] = toAdd;
+				if(build!=null)
+					buildings[x][y] = build;
+				if(toAdd!=null)
+					entities[x][y] = toAdd;
 			}
 		}
 	}
@@ -140,7 +148,7 @@ public class Grid {
 		else return false;
 	}
 	public boolean isEmpty(int x, int y) {
-		if(entities[x][y] == null) return true;
+		if(entities[x][y] == null || entities[x][y] instanceof Building) return true;
 		else return false;
 	}
 	public boolean isValid(Location loc) {
@@ -173,6 +181,13 @@ public class Grid {
 		}//map.render(0, 0, 0, 0, 20, 20);
 		for(int x = 0; x<cols;x++) {
 			for(int y = 0; y<rows;y++) {
+				if(buildings[x][y] != null) {
+					buildings[x][y].render(gc,game,g);
+				}
+			}
+		}
+		for(int x = 0; x<cols;x++) {
+			for(int y = 0; y<rows;y++) {
 				if(entities[x][y] != null) {
 					entities[x][y].render(gc,game,g);
 				}
@@ -203,7 +218,6 @@ public class Grid {
 		return cost;
 	}
 	public ArrayList<Location> getAdjacentNeighbors(Location loc) {
-		//System.out.println(loc);
 		ArrayList<Location> adj = loc.getAdjacentLocations();
 		ArrayList<Entity> ents = getAllEntities();
 		ArrayList<Location> occupied = new ArrayList<Location>();
