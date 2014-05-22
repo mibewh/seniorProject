@@ -102,7 +102,7 @@ public class Cursor extends Entity{
 					&& grid.isEmpty(loc)) {
 				b = (Castle)grid.getB(loc);
 				if(b.isActive()) {
-					b.displayPurchaseMenu(this, gc);
+					b.displayPurchaseMenu(this, gc, game);
 					focus = false;
 					buildingSelect = true;
 				}

@@ -8,11 +8,16 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
+import wzh.game.entity.unit.Archer;
+import wzh.game.entity.unit.Horseman;
+import wzh.game.entity.unit.Spearman;
+import wzh.game.entity.unit.Swordsman;
 import wzh.game.input.Cursor;
 import wzh.game.input.Menu;
 import wzh.game.input.command.BuyCommand;
 import wzh.game.input.command.Cancel;
 import wzh.game.input.command.Command;
+import wzh.game.level.Level;
 
 /**
  * A Castle is a building that when selected by the cursor opens a window for purchasing different units 
@@ -37,12 +42,18 @@ public class Castle extends Building {
 			menu.update(gc, game, delta);
 		}
 	}
-	public void displayPurchaseMenu(Cursor c, GameContainer gc) {
+	public void displayPurchaseMenu(Cursor c, GameContainer gc, StateBasedGame game) {
 		ArrayList<Command> commands = new ArrayList<Command>();
-		commands.add(new BuyCommand(this, c, "Buy Spearman", faction));
-		commands.add(new BuyCommand(this, c, "Buy Swordsman", faction));
-		commands.add(new BuyCommand(this, c, "Buy Archer", faction));
-		commands.add(new BuyCommand(this, c, "Buy Horseman", faction));
+		Level level = (Level)game.getCurrentState();
+		int money = level.getTreasury(faction);
+		if(money>=Spearman.COST)
+			commands.add(new BuyCommand(this, c, "Buy Spearman", faction));
+		if(money>=Swordsman.COST)
+			commands.add(new BuyCommand(this, c, "Buy Swordsman", faction));
+		if(money>=Archer.COST)
+			commands.add(new BuyCommand(this, c, "Buy Archer", faction));
+		if(money>=Horseman.COST)
+			commands.add(new BuyCommand(this, c, "Buy Horseman", faction));
 		commands.add(new Cancel(this, c, gc));
 		menu = new Menu(c, commands, gc);
 		
