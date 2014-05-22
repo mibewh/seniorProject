@@ -12,7 +12,7 @@ public class Archer extends Unit {
 	
 	public final double ATTACK_BUFF = 1;
 
-	public Archer(int x, int y, Grid g, int faction) {
+	public Archer(int x, int y, Grid g, int faction) {	
 		super(x, y, null, g, faction);
 		SpriteSheet ss;
 		try {
@@ -27,19 +27,11 @@ public class Archer extends Unit {
 	}
 	@Override
 	public void attack(Unit other) {
-		if(other instanceof Archer) {
+		if(other instanceof Archer) {	
 			super.attack(other);
-			System.out.println("Other Attack" + (100-other.getHp()));
-			System.out.println("Other Hp" + other.getHp());
-			System.out.println("This Attack" + (100-this.getAttack()));
-			System.out.println("This Hp" + this.getHp());
 		}
 		else {
 			other.setHp(other.getHp() - (int)((double)getAttack() * ATTACK_BUFF * (double)((10-other.getDefense()))/10.0));
-			System.out.println("Other Attack" + (100-other.getHp()));
-			System.out.println("Other Hp" + other.getHp());
-			System.out.println("This Attack" + (100-this.getAttack()));
-			System.out.println("This Hp" + this.getHp());
 			other.checkKill();
 		}
 	}

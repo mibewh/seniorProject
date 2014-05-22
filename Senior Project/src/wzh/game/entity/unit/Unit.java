@@ -141,14 +141,7 @@ public abstract class Unit extends Entity {
 	}
 	public void attack(Unit other) {
 		other.setHp(other.getHp() - (int)((double)getAttack() * (double)((10-other.getDefense()))/10.0));
-		System.out.println("Other Attack" + (100-other.getHp()));
-		System.out.println("Other Hp" + other.getHp());
-		System.out.println("This Attack" + (100-this.getAttack()));
-		System.out.println("This Hp" + this.getHp());
-		if(other instanceof Archer) {
-			
-		}
-		else if(!other.checkKill()) {
+		if(!other.checkKill()) {
 			setHp(getHp() - (int)((double)other.getAttack() * (double)((10-getDefense()))/10));
 			checkKill();
 			System.out.println("oops");
