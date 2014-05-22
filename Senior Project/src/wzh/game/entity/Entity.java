@@ -42,7 +42,7 @@ public abstract class Entity {
 	}
 	
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		sprite.draw(loc.getX()*size,loc.getY()*size);
+		sprite.draw((loc.getX()-grid.getUpperLeftX())*size,(loc.getY()-grid.getUpperLeftY())*size);
 	}
 	public Image getSprite() {
 		return sprite;

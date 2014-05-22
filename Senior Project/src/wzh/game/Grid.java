@@ -105,6 +105,7 @@ public class Grid {
 		}
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
+		System.out.println(upperLeft);
 		cursor.update(gc, game, delta);
 		for(int x = 0; x<cols;x++) {
 			for(int y = 0; y<rows;y++) {
@@ -196,8 +197,14 @@ public class Grid {
 	public int getUpperLeftX() {
 		return upperLeft.getX();
 	}
+	public void setUpperLeftX(int x) {
+		upperLeft = new Location(x,upperLeft.getY());
+	}
 	public int getUpperLeftY() {
 		return upperLeft.getY();
+	}
+	public void setUpperLeftY(int y) {
+		upperLeft = new Location(upperLeft.getX(),y);
 	}
 	public boolean isEmpty(Location loc) {
 		if(entities[loc.getX()][loc.getY()] == null) return true;
