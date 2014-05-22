@@ -16,19 +16,19 @@ public class Village extends Building {
 	 */
 	
 	public void goGray() {
-	 }
-	
-	public void goColor() {
+	}
+	public void setFaction(int f){
+		super.setFaction(f);
 		try {
 			SpriteSheet ss = new SpriteSheet("SpriteSheetz.png",16,16);
-			if(faction==1)
+			if(faction==1) {
 				sprite = ss.getSubImage(2, 1);
+			}
 			else
 				sprite = ss.getSubImage(1, 1);
-		} catch (SlickException e) {
+		} catch(SlickException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	public int getFortification(){
 		return 0;

@@ -19,5 +19,8 @@ public class Wait extends Command {
 		u.setActive(false);
 		u.goGray();
 		c.setMode("Normal");
+		if(c.getGrid().getB(c.getLoc())!=null) {
+			c.getGrid().getB(c.getLoc()).setFaction(u.getFaction());
+		}
 	}
 }

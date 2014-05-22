@@ -27,9 +27,11 @@ public class Grid {
 	Entity[][] entities;
 	Building[][] buildings;
 	private Cursor cursor;
+	private Location upperLeft;
 	
 	public Grid(TiledMap map) throws SlickException {
 		this.map = map;
+		upperLeft = new Location(0,0);
 		rows = map.getWidth();
 		cols = map.getHeight();
 		entities = new Entity[rows][cols];
@@ -102,6 +104,43 @@ public class Grid {
 			}
 		}
 	}
+	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
+		cursor.update(gc, game, delta);
+		for(int x = 0; x<cols;x++) {
+			for(int y = 0; y<rows;y++) {
+				if(entities[x][y] != null) {
+					entities[x][y].update(gc, game, delta);
+				}
+			}
+		}
+		for(int x = 0; x<cols;x++) {
+			for(int y = 0; y<rows;y++) {
+				if(buildings[x][y] != null) {
+					buildings[x][y].update(gc, game, delta);
+				}
+			}
+		}
+	}
+	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
+		for(int l=0;l<map.getLayerCount()-1;l++) {
+			map.render(0,0,0,0,20,20,l,false);
+		}//map.render(0, 0, 0, 0, 20, 20);
+		for(int x = 0; x<cols;x++) {
+			for(int y = 0; y<rows;y++) {
+				if(buildings[x][y] != null) {
+					buildings[x][y].render(gc,game,g);
+				}
+			}
+		}
+		for(int x = 0; x<cols;x++) {
+			for(int y = 0; y<rows;y++) {
+				if(entities[x][y] != null) {
+					entities[x][y].render(gc,game,g);
+				}
+			}
+		}
+		cursor.render(gc, game, g);
+	}
 	public Entity get(int x, int y) {
 		return entities[x][y];
 	}
@@ -154,6 +193,12 @@ public class Grid {
 	public int getCols() {
 		return cols;
 	}
+	public int getUpperLeftX() {
+		return upperLeft.getX();
+	}
+	public int getUpperLeftY() {
+		return upperLeft.getY();
+	}
 	public boolean isEmpty(Location loc) {
 		if(entities[loc.getX()][loc.getY()] == null) return true;
 		else return false;
@@ -175,43 +220,6 @@ public class Grid {
 	}
 	public TiledMap getMap() {
 		return map;
-	}
-	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
-		cursor.update(gc, game, delta);
-		for(int x = 0; x<cols;x++) {
-			for(int y = 0; y<rows;y++) {
-				if(entities[x][y] != null) {
-					entities[x][y].update(gc, game, delta);
-				}
-			}
-		}
-		for(int x = 0; x<cols;x++) {
-			for(int y = 0; y<rows;y++) {
-				if(buildings[x][y] != null) {
-					buildings[x][y].update(gc, game, delta);
-				}
-			}
-		}
-	}
-	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		for(int l=0;l<map.getLayerCount()-1;l++) {
-			map.render(0,0,0,0,20,20,l,false);
-		}//map.render(0, 0, 0, 0, 20, 20);
-		for(int x = 0; x<cols;x++) {
-			for(int y = 0; y<rows;y++) {
-				if(buildings[x][y] != null) {
-					buildings[x][y].render(gc,game,g);
-				}
-			}
-		}
-		for(int x = 0; x<cols;x++) {
-			for(int y = 0; y<rows;y++) {
-				if(entities[x][y] != null) {
-					entities[x][y].render(gc,game,g);
-				}
-			}
-		}
-		cursor.render(gc, game, g);
 	}
 	public Cursor getCursor() {
 		return cursor;

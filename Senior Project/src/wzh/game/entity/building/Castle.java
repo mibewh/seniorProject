@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
@@ -57,6 +58,19 @@ public class Castle extends Building {
 		commands.add(new Cancel(this, c, gc));
 		menu = new Menu(c, commands, gc);
 		
+	}
+	public void setFaction(int f){
+		super.setFaction(f);
+		try {
+			SpriteSheet ss = new SpriteSheet("SpriteSheetz.png",16,16);
+			if(faction==1) {
+				sprite = ss.getSubImage(2, 2);
+			}
+			else
+				sprite = ss.getSubImage(1, 2);
+		} catch(SlickException e) {
+			e.printStackTrace();
+		}
 	}
 	public void hideMenus() {
 		menu = null;

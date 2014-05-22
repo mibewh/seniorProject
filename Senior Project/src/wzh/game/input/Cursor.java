@@ -99,7 +99,7 @@ public class Cursor extends Entity{
 				}
 			}
 			else if(!buildingSelect && grid.getB(loc)!=null && grid.getB(loc).getFaction()==curFaction && grid.getB(loc) instanceof Castle
-					&& grid.isEmpty(loc)) {
+					&& grid.isEmpty(loc) && !unitSelect) {
 				b = (Castle)grid.getB(loc);
 				if(b.isActive()) {
 					b.displayPurchaseMenu(this, gc, game);
@@ -135,6 +135,9 @@ public class Cursor extends Entity{
 					u.goGray();
 					u.setDisplayAttacks(false);
 					u.setActive(false);
+					if(grid.getB(loc)!=null) {
+						grid.getB(loc).setFaction(u.getFaction());
+					}
 				}
 				focus = true;
 				unitSelect = false;
@@ -165,6 +168,7 @@ public class Cursor extends Entity{
 		if((input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A)) && grid.isValid(loc.getX()-1, loc.getY())){
 			Location moveLoc = new Location(loc.getX()-1,loc.getY());
 			checkMove(moveLoc);
+			
 		}
 		if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1)){
 			Location moveLoc =new Location(loc.getX(),loc.getY()+1);
@@ -216,9 +220,6 @@ public class Cursor extends Entity{
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
-//		if(menuSelect) {
-//			optionsMenu.render(gc, game, g);
-//		}
 	}
 	public void setFocus(boolean focus){
 		this.focus = focus;
