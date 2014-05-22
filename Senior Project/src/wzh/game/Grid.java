@@ -105,7 +105,7 @@ public class Grid {
 		}
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
-		System.out.println(upperLeft);
+		//System.out.println(upperLeft);
 		cursor.update(gc, game, delta);
 		for(int x = 0; x<cols;x++) {
 			for(int y = 0; y<rows;y++) {
@@ -124,7 +124,7 @@ public class Grid {
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		for(int l=0;l<map.getLayerCount()-1;l++) {
-			map.render(0,0,0,0,20,20,l,false);
+			map.render(0,0,upperLeft.getX(),upperLeft.getY(),20,20,l,false);
 		}//map.render(0, 0, 0, 0, 20, 20);
 		for(int x = 0; x<cols;x++) {
 			for(int y = 0; y<rows;y++) {
