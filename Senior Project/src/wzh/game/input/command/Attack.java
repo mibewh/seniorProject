@@ -12,6 +12,11 @@ public class Attack extends Command {
 	}
 	
 	public void select(){
-		
+		Unit u = (Unit)e;
+		u.setDisplayAttacks(true);
+		c.setMode("Attack");
+		c.setLoc(u.getAttackLocations().get(0));
+		u.hideMenus();
+		c.setFocus(true);
 	}
 }

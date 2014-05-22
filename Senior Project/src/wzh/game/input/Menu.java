@@ -90,7 +90,7 @@ public class Menu{
 		}
 		if(selected<0) selected=commands.size()-1;
 		else if (selected>=commands.size()) selected=0;
-		if(gc.getInput().isKeyPressed(Input.KEY_SPACE)) {
+		if(gc.getInput().isKeyPressed(Input.KEY_SPACE) || gc.getInput().isKeyPressed(Input.KEY_ENTER)) {
 			commands.get(selected).select();
 		}
 	}
