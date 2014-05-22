@@ -71,7 +71,7 @@ public abstract class Unit extends Entity {
 				g.fillRect(loc.getX()*size,loc.getY()*size,size,size);
 			}
 		}
-		Color health = new Color(1,0,0,.8f);
+		Color health = new Color(1,0,0,.99f);
 		g.setColor(health);
 		Rectangle healthBar = getHealthBar();
 		g.fill(healthBar);
@@ -141,13 +141,17 @@ public abstract class Unit extends Entity {
 	}
 	public void attack(Unit other) {
 		other.setHp(other.getHp() - (int)((double)getAttack() * (double)((10-other.getDefense()))/10.0));
-		System.out.println("Bubbles" + other.getAttack());
-		System.out.println("Rapture" + other.getHp());
-		System.out.println("Plasmid" + this.getAttack());
-		System.out.println("Comstock" + this.getHp());
-		if(!other.checkKill()) {
+		System.out.println("Other Attack" + (100-other.getHp()));
+		System.out.println("Other Hp" + other.getHp());
+		System.out.println("This Attack" + (100-this.getAttack()));
+		System.out.println("This Hp" + this.getHp());
+		if(other instanceof Archer) {
+			
+		}
+		else if(!other.checkKill()) {
 			setHp(getHp() - (int)((double)other.getAttack() * (double)((10-getDefense()))/10));
 			checkKill();
+			System.out.println("oops");
 		}
 	}
 	public int getAttack(){
@@ -194,7 +198,7 @@ public abstract class Unit extends Entity {
 		else return null;
 	}
 	public Rectangle getHealthBar() {
-		return new Rectangle(loc.getX()*size+1, loc.getY()*size+size-2, hp/100*size-1, 2);
+		return new Rectangle(loc.getX()*size+1, loc.getY()*size+size-2, (hp*size/100)-2, 2);
 	}
 	public abstract void goGray();
 	public abstract void goColor();
