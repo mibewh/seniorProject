@@ -141,13 +141,18 @@ public abstract class Unit extends Entity {
 	}
 	public void attack(Unit other) {
 		other.setHp(other.getHp() - (int)((double)getAttack() * (double)((10-other.getDefense()))/10.0));
+		System.out.println("Bubbles" + other.getAttack());
+		System.out.println("Rapture" + other.getHp());
+		System.out.println("Plasmid" + this.getAttack());
+		System.out.println("Comstock" + this.getHp());
 		if(!other.checkKill()) {
 			setHp(getHp() - (int)((double)other.getAttack() * (double)((10-getDefense()))/10));
 			checkKill();
 		}
 	}
 	public int getAttack(){
-		return (int)(attack * (double)(hp/10+(int)Math.sqrt(hp)*2));
+		return (int)((double)(hp/10+(int)Math.sqrt(hp)*2));
+		//TODO CHECK if attack * is needed here
 	}
 	public double getAttackMult() {
 		return attack;
