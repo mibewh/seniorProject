@@ -12,6 +12,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import wzh.game.Grid;
 import wzh.game.Location;
 import wzh.game.entity.Entity;
+import wzh.game.entity.building.Castle;
 import wzh.game.entity.unit.Unit;
 import wzh.game.input.command.Cancel;
 import wzh.game.input.command.Command;
@@ -25,10 +26,12 @@ public class Cursor extends Entity{
 	private boolean menuSelect;
 	private int curFaction;
 	private Unit u;
+	private Castle b;
 	private String mode;
 	private Menu optionsMenu;
 	private boolean postMove;
 	private int curIndex;
+	private boolean buildingSelect;
 	
 	public Cursor(int x, int y, Grid g, int initFaction) throws SlickException{
 		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(7, 0),g);
@@ -37,6 +40,7 @@ public class Cursor extends Entity{
 		setFaction(initFaction);
 		unitSelect=false;
 		menuSelect=false;
+		buildingSelect=false;
 		postMove=false;
 	}
 	
@@ -70,6 +74,11 @@ public class Cursor extends Entity{
 			else if(menuSelect) {
 				optionsMenu.get(optionsMenu.size()-1).select();
 			}
+			else if(buildingSelect) {
+				b.hideMenus();
+				focus=true;
+				buildingSelect = false;
+			}
 			else if(grid.isEmpty(loc)){
 				displayOptionsMenu(this, gc, game);
 				menuSelect=true;
@@ -87,6 +96,15 @@ public class Cursor extends Entity{
 					unitSelect=true;
 					u.displayPremoveMenu(this, gc);	
 					focus = false;
+				}
+			}
+			else if(!buildingSelect && grid.getB(loc)!=null && grid.getB(loc).getFaction()==curFaction && grid.getB(loc) instanceof Castle
+					&& grid.isEmpty(loc)) {
+				b = (Castle)grid.getB(loc);
+				if(b.isActive()) {
+					b.displayPurchaseMenu(this, gc);
+					focus = false;
+					buildingSelect = true;
 				}
 			}
 			else if(unitSelect && mode.equals("Move")){
@@ -245,5 +263,9 @@ public class Cursor extends Entity{
 
 	public Menu getMenu() {
 		return optionsMenu;
+	}
+
+	public void setBuildingSelect(boolean c) {
+		buildingSelect = c;		
 	}
 }

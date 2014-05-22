@@ -1,6 +1,8 @@
 package wzh.game.input.command;
 
 import wzh.game.entity.Entity;
+import wzh.game.entity.building.Building;
+import wzh.game.entity.building.Castle;
 import wzh.game.entity.unit.Unit;
 import wzh.game.input.Cursor;
 import wzh.game.level.Level;
@@ -24,6 +26,12 @@ public class End extends Command {
 				Unit u = (Unit)e;
 				u.goColor();
 				u.setActive(true);
+			}
+		}
+		for(Building b:level.getGrid().getAllBuildings()) {
+			if(b instanceof Castle) {
+				Castle castle = (Castle)b;
+				castle.setActive(true);
 			}
 		}
 		c.setFocus(true);

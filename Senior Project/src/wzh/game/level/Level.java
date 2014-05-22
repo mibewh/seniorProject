@@ -11,6 +11,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
 import wzh.game.entity.Entity;
+import wzh.game.entity.building.Building;
+import wzh.game.entity.building.Castle;
 
 public abstract class Level extends BasicGameState {
 
@@ -36,6 +38,14 @@ public abstract class Level extends BasicGameState {
 		for(Entity e:ents) {
 			if(e.getMenu()!=null)
 				e.getMenu().render(gc, game, g);
+		}
+		ArrayList<Building> buildings = grid.getAllBuildings();
+		for(Building b:buildings) {
+			if(b instanceof Castle) {
+				Castle c = (Castle)b;
+				if(c.getMenu()!=null)
+					c.getMenu().render(gc, game, g);
+			}
 		}
 		if(grid.getCursor().getMenu()!=null)
 			grid.getCursor().getMenu().render(gc, game, g);

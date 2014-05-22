@@ -108,12 +108,24 @@ public class Grid {
 	public Entity get(Location loc) {
 		return entities[loc.getX()][loc.getY()];
 	}
+	public Building getB(Location loc) {
+		return buildings[loc.getX()][loc.getY()];
+	}
 	public ArrayList<Entity> getAllEntities() {
 		ArrayList<Entity> arr = new ArrayList<Entity>();
 		for(int x=0;x<cols;x++) {
 			for(int y=0;y<rows;y++) {
 				if(!isEmpty(x,y)) //Remove this line if there are complications
 					arr.add(entities[x][y]);
+			}
+		}
+		return arr;
+	}
+	public ArrayList<Building> getAllBuildings() {
+		ArrayList<Building> arr = new ArrayList<Building>();
+		for(int x=0;x<cols;x++) {
+			for(int y=0;y<rows;y++) {
+				if(buildings[x][y]!=null) arr.add(buildings[x][y]);
 			}
 		}
 		return arr;
@@ -170,6 +182,13 @@ public class Grid {
 			for(int y = 0; y<rows;y++) {
 				if(entities[x][y] != null) {
 					entities[x][y].update(gc, game, delta);
+				}
+			}
+		}
+		for(int x = 0; x<cols;x++) {
+			for(int y = 0; y<rows;y++) {
+				if(buildings[x][y] != null) {
+					buildings[x][y].update(gc, game, delta);
 				}
 			}
 		}

@@ -1,27 +1,57 @@
 package wzh.game.entity.building;
 
+import java.util.ArrayList;
+
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
+import wzh.game.input.Cursor;
+import wzh.game.input.Menu;
+import wzh.game.input.command.BuyCommand;
+import wzh.game.input.command.Cancel;
+import wzh.game.input.command.Command;
 
 /**
  * A Castle is a building that when selected by the cursor opens a window for purchasing different units 
- * also provides a defensive bonus(fortification) of 1
+ * also provides a defensive bonus(fortification) of 2
  * @author Harrison
  */
 public class Castle extends Building {
 	
+	private Menu menu;
+	
 	public Castle(int x, int y, Image img, Grid g, int faction) {
 		super(x, y, img, g, faction);
+		active = true;
 	}
 	
 	public int getFortification(){
 		return 2;
 	}
-
-	public void hideMenus() {
-		// TODO Auto-generated method stub
+	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException{
+		super.update(gc, game, delta);
+		if(menu!=null) {
+			menu.update(gc, game, delta);
+		}
+	}
+	public void displayPurchaseMenu(Cursor c, GameContainer gc) {
+		ArrayList<Command> commands = new ArrayList<Command>();
+		commands.add(new BuyCommand(this, c, "Buy Spearman", faction));
+		commands.add(new BuyCommand(this, c, "Buy Swordsman", faction));
+		commands.add(new BuyCommand(this, c, "Buy Archer", faction));
+		commands.add(new BuyCommand(this, c, "Buy Horseman", faction));
+		commands.add(new Cancel(this, c, gc));
+		menu = new Menu(c, commands, gc);
 		
+	}
+	public void hideMenus() {
+		menu = null;
+	}
+	public Menu getMenu() {
+		return menu;
 	}
 }
 
