@@ -22,7 +22,7 @@ public abstract class Entity {
 		grid = g;
 		sprite = img;
 		loc = new Location(x,y);
-		size = img.getHeight();
+		size = 16;
 		active = true;
 	}
 	public Location getLoc() {

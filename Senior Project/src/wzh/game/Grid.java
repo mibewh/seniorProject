@@ -38,7 +38,6 @@ public class Grid {
 	}
 	public void loadEntities() throws SlickException{
 		int layer = map.getLayerIndex("Objects");
-		SpriteSheet units = new SpriteSheet("Unitz.png",16,16);
 		SpriteSheet tiles = new SpriteSheet("SpriteSheetz.png",16,16);
 		for(int x=0;x<cols;x++) {
 			for(int y=0;y<rows;y++) {
@@ -47,28 +46,28 @@ public class Grid {
 				Building build = null;
 				switch(ID) {
 				case 227://Red Sword
-					toAdd = new Swordsman(x,y,units.getSubImage(1, 0),this,2);
+					toAdd = new Swordsman(x,y,this,2);
 					break;
 				case 228://Blue Sword
-					toAdd = new Swordsman(x,y,units.getSubImage(2, 0),this,1);
+					toAdd = new Swordsman(x,y,this,1);
 					break;
 				case 242://Red Spear
-					toAdd = new Spearman(x,y,units.getSubImage(1, 1),this,2);
+					toAdd = new Spearman(x,y,this,2);
 					break;
 				case 243://Blue Spear
-					toAdd = new Spearman(x,y,units.getSubImage(2, 1),this,1);
+					toAdd = new Spearman(x,y,this,1);
 					break;
 				case 257://Red Archer
-					toAdd = new Archer(x,y,units.getSubImage(1, 2),this,2);
+					toAdd = new Archer(x,y,this,2);
 					break;
 				case 258://Blue Archer
-					toAdd = new Archer(x,y,units.getSubImage(2, 2),this,1);
+					toAdd = new Archer(x,y,this,1);
 					break;
 				case 272://Red Horse
-					toAdd = new Horseman(x,y,units.getSubImage(1, 3),this,2);
+					toAdd = new Horseman(x,y,this,2);
 					break;
 				case 273://Blue Horse
-					toAdd = new Horseman(x,y,units.getSubImage(2, 3),this,1);
+					toAdd = new Horseman(x,y,this,1);
 					break;
 				case 16:
 					build = new Village(x,y,tiles.getSubImage(0, 1),this,0);
