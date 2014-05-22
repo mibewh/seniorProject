@@ -15,6 +15,7 @@ public class BuyCommand extends Command {
 
 	public void select() {
 		Castle b = (Castle)e;
+		//TODO Make purchasing cost the player money
 		if(commandName.equals("Swordsman")) {
 			
 		}
