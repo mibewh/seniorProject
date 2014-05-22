@@ -12,5 +12,5 @@ public abstract class Village extends Building {
 	public int getFortification(){
 		return 1;
 	}
-	//TODO Check THE VILLAGE fortification of 0?
+	//TODO Check THE VILLAGE fortification of 0
 }
