@@ -27,7 +27,11 @@
  </layer>
  <layer name="Objects" width="20" height="20">
   <data encoding="base64" compression="gzip">
+<<<<<<< HEAD
    H4sIAAAAAAAAC2NgGAWjYHADBSqb95jK5o2CUTBSAQAA6/hxQAYAAA==
+=======
+   H4sIAAAAAAAAC2NgGAWjYGSBxwPtgFEwCoYJAAAjK/l1QAYAAA==
+>>>>>>> branch 'master' of https://github.com/mibewh/seniorProject.git
   </data>
  </layer>
 </map>
