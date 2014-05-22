@@ -56,8 +56,8 @@ public class Menu{
 	}
 
 	private void setPos(Cursor c, GameContainer gc) {
-		int cursorX = c.getLoc().getX();
-		int cursorY = c.getLoc().getY();
+		int cursorX = c.getLoc().getX() - c.getGrid().getUpperLeftX();
+		int cursorY = c.getLoc().getY() - c.getGrid().getUpperLeftY();
 		int cursorSize = c.getSize();
 		if(cursorX*cursorSize*2-width >= 0 && cursorY*cursorSize*2-height >= 0 && gc.getWidth()/2 > cursorX*cursorSize*2){
 			x = cursorX*cursorSize*2+TILE_HEIGHT;
@@ -107,8 +107,8 @@ public class Menu{
 		}
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		int x = this.x - (c.getGrid().getUpperLeftX()*16);
-		int y = this.y - (c.getGrid().getUpperLeftY()*16);
+		//int x = this.x - (c.getGrid().getUpperLeftX()*16);
+		//int y = this.y - (c.getGrid().getUpperLeftY()*16);
 		g.setColor(Color.white);
 		g.scale(.5f, .5f);
 		g.fillRect(x, y, width, height);

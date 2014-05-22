@@ -62,13 +62,13 @@ public abstract class Unit extends Entity {
 		if(displayMoves) {
 			g.setColor(new Color(0,0,1,.3f));
 			for(Location loc:moveLocs) {
-				g.fillRect(loc.getX()*size,loc.getY()*size,size,size);
+				g.fillRect((loc.getX()-grid.getUpperLeftX())*size,(loc.getY()-grid.getUpperLeftY())*size,size,size);
 			}
 		}
 		else if(displayAttacks) {
 			g.setColor(new Color(1,0,0,.3f));
 			for(Location loc:attackLocs) {
-				g.fillRect(loc.getX()*size,loc.getY()*size,size,size);
+				g.fillRect((loc.getX()-grid.getUpperLeftX())*size,(loc.getY()-grid.getUpperLeftY())*size,size,size);
 			}
 		}
 		Color health = new Color(1,0,0,.99f);
@@ -201,7 +201,7 @@ public abstract class Unit extends Entity {
 		else return null;
 	}
 	public Rectangle getHealthBar() {
-		return new Rectangle(loc.getX()*size+1, loc.getY()*size+size-2, (hp*size/100)-2, 2);
+		return new Rectangle((loc.getX()-grid.getUpperLeftX())*size+1, (loc.getY()-grid.getUpperLeftY())*size+size-2, (hp*size/100)-2, 2);
 	}
 	public abstract void goGray();
 	public abstract void goColor();
