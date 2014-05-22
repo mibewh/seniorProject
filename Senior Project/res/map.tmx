@@ -22,7 +22,7 @@
  </layer>
  <layer name="Obstructions" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC73S0QqAMAgFUB9Wwuqt+v9fbYHBEF1OpQuXvYyDjiHYU1s36q7cQWqWGfEkEyHXRMg1uRc1I55kSp7VLBPel/lYpzCjx+utPjUwnxaPdzk8b/7wRvtIKXSuykxH6xKcj8dq8r8zeq/ZvV8vM9neDYq+r4dABgAA
+   H4sIAAAAAAAAC63S0QrAIAgFUB9aQtvbtv//1RUUhGgz9YL0EodrhKBPqXP2uYQ72CfK9HiciRBrIsSa1POaHo8zOU9rpg3vz2zWw3S0eLM1pzj6SbF4r8G76+TAftZw1mofLqmfWejUdj2c/Wi0Jv07q/fa3Xt4kYn2PtYPvChABgAA
   </data>
  </layer>
  <layer name="Objects" width="20" height="20">

@@ -103,7 +103,6 @@ public class Menu{
 		Color color = new Color(128, 128, 128, 128);
 		g.setColor(color);
 		g.fillRect(x, y+selected*COMMAND_HEIGHT,TILE_HEIGHT*2,COMMAND_HEIGHT);
-		
 		g.scale(2f, 2f);
 	}
 }
