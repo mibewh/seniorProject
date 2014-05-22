@@ -13,7 +13,7 @@ public class Level1 extends Level {
 
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		super.init(gc, game);
-		grid = new Grid(new TiledMap("res/map.tmx"));
+		grid = new Grid(new TiledMap("maps/map.tmx"));
 		grid.setCursor(new Cursor(7,7,grid,turn));
 		grid.getCursor().setFocus(true);
 		//TODO HUD (New class(es))
