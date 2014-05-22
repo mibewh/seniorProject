@@ -27,8 +27,7 @@ public abstract class Unit extends Entity {
 	protected int movePoints;
 	protected int hp;
 	protected double attack;
-	protected int tileDefense;
-	protected int fortification;
+	protected boolean fortified;
 	
 	protected Location lastLoc;
 	
@@ -49,6 +48,7 @@ public abstract class Unit extends Entity {
 		displayMoves = false;
 		displayAttacks = false;
 		hp = 100;
+		fortified = false;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException{
 		super.update(gc, game, delta);
@@ -163,7 +163,17 @@ public abstract class Unit extends Entity {
 	
 	public int getDefense(){
 		//possibility for game balance
-		return (1+fortification+tileDefense)*(hp/100);
+		return (1+getFortification()+getTileDefense())*(hp/100);
+	}
+	public int getFortification() {
+		if(fortified) return 1;
+		else return 0;
+	}
+	public int getTileDefense() {
+		int def=0;
+		if(grid.getB(loc)!=null) def+=grid.getB(loc).getFortification();
+		if(grid.getMoveCost(loc)==2) def++;
+		return def;
 	}
 	
 	public void setLastLoc(Location loc) {
