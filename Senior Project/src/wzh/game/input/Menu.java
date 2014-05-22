@@ -23,6 +23,7 @@ public class Menu{
 	private int x,y;
 	private int height;
 	private TrueTypeFont font;
+	private Cursor c;
 	
 	private final String FONT_STYLE = "Euphemia";
 	
@@ -34,6 +35,7 @@ public class Menu{
 		height = COMMAND_HEIGHT * commands.size();
 		selected = 0;
 		setPos(c, gc);
+		this.c = c;
 		font = new TrueTypeFont(new Font(FONT_STYLE, Font.BOLD , 12), false);
 	}
 	public Command get(int i) {
@@ -95,6 +97,8 @@ public class Menu{
 		}
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
+		int x = this.x - (c.getGrid().getUpperLeftX()*16);
+		int y = this.y - (c.getGrid().getUpperLeftY()*16);
 		g.setColor(Color.white);
 		g.scale(.5f, .5f);
 		g.fillRect(x, y, TILE_HEIGHT*2, height);

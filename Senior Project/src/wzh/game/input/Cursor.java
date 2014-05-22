@@ -161,21 +161,34 @@ public class Cursor extends Entity{
 	}
 
 	private void processMoveKeys(Input input) {
+		int upperX = grid.getUpperLeftX();
+		int upperY = grid.getUpperLeftY();
 		if((input.isKeyPressed(Input.KEY_RIGHT) || input.isKeyPressed(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY())){
 			Location moveLoc = new Location(loc.getX()+1,loc.getY());
+			if(upperX>=grid.getRows()-18 && moveLoc.getX()<=grid.getRows()-3) {
+				grid.setUpperLeftX(upperX-1);
+			}
 			checkMove(moveLoc);
 		}
-		if((input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A)) && grid.isValid(loc.getX()-1, loc.getY())){
+		else if((input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A)) && grid.isValid(loc.getX()-1, loc.getY())){
 			Location moveLoc = new Location(loc.getX()-1,loc.getY());
+			if(upperX!=0 && moveLoc.getX()<=upperX+3) {
+				grid.setUpperLeftX(upperX-1);
+			}
 			checkMove(moveLoc);
-			
 		}
-		if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1)){
+		else if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1)){
 			Location moveLoc =new Location(loc.getX(),loc.getY()+1);
+			if(upperY>=grid.getCols()-18 && moveLoc.getY()<=grid.getCols()-3) {
+				grid.setUpperLeftY(upperY-1);
+			}
 			checkMove(moveLoc);
 		}
-		if((input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) && grid.isValid(loc.getX(), loc.getY()-1)){
+		else if((input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) && grid.isValid(loc.getX(), loc.getY()-1)){
 			Location moveLoc = new Location(loc.getX(),loc.getY()-1);
+			if(upperY!=0 && moveLoc.getY()<=upperY+3) {
+				grid.setUpperLeftY(upperY-1);
+			}
 			checkMove(moveLoc);
 		}
 	}
