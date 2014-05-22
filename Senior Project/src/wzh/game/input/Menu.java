@@ -24,7 +24,6 @@ public class Menu{
 	private int x,y;
 	private int height;
 	private TrueTypeFont font;
-	private Cursor c;
 	
 	private final String FONT_STYLE = "Euphemia";
 	
@@ -45,7 +44,6 @@ public class Menu{
 		height = COMMAND_HEIGHT * commands.size();
 		selected = 0;
 		setPos(c, gc);
-		this.c = c;
 		font = new TrueTypeFont(new Font(FONT_STYLE, Font.BOLD , 12), false);
 	}
 	public Command get(int i) {
