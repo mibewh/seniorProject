@@ -2,7 +2,6 @@ package wzh.game.entity.unit;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
@@ -13,8 +12,18 @@ public class Archer extends Unit {
 	
 	public final double ATTACK_BUFF = 1.5;
 
-	public Archer(int x, int y, Image img, Grid g, int faction) {
-		super(x, y, img, g, faction);
+	public Archer(int x, int y, Grid g, int faction) {
+		super(x, y, null, g, faction);
+		SpriteSheet ss;
+		try {
+			ss = new SpriteSheet("Unitz.png",16,16);
+			if(faction==1)
+				sprite = ss.getSubImage(2, 2);
+			else
+				sprite = ss.getSubImage(1, 2);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
 	}
 	@Override
 	public void attack(Unit other) {
@@ -31,7 +40,11 @@ public class Archer extends Unit {
 		ArrayList<Location> locs = new ArrayList<Location>();
 		ArrayList<Location> all = grid.getFilledLocations();
 		for(Location potential:all) {
-			if(loc.getTileDistance(potential)==2) locs.add(potential);
+			if(loc.getTileDistance(potential)==2) {
+				Unit u = (Unit)grid.get(potential);
+				if(u.getFaction()!=faction)
+					locs.add(potential);
+			}
 		}
 		return locs;
 	}
