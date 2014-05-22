@@ -204,6 +204,7 @@ public class Grid {
 	public int getMoveCost(Location loc) {
 		if(!isEmpty(loc)) return 100;
 		else if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Obstructions")) != 0) return 100;
+		else if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Difficult")) != 0) return 2;
 		else return 1;
 	}
 	public boolean isObstructed(Location loc) {
@@ -242,7 +243,7 @@ public class Grid {
 			for(Location loc:init.getAdjacentLocations()) {
 				if(isValid(loc) && !isObstructed(loc)) {
 					neighbors.add(loc);
-					neighbors.addAll(emptyTilesInRange(loc,n-1)); //Recursive call to branch out and get more neighbors
+					neighbors.addAll(emptyTilesInRange(loc,n-getMoveCost(loc))); //Recursive call to branch out and get more neighbors
 				}
 			}
 			return neighbors;

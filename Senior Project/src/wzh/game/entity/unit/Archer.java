@@ -31,7 +31,11 @@ public class Archer extends Unit {
 		ArrayList<Location> locs = new ArrayList<Location>();
 		ArrayList<Location> all = grid.getFilledLocations();
 		for(Location potential:all) {
-			if(loc.getTileDistance(potential)==2) locs.add(potential);
+			if(loc.getTileDistance(potential)==2) {
+				Unit u = (Unit)grid.get(potential);
+				if(u.getFaction()!=faction)
+					locs.add(potential);
+			}
 		}
 		return locs;
 	}
