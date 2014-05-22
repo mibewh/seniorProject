@@ -22,12 +22,12 @@
  </layer>
  <layer name="Obstructions" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC63SMQ6AIAwF0A7ogG7q4gnqDbz/yYQEkoa00FZ+0rjoyy+CAHCDLjHNVmYX3sEys8zqPQ6PM63eyESw79wzqWfpKJkI/o6c2XoWMyg9zd7ZOpmOHo9aNPFHPymc9w6+uQzeyLL0y3seaZZJXu3W24dLKM8V+H/wp6N0blqzvTu9+2Hde+R5MuOO0HxDnXSMQAYAAA==
+   H4sIAAAAAAAAC63S0QrAIAgFUB9aQtvbtv//1RUUhGgz9YL0EodrhKBPqXP2uYQ72CfK9HiciRBrIsSa1POaHo8zOU9rpg3vz2zWw3S0eLM1pzj6SbF4r8G76+TAftZw1mofLqmfWejUdj2c/Wi0Jv07q/fa3Xt4kYn2PtYPvChABgAA
   </data>
  </layer>
  <layer name="Objects" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYGSBxwPtgFEwCoYJAAAjK/l1QAYAAA==
+   H4sIAAAAAAAACxNgYGAQBGIhBuoAeSBWAGJFKpmnRyVzYMAWiO2obOYooC34DMXUMkuAkfpmjoJRMBIBAHdB4KtABgAA
   </data>
  </layer>
 </map>

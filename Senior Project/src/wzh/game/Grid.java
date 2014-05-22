@@ -10,6 +10,10 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import wzh.game.entity.Entity;
+import wzh.game.entity.building.Castle;
+import wzh.game.entity.building.Fort;
+import wzh.game.entity.building.MainCastle;
+import wzh.game.entity.building.Village;
 import wzh.game.entity.unit.Archer;
 import wzh.game.entity.unit.Horseman;
 import wzh.game.entity.unit.Spearman;
@@ -31,38 +35,61 @@ public class Grid {
 	}
 	public void loadEntities() throws SlickException{
 		int layer = map.getLayerIndex("Objects");
-		SpriteSheet ss = new SpriteSheet("Unitz.png",16,16);
+		SpriteSheet units = new SpriteSheet("Unitz.png",16,16);
+		SpriteSheet tiles = new SpriteSheet("SpriteSheetz.png",16,16);
 		for(int x=0;x<cols;x++) {
 			for(int y=0;y<rows;y++) {
 				int ID = map.getTileId(x, y, layer);
 				Entity toAdd;
 				switch(ID) {
 				case 227://Red Sword
-					toAdd = new Swordsman(x,y,ss.getSubImage(1, 0),this,2);
+					toAdd = new Swordsman(x,y,units.getSubImage(1, 0),this,2);
 					break;
 				case 228://Blue Sword
-					toAdd = new Swordsman(x,y,ss.getSubImage(2, 0),this,1);
+					toAdd = new Swordsman(x,y,units.getSubImage(2, 0),this,1);
 					break;
 				case 242://Red Spear
-					toAdd = new Spearman(x,y,ss.getSubImage(1, 1),this,2);
+					toAdd = new Spearman(x,y,units.getSubImage(1, 1),this,2);
 					break;
 				case 243://Blue Spear
-					toAdd = new Spearman(x,y,ss.getSubImage(2, 1),this,1);
+					toAdd = new Spearman(x,y,units.getSubImage(2, 1),this,1);
 					break;
 				case 257://Red Archer
-					toAdd = new Archer(x,y,ss.getSubImage(1, 2),this,2);
+					toAdd = new Archer(x,y,units.getSubImage(1, 2),this,2);
 					break;
 				case 258://Blue Archer
-					toAdd = new Archer(x,y,ss.getSubImage(2, 2),this,1);
+					toAdd = new Archer(x,y,units.getSubImage(2, 2),this,1);
 					break;
 				case 272://Red Horse
-					toAdd = new Horseman(x,y,ss.getSubImage(1, 3),this,2);
+					toAdd = new Horseman(x,y,units.getSubImage(1, 3),this,2);
 					break;
 				case 273://Blue Horse
-					toAdd = new Archer(x,y,ss.getSubImage(2, 3),this,1);
+					toAdd = new Archer(x,y,units.getSubImage(2, 3),this,1);
+					break;
+				case 16:
+					toAdd = new Village(x,y,tiles.getSubImage(0, 1),this,0);
+					break;
+				case 31:
+					toAdd = new Castle(x,y,tiles.getSubImage(0,2),this,0);
+					break;
+				case 32:
+					toAdd = new Castle(x,y,tiles.getSubImage(1,2),this,2);
+					break;
+				case 33:
+					toAdd = new Castle(x,y,tiles.getSubImage(2,2),this,1);
+					break;
+				case 46:
+					toAdd = new Fort(x,y,tiles.getSubImage(0,3),this,0);
+					break;
+				case 61:
+					toAdd = new MainCastle(x,y,tiles.getSubImage(0,4),this,2);
+					break;
+				case 62:
+					toAdd = new MainCastle(x,y,tiles.getSubImage(1,4),this,1);
 					break;
 				default:
 					toAdd=null;
+					break;
 				}
 				entities[x][y] = toAdd;
 			}

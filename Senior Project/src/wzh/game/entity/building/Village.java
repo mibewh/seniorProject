@@ -6,9 +6,9 @@ import org.newdawn.slick.SpriteSheet;
 
 import wzh.game.Grid;
 
-public abstract class Village extends Building {
-	public Village(int x, int y, Image img, Grid g) {
-		super(x, y, img, g);
+public class Village extends Building {
+	public Village(int x, int y, Image img, Grid g, int faction) {
+		super(x, y, img, g, faction);
 	}
 	
 	/*
@@ -30,10 +30,13 @@ public abstract class Village extends Building {
 		}
 		
 	}
-
-	
 	public int getFortification(){
-		return 1;
+		return 0;
 	}
 	//TODO Check THE VILLAGE fortification of 0
+
+	public void hideMenus() {
+		// TODO Auto-generated method stub
+		
+	}
 }

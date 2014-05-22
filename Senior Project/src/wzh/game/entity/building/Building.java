@@ -9,15 +9,14 @@ import wzh.game.input.Menu;
 public abstract class Building extends Entity {
 	protected int faction;
 	
-	public Building(int x, int y, Image img, Grid g) {
+	public Building(int x, int y, Image img, Grid g, int faction) {
 		super(x, y, img, g);
+		this.faction = faction;
 	}
 	public int getFaction() {
 		return faction;
 	}
-	public int getFortification(){
-		return 0;
-	}
+	public abstract int getFortification();
 	public Menu getMenu() {
 		//TODO Implement building menus
 		return null;
