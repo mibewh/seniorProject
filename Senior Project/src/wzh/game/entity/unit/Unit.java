@@ -155,6 +155,7 @@ public abstract class Unit extends Entity {
 		lastLoc = loc;
 	}
 	public void revertToLastLoc() {
+		moveTo(lastLoc.getX(), lastLoc.getY());
 		loc = lastLoc;
 	}
 	public boolean checkKill() {
