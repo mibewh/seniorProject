@@ -13,6 +13,7 @@ import wzh.game.Grid;
 import wzh.game.Location;
 import wzh.game.entity.Entity;
 import wzh.game.entity.unit.Unit;
+import wzh.game.input.command.Cancel;
 import wzh.game.input.command.Command;
 import wzh.game.input.command.End;
 import wzh.game.level.Level;
@@ -22,16 +23,20 @@ public class Cursor extends Entity{
 	private boolean focus;
 	private boolean unitSelect;
 	private boolean menuSelect;
+	private int curFaction;
 	private Unit u;
 	private String mode;
 	private Menu optionsMenu;
+	private boolean postMove;
 	
-	public Cursor(int x, int y, Grid g) throws SlickException{
+	public Cursor(int x, int y, Grid g, int initFaction) throws SlickException{
 		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(7, 0),g);
 		focus = false;
 		mode = "Normal";
+		setFaction(initFaction);
 		unitSelect=false;
 		menuSelect=false;
+		postMove=false;
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
@@ -39,35 +44,78 @@ public class Cursor extends Entity{
 		Input input = gc.getInput();
 		if(focus == true) {
 			processMoveKeys(input);
-			if(input.isKeyPressed(Input.KEY_SPACE)){
-				if(!unitSelect &&!grid.isEmpty(loc.getX(), loc.getY()) && grid.get(loc.getX(),loc.getY()) instanceof Unit
-						&& grid.get(loc.getX(),loc.getY()).isActive()) {
-					unitSelect=true;
-					u = (Unit)grid.get(loc.getX(),loc.getY());
-					u.displayPremoveMenu(this, gc);	
-					focus = false;
-				}
-				else if(unitSelect && mode.equals("Move")){
-					if(unitSelect && grid.isEmpty(loc.getX(), loc.getY())){
-						u.moveTo(loc.getX(), loc.getY());
-						unitSelect=false;
-						//u.hideMenus();
-						u.setDisplayMoves(false);
-						u.displayPostmoveMenu(this, gc);
-						mode = "Normal";
-					}
-				}
-				else if(!unitSelect && grid.isEmpty(loc.getX(), loc.getY()))
-				{
-					displayOptionsMenu(this,gc,game);
-					menuSelect=true;
-					focus=false;
-				}
-			}
+			checkSpaceBar(input, gc, game);
 		}
 		else if(menuSelect) {
 			optionsMenu.update(gc, game, delta);
 		}
+		checkEscapeKey(input, gc, game);
+	}
+
+	private void checkEscapeKey(Input input, GameContainer gc, StateBasedGame game) {
+		if(input.isKeyPressed(Input.KEY_ESCAPE) || input.isKeyPressed(Input.KEY_BACK)) {
+			if(unitSelect) {
+				if(mode.equals("Move")) {
+					cancelMove(gc);
+				}
+				else if(mode.equals("Normal")) {
+					Menu curMenu = u.getMenu();
+					curMenu.get(curMenu.size()-1).select();
+				}
+			}
+			else if(menuSelect) {
+				optionsMenu.get(optionsMenu.size()-1).select();
+			}
+			else if(grid.isEmpty(loc)){
+				displayOptionsMenu(this, gc, game);
+				menuSelect=true;
+				focus=false;
+			}
+		}
+	}
+
+	private void checkSpaceBar(Input input, GameContainer gc, StateBasedGame game) {
+		if(input.isKeyPressed(Input.KEY_SPACE) || input.isKeyPressed(Input.KEY_ENTER)){
+			if(!unitSelect &&!grid.isEmpty(loc.getX(), loc.getY()) && grid.get(loc.getX(),loc.getY()) instanceof Unit
+					&& grid.get(loc.getX(),loc.getY()).isActive()) {
+				u = (Unit)grid.get(loc.getX(),loc.getY());
+				if(curFaction==u.getFaction()) {
+					unitSelect=true;
+					u.displayPremoveMenu(this, gc);	
+					focus = false;
+				}
+			}
+			else if(unitSelect && mode.equals("Move")){
+				if(grid.isEmpty(loc.getX(), loc.getY())){
+					u.moveTo(loc.getX(), loc.getY());
+					//unitSelect=false;
+					//u.hideMenus();
+					u.setDisplayMoves(false);
+					focus=false;
+					postMove=true;
+					u.displayPostmoveMenu(this, gc);
+					mode = "Normal";
+				}
+				else if(loc.equals(u.getLoc())) {
+					cancelMove(gc);
+				}
+			}
+			else if(!unitSelect && grid.isEmpty(loc.getX(), loc.getY()))
+			{
+				displayOptionsMenu(this,gc,game);
+				menuSelect=true;
+				focus=false;
+			}
+		}
+		
+	}
+
+	private void cancelMove(GameContainer gc) {
+		mode = "Normal";
+		u.setDisplayMoves(false);
+		loc=u.getLoc();
+		focus=false;
+		u.displayPremoveMenu(this, gc);
 	}
 
 	private void processMoveKeys(Input input) {
@@ -93,6 +141,7 @@ public class Cursor extends Entity{
 		ArrayList<Command> commands = new ArrayList<Command>();
 		Level level = (Level)game.getCurrentState();
 		commands.add(new End(level,this));
+		commands.add(new Cancel(this,this,gc));
 		optionsMenu = new Menu(this,commands,gc);
 	}
 
@@ -112,9 +161,9 @@ public class Cursor extends Entity{
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
-		if(menuSelect) {
-			optionsMenu.render(gc, game, g);
-		}
+//		if(menuSelect) {
+//			optionsMenu.render(gc, game, g);
+//		}
 	}
 	public void setFocus(boolean focus){
 		this.focus = focus;
@@ -134,9 +183,30 @@ public class Cursor extends Entity{
 	public void setMenuSelect(boolean m) {
 		menuSelect = m;
 	}
-
 	public void hideMenus() {
 		optionsMenu=null;
 		menuSelect=false;
+	}
+	public void setFaction(int f) {
+		curFaction = f;
+		try {
+			SpriteSheet ss = new SpriteSheet("SpriteSheetz.png",16,16);
+			if(f==1)
+				sprite=ss.getSubImage(7, 2);
+			else
+				sprite=ss.getSubImage(7, 1);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
+	}
+	public boolean isPostMove() {
+		return postMove;
+	}
+	public void setPostMove(boolean b) {
+		postMove=b;
+	}
+
+	public Menu getMenu() {
+		return optionsMenu;
 	}
 }

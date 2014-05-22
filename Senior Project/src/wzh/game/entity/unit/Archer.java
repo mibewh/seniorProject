@@ -22,20 +22,16 @@ public class Archer extends Unit {
 			super.attack(other);
 		}
 		else {
-			other.setHp(other.getHp() - (int)((double)getAttack() * ATTACK_BUFF * (double)(10-other.getDefense())/10.0));
+			other.setHp(other.getHp() - (int)((double)getAttack() * ATTACK_BUFF * (double)((10-other.getDefense()))/10.0));
 			other.checkKill();
 		}
 	}
-	//TODO attack locations
 	@Override
 	public ArrayList<Location> getAttackLocations() {
 		ArrayList<Location> locs = new ArrayList<Location>();
-		locs = grid.neighborsInRange(loc, 2);
-		for(int i=locs.size()-1;i>=0;i--) {
-			Location testLoc = locs.get(i);
-			if(!grid.isValid(testLoc) || !(grid.get(testLoc) instanceof Unit) || testLoc.isIn(testLoc.getAdjacentLocations())) {
-				locs.remove(i);
-			}
+		ArrayList<Location> all = grid.getFilledLocations();
+		for(Location potential:all) {
+			if(loc.getTileDistance(potential)==2) locs.add(potential);
 		}
 		return locs;
 	}
