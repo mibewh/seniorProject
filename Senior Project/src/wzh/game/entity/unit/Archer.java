@@ -10,8 +10,8 @@ import wzh.game.Location;
 
 public class Archer extends Unit {
 	
-	public final double ATTACK_BUFF = 1.5;
 	public static final int COST = 50;
+	public final double ATTACK_BUFF = 1;
 
 	public Archer(int x, int y, Grid g, int faction) {
 		super(x, y, null, g, faction);
@@ -30,9 +30,17 @@ public class Archer extends Unit {
 	public void attack(Unit other) {
 		if(other instanceof Archer) {
 			super.attack(other);
+			System.out.println("Other Attack" + (100-other.getHp()));
+			System.out.println("Other Hp" + other.getHp());
+			System.out.println("This Attack" + (100-this.getAttack()));
+			System.out.println("This Hp" + this.getHp());
 		}
 		else {
 			other.setHp(other.getHp() - (int)((double)getAttack() * ATTACK_BUFF * (double)((10-other.getDefense()))/10.0));
+			System.out.println("Other Attack" + (100-other.getHp()));
+			System.out.println("Other Hp" + other.getHp());
+			System.out.println("This Attack" + (100-this.getAttack()));
+			System.out.println("This Hp" + this.getHp());
 			other.checkKill();
 		}
 	}
@@ -66,8 +74,6 @@ public class Archer extends Unit {
 				sprite = ss.getSubImage(1, 2);
 		} catch (SlickException e) {
 			e.printStackTrace();
-		}
-		
+		}	
 	}
-
 }
