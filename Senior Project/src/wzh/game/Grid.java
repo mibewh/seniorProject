@@ -78,8 +78,17 @@ public class Grid {
 		ArrayList<Entity> arr = new ArrayList<Entity>();
 		for(int x=0;x<cols;x++) {
 			for(int y=0;y<rows;y++) {
-				arr.add(entities[x][y]);
+				if(!isEmpty(x,y)) //Remove this line if there are complications
+					arr.add(entities[x][y]);
 			}
+		}
+		return arr;
+	}
+	public ArrayList<Location> getFilledLocations() {
+		ArrayList<Entity> ent = getAllEntities();
+		ArrayList<Location> arr = new ArrayList<Location>();
+		for(Entity e:ent) {
+			if(e!=null) arr.add(e.getLoc());
 		}
 		return arr;
 	}
@@ -166,18 +175,33 @@ public class Grid {
 		}
 		return cost;
 	}
-
+	public ArrayList<Location> getAdjacentNeighbors(Location loc) {
+		//System.out.println(loc);
+		ArrayList<Location> adj = loc.getAdjacentLocations();
+		ArrayList<Entity> ents = getAllEntities();
+		ArrayList<Location> occupied = new ArrayList<Location>();
+		ArrayList<Location> arr = new ArrayList<Location>();
+		for(Entity e:ents){
+			if(e!=null) occupied.add(e.getLoc());
+		}
+		for(Location add:adj) {
+			if(add.isIn(occupied)) {
+				arr.add(add);
+			}
+		}
+		return arr;
+	}
 	/*
 	 * Recursive method giving unobstructed neighbors within a range to a location
 	 * @Author Michael
 	 */
-	public ArrayList<Location> neighborsInRange(Location init, int n) {
+	public ArrayList<Location> emptyTilesInRange(Location init, int n) {
 		ArrayList<Location> neighbors = new ArrayList<Location>();
 		if(n>0) {
 			for(Location loc:init.getAdjacentLocations()) {
 				if(isValid(loc) && !isObstructed(loc)) {
 					neighbors.add(loc);
-					neighbors.addAll(neighborsInRange(loc,n-1)); //Recursive call to branch out and get more neighbors
+					neighbors.addAll(emptyTilesInRange(loc,n-1)); //Recursive call to branch out and get more neighbors
 				}
 			}
 			return neighbors;

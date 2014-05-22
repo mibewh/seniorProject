@@ -22,7 +22,7 @@ public class MainCastle extends Building {
 	}
 
 	public void hideMenus() {
-		// TODO Auto-generated method stub
+		// TODO Buildings!
 		
 	}
 }

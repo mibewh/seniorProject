@@ -4,6 +4,7 @@ import org.newdawn.slick.Image;
 
 import wzh.game.Grid;
 import wzh.game.entity.Entity;
+import wzh.game.input.Menu;
 
 public abstract class Building extends Entity {
 	
@@ -13,5 +14,9 @@ public abstract class Building extends Entity {
 	
 	public int getFortification(){
 		return 0;
+	}
+	public Menu getMenu() {
+		//TODO Implement building menus
+		return null;
 	}
 }

@@ -8,6 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
 import wzh.game.Location;
+import wzh.game.input.Menu;
 
 public abstract class Entity {
 	protected Grid grid;
@@ -65,4 +66,5 @@ public abstract class Entity {
 		active = a;
 	}
 	public abstract void hideMenus();
+	public abstract Menu getMenu();
 }

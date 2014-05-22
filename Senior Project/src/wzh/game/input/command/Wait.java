@@ -19,6 +19,5 @@ public class Wait extends Command {
 		u.setActive(false);
 		u.goGray();
 		c.setMode("Normal");
-		//TODO FIX THE GRAYNESS
 	}
 }

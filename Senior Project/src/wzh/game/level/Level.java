@@ -1,5 +1,7 @@
 package wzh.game.level;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -8,6 +10,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
+import wzh.game.entity.Entity;
 
 public abstract class Level extends BasicGameState {
 
@@ -26,8 +29,16 @@ public abstract class Level extends BasicGameState {
 		g.scale(2, 2);
 		grid.render(gc, game, g);
 		g.setColor(Color.white);
-		//g.drawString("Turn: "+turnNumber, 0, 0);
-		//g.drawString("Player "+turn+"'s turn", gc.getWidth()-50, 20);
+		renderMenus(gc, game, g);
+	}
+	private void renderMenus(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
+		ArrayList<Entity> ents = grid.getAllEntities();
+		for(Entity e:ents) {
+			if(e.getMenu()!=null)
+				e.getMenu().render(gc, game, g);
+		}
+		if(grid.getCursor().getMenu()!=null)
+			grid.getCursor().getMenu().render(gc, game, g);
 	}
 
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {

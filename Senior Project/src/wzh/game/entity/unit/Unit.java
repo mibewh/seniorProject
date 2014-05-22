@@ -35,31 +35,45 @@ public abstract class Unit extends Entity {
 	protected Menu postmoveMenu;
 	
 	protected ArrayList<Location> moveLocs;
+	private ArrayList<Location> attackLocs;
 	protected boolean displayMoves;
+	private boolean displayAttacks;
 	
 	public Unit(int x, int y, Image img, Grid g, int faction) {
 		super(x,y,img,g);
 		this.faction = faction;
 		movePoints = 4;
 		moveLocs = getMoveLocations();
+		attackLocs = getAttackLocations();
 		displayMoves = false;
+		displayAttacks = false;
 		hp = 100;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException{
 		super.update(gc, game, delta);
 		if(premoveMenu!=null)
 			premoveMenu.update(gc, game, delta);
+		else if(postmoveMenu!=null)
+			postmoveMenu.update(gc, game, delta);
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
-		g.setColor(new Color(0,0,1,.3f));
 		if(displayMoves) {
+			g.setColor(new Color(0,0,1,.3f));
 			for(Location loc:moveLocs) {
 				g.fillRect(loc.getX()*size,loc.getY()*size,size,size);
 			}
 		}
-		if(premoveMenu!=null)
-			premoveMenu.render(gc, game, g);
+		else if(displayAttacks) {
+			g.setColor(new Color(1,0,0,.3f));
+			for(Location loc:attackLocs) {
+				g.fillRect(loc.getX()*size,loc.getY()*size,size,size);
+			}
+		}
+//		if(premoveMenu!=null)
+//			premoveMenu.render(gc, game, g);
+//		else if(postmoveMenu!=null)
+//			postmoveMenu.render(gc, game, g);
 	}
 	public void displayPremoveMenu(Cursor c, GameContainer gc) {
 		moveLocs = getMoveLocations();
@@ -68,7 +82,7 @@ public abstract class Unit extends Entity {
 		commands.add(new Attack(this, c));
 		commands.add(new Fortify(this, c));
 		commands.add(new Wait(this, c));
-		commands.add(new Cancel(this,c));
+		commands.add(new Cancel(this,c,gc));
 		setLastLoc(loc);
 		premoveMenu = new Menu(c, commands, gc);
 	}
@@ -80,24 +94,18 @@ public abstract class Unit extends Entity {
 		moveLocs = getMoveLocations();
 		ArrayList<Command> commands = new ArrayList<Command>();
 		commands.add(new Attack(this, c));
-		commands.add(new Cancel(this, c));
 		commands.add(new Wait(this, c));
+		commands.add(new Cancel(this, c,gc));
+		postmoveMenu = new Menu(c,commands,gc);
 		
 	}
 	//Returns all existent, non-obstructed locations that are either adjacent or within movePoint radius of the unit
 	public ArrayList<Location> getMoveLocations() {
-		ArrayList<Location> locs = grid.neighborsInRange(loc, movePoints);
+		ArrayList<Location> locs = grid.emptyTilesInRange(loc, movePoints);
 		return Location.removeDuplicates(locs);
 	}
 	public ArrayList<Location> getAttackLocations() {
-		ArrayList<Location> locs = new ArrayList<Location>();
-		locs = loc.getAdjacentLocations();
-		for(int i=locs.size()-1;i>=0;i--) {
-			if(!grid.isValid(locs.get(i)) || !(grid.get(locs.get(i)) instanceof Unit)) {
-				locs.remove(i);
-			}
-		}
-		return locs;
+		return grid.getAdjacentNeighbors(loc);
 	}
 	
 	/*
@@ -107,7 +115,12 @@ public abstract class Unit extends Entity {
 		return moveLocs;
 	}
 	public void setDisplayMoves(boolean b) {
+		moveLocs = getMoveLocations();
 		displayMoves = b;
+	}
+	public void setDisplayAttacks(boolean b) {
+		attackLocs = getAttackLocations();
+		displayAttacks = b;
 	}
 	public int getHp(){
 		return hp;
