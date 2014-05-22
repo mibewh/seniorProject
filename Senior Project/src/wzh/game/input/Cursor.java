@@ -28,6 +28,7 @@ public class Cursor extends Entity{
 	private String mode;
 	private Menu optionsMenu;
 	private boolean postMove;
+	private int curIndex;
 	
 	public Cursor(int x, int y, Grid g, int initFaction) throws SlickException{
 		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(7, 0),g);
@@ -43,7 +44,10 @@ public class Cursor extends Entity{
 		super.update(gc, game, delta);
 		Input input = gc.getInput();
 		if(focus == true) {
-			processMoveKeys(input);
+			if(mode.equals("Attack"))
+				cycleAttacks(input);
+			else
+				processMoveKeys(input);
 			checkSpaceBar(input, gc, game);
 		}
 		else if(menuSelect) {
@@ -55,7 +59,7 @@ public class Cursor extends Entity{
 	private void checkEscapeKey(Input input, GameContainer gc, StateBasedGame game) {
 		if(input.isKeyPressed(Input.KEY_ESCAPE) || input.isKeyPressed(Input.KEY_BACK)) {
 			if(unitSelect) {
-				if(mode.equals("Move")) {
+				if(mode.equals("Move") || mode.equals("Attack")) {
 					cancelMove(gc);
 				}
 				else if(mode.equals("Normal")) {
@@ -106,20 +110,37 @@ public class Cursor extends Entity{
 				menuSelect=true;
 				focus=false;
 			}
+			else if(unitSelect && mode.equals("Attack")) {
+				u.attack((Unit)grid.get(loc));
+				if(u!=null) {
+					loc = u.getLoc();
+					u.goGray();
+					u.setDisplayAttacks(false);
+					u.setActive(false);
+				}
+				focus = true;
+				unitSelect = false;
+				mode = "Normal";
+			}
 		}
 		
 	}
 
 	private void cancelMove(GameContainer gc) {
 		mode = "Normal";
+		curIndex = 0;
 		u.setDisplayMoves(false);
+		u.setDisplayAttacks(false);
 		loc=u.getLoc();
 		focus=false;
-		u.displayPremoveMenu(this, gc);
+		if(postMove)
+			u.displayPostmoveMenu(this, gc);
+		else
+			u.displayPremoveMenu(this, gc);
 	}
 
 	private void processMoveKeys(Input input) {
-		if((input.isKeyPressed(Input.KEY_RIGHT) | input.isKeyPressed(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY())){
+		if((input.isKeyPressed(Input.KEY_RIGHT) || input.isKeyPressed(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY())){
 			Location moveLoc = new Location(loc.getX()+1,loc.getY());
 			checkMove(moveLoc);
 		}
@@ -134,6 +155,22 @@ public class Cursor extends Entity{
 		if((input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) && grid.isValid(loc.getX(), loc.getY()-1)){
 			Location moveLoc = new Location(loc.getX(),loc.getY()-1);
 			checkMove(moveLoc);
+		}
+	}
+	private void cycleAttacks(Input input) {
+		if(input.isKeyPressed(Input.KEY_RIGHT) || input.isKeyPressed(Input.KEY_D)
+				|| input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) {
+			curIndex++;
+			if(curIndex>=u.getAttackLocations().size())
+				curIndex=0;
+			loc = u.getAttackLocations().get(curIndex);
+		}
+		else if(input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A) 
+				|| input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) {
+			curIndex--;
+			if(curIndex<0)
+				curIndex=u.getAttackLocations().size()-1;
+			loc = u.getAttackLocations().get(curIndex);
 		}
 	}
 
