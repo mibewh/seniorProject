@@ -11,6 +11,7 @@ public class Main extends StateBasedGame{
 		super(title);
 	}
 	public void initStatesList(GameContainer arg0) throws SlickException {
+		addState(new MainMenu());
 		addState(new Level1("maps/map.tmx"));
 		addState(new Level2("maps/map2.tmx"));
 	}
