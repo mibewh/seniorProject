@@ -93,11 +93,13 @@ public abstract class Unit extends Entity {
 			}
 		}
 		//Health Bar
-		Color health = new Color(1,0,0,.99f);
-		g.setColor(health);
-		Rectangle healthBar = getHealthBar();
-		g.fill(healthBar);
-		g.draw(healthBar);
+		if(hp<100) {
+			Color health = new Color(1,0,0,.99f);
+			g.setColor(health);
+			Rectangle healthBar = getHealthBar();
+			g.fill(healthBar);
+			g.draw(healthBar);
+		}
 		//Fortified buff
 		if(fortified) {
 			SpriteSheet units = new SpriteSheet("Unitz.png",16,16);

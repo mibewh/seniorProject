@@ -22,7 +22,7 @@ public class Spearman extends Unit {
 				attackAnimation=new Animation(ss,5,8,10,8,true,300,true);
 			}
 			else{
-				//colored = ss.getSubImage(1, 1);
+				colored = ss.getSubImage(1, 1);
 				standingAnimation=new Animation(ss,0,7,2,7,true,500,true);
 				standingAnimation.setPingPong(true);
 				attackAnimation=new Animation(ss,5,7,10,7,true,300,true);
