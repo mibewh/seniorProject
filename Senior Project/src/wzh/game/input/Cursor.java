@@ -32,6 +32,12 @@ public class Cursor extends Entity{
 	private boolean postMove;
 	private int curIndex;
 	private boolean buildingSelect;
+	private enum Key {
+		RIGHT,LEFT,UP,DOWN,SPACE,ESCAPE,NONE;
+	}
+	private Key lastKey;
+	private boolean trackingTime=false;
+	private int timeSince;
 	
 	public Cursor(int x, int y, Grid g, int initFaction) throws SlickException{
 		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(7, 0),g);
@@ -42,6 +48,8 @@ public class Cursor extends Entity{
 		menuSelect=false;
 		buildingSelect=false;
 		postMove=false;
+		lastKey = Key.NONE;
+		timeSince = 0;
 	}
 	
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
@@ -50,14 +58,47 @@ public class Cursor extends Entity{
 		if(focus == true) {
 			if(mode.equals("Attack"))
 				cycleAttacks(input);
-			else
+			else {
 				processMoveKeys(input,gc);
+				if(trackingTime) timeSince+=delta;
+				if(timeSince>=500)
+					checkStillHeld(input,gc);
+			}
 			checkSpaceBar(input, gc, game);
 		}
 		else if(menuSelect) {
 			optionsMenu.update(gc, game, delta);
 		}
 		checkEscapeKey(input, gc, game);
+	}
+
+	private void checkStillHeld(Input input, GameContainer gc) {
+		int upperX = grid.getUpperLeftX();
+		int upperY = grid.getUpperLeftY();
+		int screenWidth = gc.getWidth()/(size*2);
+		int screenHeight = gc.getHeight()/(size*2);
+		if((input.isKeyDown(Input.KEY_RIGHT) || input.isKeyDown(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY()) && lastKey==Key.RIGHT){
+			rightKey(upperX, screenWidth);
+			timeSince=450;
+		}
+		else if((input.isKeyDown(Input.KEY_LEFT) || input.isKeyDown(Input.KEY_A)) && grid.isValid(loc.getX()-1, loc.getY()) && lastKey==Key.LEFT){
+			leftKey(upperX);
+			timeSince=450;
+		}
+		else if((input.isKeyDown(Input.KEY_DOWN) || input.isKeyDown(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1) && lastKey==Key.DOWN){
+			downKey(upperY, screenHeight);
+			timeSince=450;
+		}
+		else if((input.isKeyDown(Input.KEY_UP) || input.isKeyDown(Input.KEY_W)) && grid.isValid(loc.getX(), loc.getY()-1) && lastKey==Key.UP){
+			upKey(upperY);
+			timeSince=450;
+		}
+		else {
+			trackingTime = false;
+			timeSince=450;
+			lastKey=Key.NONE;
+			timeSince = 0;
+		}
 	}
 
 	private void checkEscapeKey(Input input, GameContainer gc, StateBasedGame game) {
@@ -84,6 +125,7 @@ public class Cursor extends Entity{
 				menuSelect=true;
 				focus=false;
 			}
+			lastKey = Key.ESCAPE;
 		}
 	}
 
@@ -143,6 +185,7 @@ public class Cursor extends Entity{
 				unitSelect = false;
 				mode = "Normal";
 			}
+			lastKey = Key.SPACE;
 		}
 		
 	}
@@ -166,33 +209,61 @@ public class Cursor extends Entity{
 		int screenWidth = gc.getWidth()/(size*2);
 		int screenHeight = gc.getHeight()/(size*2);
 		if((input.isKeyPressed(Input.KEY_RIGHT) || input.isKeyPressed(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY())){
-			Location moveLoc = new Location(loc.getX()+1,loc.getY());
-			if(!(upperX>=grid.getRows()-screenWidth) && moveLoc.getX()>=grid.getUpperLeftX()+(screenWidth-3)) {
-				grid.setUpperLeftX(upperX+1);
-			}
-			checkMove(moveLoc);
+			rightKey(upperX, screenWidth);
+			trackingTime=true;
+			timeSince=0;
 		}
 		else if((input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A)) && grid.isValid(loc.getX()-1, loc.getY())){
-			Location moveLoc = new Location(loc.getX()-1,loc.getY());
-			if(upperX!=0 && moveLoc.getX()<=upperX+2) {
-				grid.setUpperLeftX(upperX-1);
-			}
-			checkMove(moveLoc);
+			leftKey(upperX);
+			trackingTime=true;
+			timeSince=0;
 		}
 		else if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1)){
-			Location moveLoc =new Location(loc.getX(),loc.getY()+1);
-			if(!(upperY>=grid.getCols()-screenHeight) && moveLoc.getY()>=grid.getUpperLeftY()+(screenHeight-3)) {
-				grid.setUpperLeftY(upperY+1);
-			}
-			checkMove(moveLoc);
+			downKey(upperY, screenHeight);
+			trackingTime=true;
+			timeSince=0;
 		}
 		else if((input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) && grid.isValid(loc.getX(), loc.getY()-1)){
-			Location moveLoc = new Location(loc.getX(),loc.getY()-1);
-			if(upperY!=0 && moveLoc.getY()<=upperY+2) {
-				grid.setUpperLeftY(upperY-1);
-			}
-			checkMove(moveLoc);
+			upKey(upperY);
+			trackingTime=true;
+			timeSince=0;
 		}
+	}
+
+	private void upKey(int upperY) {
+		Location moveLoc = new Location(loc.getX(),loc.getY()-1);
+		if(upperY!=0 && moveLoc.getY()<=upperY+2) {
+			grid.setUpperLeftY(upperY-1);
+		}
+		checkMove(moveLoc);
+		lastKey = Key.UP;
+	}
+
+	private void downKey(int upperY, int screenHeight) {
+		Location moveLoc =new Location(loc.getX(),loc.getY()+1);
+		if(!(upperY>=grid.getCols()-screenHeight) && moveLoc.getY()>=grid.getUpperLeftY()+(screenHeight-3)) {
+			grid.setUpperLeftY(upperY+1);
+		}
+		checkMove(moveLoc);
+		lastKey = Key.DOWN;
+	}
+
+	private void leftKey(int upperX) {
+		Location moveLoc = new Location(loc.getX()-1,loc.getY());
+		if(upperX!=0 && moveLoc.getX()<=upperX+2) {
+			grid.setUpperLeftX(upperX-1);
+		}
+		checkMove(moveLoc);
+		lastKey = Key.LEFT;
+	}
+
+	private void rightKey(int upperX, int screenWidth) {
+		Location moveLoc = new Location(loc.getX()+1,loc.getY());
+		if(!(upperX>=grid.getRows()-screenWidth) && moveLoc.getX()>=grid.getUpperLeftX()+(screenWidth-3)) {
+			grid.setUpperLeftX(upperX+1);
+		}
+		checkMove(moveLoc);
+		lastKey = Key.RIGHT;
 	}
 	private void cycleAttacks(Input input) {
 		if(input.isKeyPressed(Input.KEY_RIGHT) || input.isKeyPressed(Input.KEY_D)

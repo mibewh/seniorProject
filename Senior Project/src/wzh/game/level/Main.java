@@ -11,8 +11,8 @@ public class Main extends StateBasedGame{
 		super(title);
 	}
 	public void initStatesList(GameContainer arg0) throws SlickException {
-		addState(new Level2());
 		addState(new Level1());
+		addState(new Level2());
 	}
 	public static void main(String[] args) throws SlickException {
 		System.out.println("MAIN METHOD");

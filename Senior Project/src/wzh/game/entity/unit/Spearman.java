@@ -34,6 +34,9 @@ public class Spearman extends Unit {
 			attack /= 2;
 			other.setAttack(other.getAttackMult()/2);
 		}
+		else if(other instanceof Archer){
+			attack *= 3;
+		}
 		super.attack(other);
 		attack = startAttack;
 		other.setAttack(otherStartAttack);

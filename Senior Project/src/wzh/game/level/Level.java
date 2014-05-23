@@ -86,6 +86,14 @@ public abstract class Level extends BasicGameState {
 		if(faction==1) return treasury1;
 		else return treasury2;
 	}
+	public void setTreasury(int faction, int amount) {
+		if(faction==1) {
+			treasury1 = amount;
+		}
+		else {
+			treasury2 = amount;
+		}
+	}
 	public Grid getGrid() {
 		return grid;
 	}
