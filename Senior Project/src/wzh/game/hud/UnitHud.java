@@ -41,6 +41,7 @@ public class UnitHud extends Hud {
 			g.setColor(new Color(1,0,0,.9f));
 			g.fill(red);
 			g.draw(red);
+			//Unit Sprite
 			g.scale(2, 2);
 			u.getSprite().draw((x+10)/2, (y+10)/2);
 		}
