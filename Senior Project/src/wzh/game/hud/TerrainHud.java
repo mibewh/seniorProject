@@ -1,6 +1,5 @@
 package wzh.game.hud;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -21,21 +20,17 @@ public class TerrainHud extends Hud {
 		return def;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
-		if(c.getScreenX()*2>gc.getWidth()/2 && c.getScreenY()*2>gc.getHeight()/2) {
+		y=gc.getHeight()-10-height;
+		if(c.getScreenX()*2>gc.getWidth()/2) {
 			x=10;
-			y=gc.getHeight()-10-height;
-			System.out.println("True");
 		}
 		else {
 			x=gc.getWidth()-10-width;
-			y=gc.getHeight()-10-height;
 		}
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
 		TiledMap map = c.getGrid().getMap();
-		g.setColor(Color.black);
-		g.setFont(font);
 		if(getBuilding()!=null) {
 			g.scale(2f, 2f);
 			getBuilding().getSprite().draw((x+10)/2,(y+10)/2);

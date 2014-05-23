@@ -44,5 +44,7 @@ public class Hud {
 		g.scale(.5f, .5f);
 		g.fill(r);
 		g.draw(r);
+		g.setColor(Color.black);
+		g.setFont(font);
 	}
 }

@@ -29,6 +29,8 @@ public abstract class Unit extends Entity {
 	protected int movePoints;
 	protected int hp;
 	protected double attack;
+	protected double enemAttModifier;
+	protected double allyAttModifier;
 	protected boolean fortified;
 	protected boolean wasFortified;
 	
@@ -59,6 +61,8 @@ public abstract class Unit extends Entity {
 		hp = 100;
 		fortified = false;
 		attack = 30;
+		enemAttModifier = 1.0;
+		allyAttModifier = 1.0;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException{
 		super.update(gc, game, delta);
@@ -105,7 +109,7 @@ public abstract class Unit extends Entity {
 		ArrayList<Command> commands = new ArrayList<Command>();
 		commands.add(new Move(this, c));
 		if(getAttackLocations().size()>0)
-			commands.add(new Attack(this, c));
+		commands.add(new Attack(this, c));
 		commands.add(new Fortify(this, c));
 		commands.add(new Wait(this, c));
 		commands.add(new Cancel(this,c,gc));
@@ -120,7 +124,7 @@ public abstract class Unit extends Entity {
 		moveLocs = getMoveLocations();
 		ArrayList<Command> commands = new ArrayList<Command>();
 		if(getAttackLocations().size()>0)
-			commands.add(new Attack(this, c));
+		commands.add(new Attack(this, c));
 		commands.add(new Wait(this, c));
 		commands.add(new Cancel(this, c,gc));
 		postmoveMenu = new Menu(c,commands,gc);
@@ -163,7 +167,11 @@ public abstract class Unit extends Entity {
 		hp=hpChange;
 	}
 	public void attack(Unit other) {
-		other.setHp(other.getHp() - this.getAttack()*(10-getDefense()));
+		other.setHp((int)(other.getHp() - this.getAttack()*allyAttModifier*(10-getDefense())));
+		if(!other.checkKill()){
+			this.setHp((int)(this.getHp() - other.getAttack()*enemAttModifier*((10-getDefense())/10)));
+		}
+		System.out.println(other.getHp());
 	}
 	public int getAttack(){
 		return (int)(attack*(this.getHp()/100));
