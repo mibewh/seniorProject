@@ -22,12 +22,12 @@
  </layer>
  <layer name="Obstructions" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC63SMQ6AIAwF0A7ogG7q4gnqDbz/yYQEkoa00FZ+0rjoyy+CAHCDLjHNVmYX3sEys8zqPQ6PM63eyESw79wzqWfpKJkI/o6c2XoWMyg9zd7ZOpmOHo9aNPFHPymc9w6+uQzeyLL0y3seaZZJXu3W24dLKM8V+H/wp6N0blqzvTu9+2Hde+R5MuOO0HxDnXSMQAYAAA==
+   H4sIAAAAAAAAC63SMQ6AIAwF0A7ogG7q4gnqDbyV99+EBJKGtJQCP2lc9OUXQQC4oS0+zJZmF97BNLPM7D0dHmdaPc1EsO9cM6ln6SiZCP0dObP0LKYL8zV4LXtH62Q69njUovED/aRw3qt8cxk8zbL0i3seYZZJXu5W24eLS88V+H8w0lE6t1azvDu1+2HdW/N6MuOO0PwwtdFqQAYAAA==
   </data>
  </layer>
  <layer name="Objects" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgoD7QooGZgx0MBT9jc6MADcykBVBAwtQAAowMDI+B9CcqmfcEiD8DsSAjafqk0fjo8cFIgnnoZg0mMOq2wQGo7VcAoREc0EAGAAA=
+   H4sIAAAAAAAAC2NgoD7QooGZgx0MBT9jc6MADcwEAQUkTClgZETFlILHQCzACKE/UW4cwxMo/gzEgiS6TxqND4oPJkZUTK5ZyEARCQ8EwOe2gQaD2W3UBtT2KwDwuyOeQAYAAA==
   </data>
  </layer>
 </map>
