@@ -12,7 +12,7 @@
  </tileset>
  <layer name="Passable" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC51UwQ0DIQyjsEo36A5tF2hn6BLcBuxckC4Scm2D+rDuIMRJnEBOKZWODCjTfjHrgSY48mmL/2rizKiTjcXPYFdwPmw/cIizyNcIRzU6oYbqDKvvSL/11eRrdVqpnFgvXc5Yu/Lb6YXTyumzU/dODJc705FpNfZuGz35Rxucu5Uf5r2aMVw7vRvYq+Bn8Xd6FDMfPleRF3s7VvcM+6PmgM23u8cvwTNztKRzz8D16biQc0qv+M7v0uB5dzw77kRfrM3dp8jpcWJwfgH9dnTaQAYAAA
+   H4sIAAAAAAAAC51UwQ0DIQyjsEo36A5tF2hn6BLcBuxckC4Scm2D+rDuIMRJnEBOKZWODCjTfjHrgSY48mmL/2rizKiTjcXPYFdwPmw/cIizyNcIRzU6oYbqDKvvSL/11eRrdVqpnFgvXc5Yu/Lb6YXTyumzU/dODJc705FpNfZuGz35Rxucu5Uf5r2aMVw7vRvYq+Bn8Xd6FDMfPleRF3s7VvcM+6PmgM23u8cvwTNztKRzz8D16biQc0qv+M7v0uB5dzw77kRfrM3dp8jpcWJwfgH9dnTaQAYAAA==
   </data>
  </layer>
  <layer name="Difficult" width="20" height="20">
@@ -27,7 +27,7 @@
  </layer>
  <layer name="Objects" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAUjGQgMtAOIBApImBpAgJGB4TGQ/kQl854A8WcgFmSkzBz0+GCk0LxRMApoCQCrGoLFQAYAAA==
+   H4sIAAAAAAAAC2NgGAUjGQgMtAOIBApImBpAgJGB4TGQ/kQl854A8WcgFmSkzBz0+GCk0DwQsKPciFEwCrACAPPylGRABgAA
   </data>
  </layer>
 </map>

@@ -38,11 +38,6 @@ public class MainCastle extends Castle {
 	}
 	@Override
 	public String getName() {
-		if(faction==1) {
-			return "Blue Main Castle";
-		}
-		else {
-			return "Red Main Castle";
-		}
+		return "Main Castle";
 	}
 }

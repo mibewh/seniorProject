@@ -41,7 +41,7 @@ public abstract class Level extends BasicGameState {
 		grid = new Grid(new TiledMap(path));
 		grid.setCursor(new Cursor(7,7,grid,turn));
 		grid.getCursor().setFocus(true);
-		terrain = new TerrainHud(grid.getCursor());
+		terrain = new TerrainHud(grid.getCursor(),150,52);
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.scale(2, 2);
@@ -70,6 +70,7 @@ public abstract class Level extends BasicGameState {
 
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		grid.update(gc, game, delta);
+		terrain.update(gc, game, delta);
 	}
 	public void changeTurn() {
 		if(turn==1) {
