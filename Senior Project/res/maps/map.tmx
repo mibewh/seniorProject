@@ -12,7 +12,7 @@
  </tileset>
  <layer name="Passable" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC51UwQ0DIQyjsEo36A5tF2hn6BLcBuxckC4Scm2D+rDuIMRJnEBOKZWODCjTfjHrgSY48mmL/2rizKiTjcXPYFdwPmw/cIizyNcIRzU6oYbqDKvvSL/11eRrdVqpnFgvXc5Yu/Lb6YXTyumzU/dODJc705FpNfZuGz35Rxucu5Uf5r2aMVw7vRvYq+Bn8Xd6FDMfPleRF3s7VvcM+6PmgM23u8cvwTNztKRzz8D16biQc0qv+M7v0uB5dzw77kRfrM3dp8jpcWJwfgH9dnTaQAYAAA
+   H4sIAAAAAAAAC51UwQ0DIQyjsEo36A5tF2hn6BLcBuxckC4Scm2D+rDuIMRJnEBOKZWODCjTfjHrgSY48mmL/2rizKiTjcXPYFdwPmw/cIizyNcIRzU6oYbqDKvvSL/11eRrdVqpnFgvXc5Yu/Lb6YXTyumzU/dODJc705FpNfZuGz35Rxucu5Uf5r2aMVw7vRvYq+Bn8Xd6FDMfPleRF3s7VvcM+6PmgM23u8cvwTNztKRzz8D16biQc0qv+M7v0uB5dzw77kRfrM3dp8jpcWJwfgH9dnTaQAYAAA==
   </data>
  </layer>
  <layer name="Difficult" width="20" height="20">
@@ -22,7 +22,7 @@
  </layer>
  <layer name="Obstructions" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC63SMQ6AIAwF0A7ogG7q4gnqDbz/yYQEkoa00FZ+0rjoyy+CAHCDLjHNVmYX3sEys8zqPQ6PM63eyESw79wzqWfpKJkI/o6c2XoWMyg9zd7ZOpmOHo9aNPFHPymc9w6+uQzeyLL0y3seaZZJXu3W24dLKM8V+H/wp6N0blqzvTu9+2Hde+R5MuOO0HxDnXSMQAYAAA==
+   H4sIAAAAAAAAC63SMQ6AIAwF0A7ogG7qoheonsBjef9JSDBpSIG2+JPGBV9+AwgAO8jiw0xp5sIZDHP9aGKa0+BxptZrmZ+n2blmItg6lkzqaTtyJoLddAJPune0VqajxaMWje/oV0puHWHuxj+b0IvW09Et9+KeS5jhB4/uWduHi0vfEfg76OlYugOpmb+d2vvQ7t3yLIle671p8gKu/7mlQAYAAA==
   </data>
  </layer>
  <layer name="Objects" width="20" height="20">
