@@ -1,5 +1,6 @@
 package wzh.game.entity.unit;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
@@ -15,10 +16,16 @@ public class Horseman extends Unit {
 		SpriteSheet ss;
 		try {
 			ss = new SpriteSheet("Unitz.png",16,16);
-			if(faction==1)
+			if(faction==1){
 				colored = ss.getSubImage(2, 3);
-			else
+				standingAnimation=new Animation(ss,0,12,2,12,true,500,true);
+				standingAnimation.setPingPong(true);
+			}
+			else{
 				colored = ss.getSubImage(1, 3);
+				standingAnimation=new Animation(ss,0,11,2,11,true,500,true);
+				standingAnimation.setPingPong(true);
+			}
 			sprite = colored;
 			gray = ss.getSubImage(0, 3);
 		} catch (SlickException e) {

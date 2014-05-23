@@ -1,5 +1,6 @@
 package wzh.game.entity.unit;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
@@ -14,15 +15,22 @@ public class Swordsman extends Unit{
 		SpriteSheet ss;
 		try {
 			ss = new SpriteSheet("Unitz.png",16,16);
-			if(faction==1)
+			if(faction==1){
 				colored = ss.getSubImage(2, 0);
-			else
+				standingAnimation=new Animation(ss,0,6,2,6,true,500,true);
+				standingAnimation.setPingPong(true);
+			}
+			else{
 				colored = ss.getSubImage(1, 0);
+				standingAnimation=new Animation(ss,0,5,2,5,true,500,true);
+				standingAnimation.setPingPong(true);
+			}
 			sprite = colored;
 			gray = ss.getSubImage(0,0);
+			
 		} catch (SlickException e) {
 			e.printStackTrace();
-		}
+		}		
 	}
 	
 	@Override 

@@ -2,6 +2,7 @@ package wzh.game.entity.unit;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -43,6 +44,10 @@ public abstract class Unit extends Entity {
 	protected boolean displayMoves;
 	protected boolean displayAttacks;
 	
+	protected SpriteSheet spriteSheet;
+	protected Animation standingAnimation;
+	protected Animation attackAnimation;
+	
 	public Unit(int x, int y, Image img, Grid g, int faction) {
 		super(x,y,img,g);
 		this.faction = faction;
@@ -61,10 +66,15 @@ public abstract class Unit extends Entity {
 			premoveMenu.update(gc, game, delta);
 		else if(postmoveMenu!=null)
 			postmoveMenu.update(gc, game, delta);
+		
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		//Sprite
-		super.render(gc, game, g);
+		if(active)
+			standingAnimation.draw(getScreenX(), getScreenY());
+		
+		else
+			super.render(gc, game, g);
 		//Move and Attack locations
 		if(displayMoves) {
 			g.setColor(new Color(0,0,1,.3f));
