@@ -50,6 +50,7 @@ public abstract class Unit extends Entity {
 		displayAttacks = false;
 		hp = 100;
 		fortified = false;
+		attack = 30;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException{
 		super.update(gc, game, delta);
@@ -157,7 +158,7 @@ public abstract class Unit extends Entity {
 		}
 	}
 	public int getAttack(){
-		return (int)((double)(hp/10+(int)Math.sqrt(hp)*2));
+		return (int)((double)(attack+(int)Math.sqrt(hp)*2));
 		//TODO CHECK if attack * is needed here
 	}
 	public double getAttackMult() {
@@ -169,7 +170,7 @@ public abstract class Unit extends Entity {
 	
 	public int getDefense(){
 		//possibility for game balance
-		return (1+getFortification()+getTileDefense())*(hp/100);
+		return (1+getFortification()+getTileDefense())*((hp/100)/2);
 	}
 	public int getFortification() {
 		if(fortified) return 1;
