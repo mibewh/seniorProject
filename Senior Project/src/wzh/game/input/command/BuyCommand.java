@@ -24,13 +24,13 @@ public class BuyCommand extends Command {
 		Unit toAdd;
 		int x = c.getLoc().getX();
 		int y = c.getLoc().getY();
-		if(commandName.equals("Buy Spearman")) {
+		if(commandName.equals("Spearman-"+Spearman.COST+"g")) {
 			toAdd = new Spearman(x, y, c.getGrid(), faction);
 		}
-		else if(commandName.equals("Buy Swordsman")) {
+		else if(commandName.equals("Swordsman-"+Swordsman.COST+"g")) {
 			toAdd = new Swordsman(x, y, c.getGrid(), faction);
 		}
-		else if(commandName.equals("Buy Archer")) {
+		else if(commandName.equals("Archer-"+Archer.COST+"g")) {
 			toAdd = new Archer(x, y, c.getGrid(), faction);
 		}
 		else  {

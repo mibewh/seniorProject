@@ -51,7 +51,7 @@ public class Cursor extends Entity{
 			if(mode.equals("Attack"))
 				cycleAttacks(input);
 			else
-				processMoveKeys(input);
+				processMoveKeys(input,gc);
 			checkSpaceBar(input, gc, game);
 		}
 		else if(menuSelect) {
@@ -160,33 +160,35 @@ public class Cursor extends Entity{
 			u.displayPremoveMenu(this, gc);
 	}
 
-	private void processMoveKeys(Input input) {
+	private void processMoveKeys(Input input, GameContainer gc) {
 		int upperX = grid.getUpperLeftX();
 		int upperY = grid.getUpperLeftY();
+		int screenWidth = gc.getWidth()/(size*2);
+		int screenHeight = gc.getHeight()/(size*2);
 		if((input.isKeyPressed(Input.KEY_RIGHT) || input.isKeyPressed(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY())){
 			Location moveLoc = new Location(loc.getX()+1,loc.getY());
-			if(upperX>=grid.getRows()-18 && moveLoc.getX()<=grid.getRows()-3) {
-				grid.setUpperLeftX(upperX-1);
+			if(!(upperX>=grid.getRows()-screenWidth) && moveLoc.getX()>=grid.getUpperLeftX()+(screenWidth-3)) {
+				grid.setUpperLeftX(upperX+1);
 			}
 			checkMove(moveLoc);
 		}
 		else if((input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A)) && grid.isValid(loc.getX()-1, loc.getY())){
 			Location moveLoc = new Location(loc.getX()-1,loc.getY());
-			if(upperX!=0 && moveLoc.getX()<=upperX+3) {
+			if(upperX!=0 && moveLoc.getX()<=upperX+2) {
 				grid.setUpperLeftX(upperX-1);
 			}
 			checkMove(moveLoc);
 		}
 		else if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1)){
 			Location moveLoc =new Location(loc.getX(),loc.getY()+1);
-			if(upperY>=grid.getCols()-18 && moveLoc.getY()<=grid.getCols()-3) {
-				grid.setUpperLeftY(upperY-1);
+			if(!(upperY>=grid.getCols()-screenHeight) && moveLoc.getY()>=grid.getUpperLeftY()+(screenHeight-3)) {
+				grid.setUpperLeftY(upperY+1);
 			}
 			checkMove(moveLoc);
 		}
 		else if((input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) && grid.isValid(loc.getX(), loc.getY()-1)){
 			Location moveLoc = new Location(loc.getX(),loc.getY()-1);
-			if(upperY!=0 && moveLoc.getY()<=upperY+3) {
+			if(upperY!=0 && moveLoc.getY()<=upperY+2) {
 				grid.setUpperLeftY(upperY-1);
 			}
 			checkMove(moveLoc);
