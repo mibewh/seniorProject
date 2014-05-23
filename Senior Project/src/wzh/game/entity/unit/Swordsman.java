@@ -49,7 +49,7 @@ public class Swordsman extends Unit{
 		}
 		else if(other instanceof Archer){
 			allyAttModifier = 1.5;
-			other.setHp((int)(other.getHp() - this.getAttack()*allyAttModifier*(10-getDefense())));
+			other.setHp((int)(other.getHp() - this.getAttack()*allyAttModifier*(double)((10-other.getDefense()))/10));
 		}
 		else if(other instanceof Spearman){
 			allyAttModifier = 1.25;

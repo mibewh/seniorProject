@@ -48,7 +48,7 @@ public class Horseman extends Unit {
 		}
 		else if(other instanceof Archer){
 			allyAttModifier = 2;
-			other.setHp((int)(other.getHp() - this.getAttack()*allyAttModifier*(10-getDefense())));
+			other.setHp((int)(other.getHp() - this.getAttack()*allyAttModifier*(double)((10-other.getDefense()))/10));
 		}
 		else if(other instanceof Spearman){
 			allyAttModifier = .80;
