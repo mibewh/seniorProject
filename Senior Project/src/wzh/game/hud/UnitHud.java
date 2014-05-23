@@ -32,7 +32,7 @@ public class UnitHud extends Hud {
 			Unit u = (Unit)getEntity();
 			g.drawString(u.getHp()+"/100",x+90, y+55);
 			//Health bar, Total Length:115
-			float len = 115 * (u.getHp()/100);
+			float len = 115 * ((float)u.getHp()/100);
 			Rectangle red = new Rectangle(x+30,y+45,len,10);
 			Rectangle backing = new Rectangle(x+30+len,y+45,115-len,10);
 			g.setColor(new Color(.2f,.2f,.2f,.9f)); //Gray
