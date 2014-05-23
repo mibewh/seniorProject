@@ -170,6 +170,7 @@ public abstract class Unit extends Entity {
 	}
 	public void attack(Unit other) {
 		other.setHp((int)(other.getHp() - getAttack()*allyAttModifier*(double)((10-other.getDefense()))/10));
+		this.checkKill();
 		if(!other.checkKill()){
 			setHp((int)(this.getHp() - other.getAttack()*enemAttModifier*(double)((10-getDefense()))/10));
 		}		
