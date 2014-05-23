@@ -34,12 +34,14 @@ public class MoneyHud extends Hud{
 		}
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		super.render(gc, game, g);
-		Level level = (Level)game.getCurrentState();
-		g.drawString(level.getTreasury(level.getTurn())+"g",x+60, y+8);
-		g.drawString(level.gpt(level.getTurn())+"g/turn", x+60, y+25);
-		g.scale(2, 2);
-		coin.draw((x+10)/2,(y+10)/2);
+		if(!c.getMode().equals("Attack")) {
+			super.render(gc, game, g);
+			Level level = (Level)game.getCurrentState();
+			g.drawString(level.getTreasury(level.getTurn())+"g",x+60, y+8);
+			g.drawString(level.gpt(level.getTurn())+"g/turn", x+60, y+25);
+			g.scale(2, 2);
+			coin.draw((x+10)/2,(y+10)/2);
+		}
 	}
 
 }

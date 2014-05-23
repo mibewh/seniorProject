@@ -1,5 +1,7 @@
 package wzh.game.input.command;
 
+import java.util.ArrayList;
+
 import wzh.game.entity.Entity;
 import wzh.game.entity.building.Building;
 import wzh.game.entity.building.Castle;
@@ -21,7 +23,8 @@ public class End extends Command {
 	public void select(){
 		level.changeTurn();
 		c.hideMenus();
-		for(Entity e:level.getGrid().getAllEntities()) {
+		ArrayList<Entity> el = level.getGrid().getAllEntities();
+		for(Entity e:el) {
 			if(e instanceof Unit) {
 				Unit u = (Unit)e;
 				u.goColor();
@@ -29,6 +32,8 @@ public class End extends Command {
 					u.setHp(u.getHp()+10);
 					if(u.getHp()>100) u.setHp(100);
 				}
+				u.setActive(false);
+				u.getStandingAnim().restart();
 				u.setActive(true);
 			}
 		}
