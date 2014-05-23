@@ -19,16 +19,18 @@ public class Swordsman extends Unit{
 				colored = ss.getSubImage(2, 0);
 				standingAnimation=new Animation(ss,0,6,2,6,true,500,true);
 				standingAnimation.setPingPong(true);
+				attackAnimation=new Animation(ss,5,6,10,6,true,300,true);
 			}
 			else{
 				colored = ss.getSubImage(1, 0);
 				standingAnimation=new Animation(ss,0,5,2,5,true,500,true);
 				standingAnimation.setPingPong(true);
+				attackAnimation=new Animation(ss,5,5,10,5,true,300,true);
 			}
 			sprite = colored;
 			gray = ss.getSubImage(0,0);
 			
-		} catch (SlickException e) {
+		} catch (SlickException e){
 			e.printStackTrace();
 		}		
 	}

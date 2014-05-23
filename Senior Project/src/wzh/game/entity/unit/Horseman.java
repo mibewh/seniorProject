@@ -20,11 +20,13 @@ public class Horseman extends Unit {
 				colored = ss.getSubImage(2, 3);
 				standingAnimation=new Animation(ss,0,12,2,12,true,500,true);
 				standingAnimation.setPingPong(true);
+				attackAnimation=new Animation(ss,5,12,10,12,true,300,true);
 			}
 			else{
 				colored = ss.getSubImage(1, 3);
 				standingAnimation=new Animation(ss,0,11,2,11,true,500,true);
 				standingAnimation.setPingPong(true);
+				attackAnimation=new Animation(ss,5,12,10,12,true,300,true);
 			}
 			sprite = colored;
 			gray = ss.getSubImage(0, 3);
