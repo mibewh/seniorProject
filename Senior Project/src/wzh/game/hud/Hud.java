@@ -13,16 +13,14 @@ import wzh.game.input.Cursor;
 
 public class Hud {
 	
-	protected final float opacity = .7f;
-	protected final int width = 300;
-	protected final int height = 150;
+	protected final float opacity = .8f;
+	protected final int width = 75;
+	protected final int height = 45;
 	protected Cursor c;
 	protected int x,y;
 
 	public Hud(Cursor c) {
 		this.c=c;
-		x=50;
-		y=50;
 	}
 	public Building getBuilding() {
 		return c.getGrid().getB(c.getLoc());

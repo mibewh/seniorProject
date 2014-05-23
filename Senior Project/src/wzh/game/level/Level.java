@@ -48,6 +48,7 @@ public abstract class Level extends BasicGameState {
 		grid.render(gc, game, g);
 		g.setColor(Color.white);
 		renderMenus(gc, game, g);
+		terrain.render(gc, game, g);
 	}
 	private void renderMenus(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		ArrayList<Entity> ents = grid.getAllEntities();

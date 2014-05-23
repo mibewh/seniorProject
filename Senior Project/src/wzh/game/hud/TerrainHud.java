@@ -11,6 +11,8 @@ public class TerrainHud extends Hud{
 	
 	public TerrainHud(Cursor c) {
 		super(c);
+		x=10;
+		y=10;
 	}
 	public int getDefense() {
 		int def=0;
@@ -20,5 +22,6 @@ public class TerrainHud extends Hud{
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
+		if(getEntity()!=null) getEntity().getSprite().draw(x+10,y+10);
 	}
 }

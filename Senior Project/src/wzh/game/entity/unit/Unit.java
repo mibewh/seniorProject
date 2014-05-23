@@ -33,6 +33,8 @@ public abstract class Unit extends Entity {
 	
 	protected Location lastLoc;
 	
+	protected Image colored;
+	protected Image gray;
 	protected Menu premoveMenu;
 	protected Menu postmoveMenu;
 	
@@ -227,6 +229,13 @@ public abstract class Unit extends Entity {
 	public void setWasFortified(boolean f) {
 		wasFortified=f;
 	}
-	public abstract void goGray();
-	public abstract void goColor();
+	public void goGray() {
+		sprite = gray;
+	}
+	public void goColor() {
+		sprite = colored;
+	}
+	public Image getColored() {
+		return colored;
+	}
 }

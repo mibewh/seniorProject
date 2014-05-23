@@ -18,7 +18,7 @@ public class Main extends StateBasedGame{
 		System.out.println("MAIN METHOD");
 		Main main = new Main("Test");
 		AppGameContainer gc = new AppGameContainer(main);
-		gc.setDisplayMode(640, 640, false);
+		gc.setDisplayMode(640, 480, false);
 		gc.start();
 	}
 
