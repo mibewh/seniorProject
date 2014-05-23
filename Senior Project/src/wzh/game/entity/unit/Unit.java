@@ -247,4 +247,7 @@ public abstract class Unit extends Entity {
 	public Image getColored() {
 		return colored;
 	}
+	public Animation getStandingAnim() {
+		return standingAnimation;
+	}
 }

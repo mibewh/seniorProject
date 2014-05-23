@@ -32,6 +32,7 @@ public abstract class Level extends BasicGameState {
 	protected TerrainHud terrain;
 	protected MoneyHud money;
 	protected UnitHud unit;
+	protected UnitHud attack;
 
 	public Level(String path) {
 		super();
@@ -49,7 +50,8 @@ public abstract class Level extends BasicGameState {
 		
 		terrain = new TerrainHud(grid.getCursor(),150,52);
 		money = new MoneyHud(grid.getCursor(),150,52);
-		unit = new UnitHud(grid.getCursor(),150,75);
+		unit = new UnitHud(grid.getCursor(),150,75, false);
+		attack = new UnitHud(grid.getCursor(),150,75, true);
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.scale(2, 2);
@@ -59,6 +61,7 @@ public abstract class Level extends BasicGameState {
 		terrain.render(gc, game, g);
 		money.render(gc, game, g);
 		unit.render(gc, game, g);
+		attack.render(gc, game, g);
 	}
 	private void renderMenus(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		ArrayList<Entity> ents = grid.getAllEntities();
@@ -83,6 +86,7 @@ public abstract class Level extends BasicGameState {
 		terrain.update(gc, game, delta);
 		money.update(gc, game, delta);
 		unit.update(gc, game, delta);
+		attack.update(gc, game, delta);
 	}
 	public void changeTurn() {
 		if(turn==1) {

@@ -313,6 +313,9 @@ public class Cursor extends Entity{
 	public Entity getAtPos() {
 		return grid.get(loc.getX(), loc.getY());
 	}
+	public String getMode() {
+		return mode;
+	}
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
@@ -358,5 +361,8 @@ public class Cursor extends Entity{
 
 	public String getName() {
 		return null;
+	}
+	public Unit getUnit() {
+		return u;
 	}
 }

@@ -11,25 +11,44 @@ import wzh.game.entity.unit.Unit;
 import wzh.game.input.Cursor;
 
 public class UnitHud extends Hud {
+	
+	private boolean attack;
 
-	public UnitHud(Cursor c, int w, int h) {
+	public UnitHud(Cursor c, int w, int h, boolean attack) {
 		super(c,w,h);
+		this.attack = attack;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
-		x=10;
-		if(c.getScreenY()*2<gc.getHeight()/2 && c.getScreenX()*2<gc.getWidth()/2) {
-			y=gc.getHeight()-10-height;
+		if(attack) {
+			if(c.getScreenX()*2>gc.getWidth()/2 && c.getScreenY()*2<gc.getWidth()/2) {
+				x=10;
+				y=gc.getHeight()-10-height;
+			}
+			else {
+				x=gc.getWidth()-10-width;
+				y=10;
+			}
 		}
 		else {
-			y=10;
+			x=10;
+			if(c.getScreenY()*2<gc.getHeight()/2 && c.getScreenX()*2<gc.getWidth()/2) {
+				y=gc.getHeight()-10-height;
+			}
+			else {
+				y=10;
+			}
 		}
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		if(getEntity()!=null && getEntity() instanceof Unit) {
+		if((!attack && getEntity()!=null && getEntity() instanceof Unit) || (attack && c.getMode().equals("Attack"))) {
 			super.render(gc, game, g);
 			g.drawString(getEntity().getName(),x+60, y+15);
 			g.drawString("HP",x+10, y+40);
-			Unit u = (Unit)getEntity();
+			Unit u;
+			if(!attack && c.getMode().equals("Attack"))
+				u = c.getUnit();
+			else
+				u = (Unit)getEntity();
 			g.drawString(u.getHp()+"/100",x+90, y+55);
 			//Health bar, Total Length:115
 			float len = 115 * ((float)u.getHp()/100);
