@@ -36,9 +36,4 @@ public class MainCastle extends Castle {
 		}
 		//TODO Victory attained
 	}
-
-	public void hideMenus() {
-		// TODO Buildings!
-		
-	}
 }

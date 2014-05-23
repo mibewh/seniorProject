@@ -23,6 +23,7 @@ public class Cancel extends Command {
 			Unit u = (Unit)e;
 			u.revertToLastLoc();
 			c.setLoc(u.getLoc());
+			if(u.wasFortified()) u.setFortified(true);
 			if(c.isPostMove()){
 				c.setFocus(false);
 				u.displayPremoveMenu(c, gc);

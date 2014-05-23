@@ -33,10 +33,7 @@ public class Village extends Building {
 	public int getFortification(){
 		return 0;
 	}
-	//TODO Check THE VILLAGE fortification of 0
 
 	public void hideMenus() {
-		// TODO Auto-generated method stub
-		
 	}
 }

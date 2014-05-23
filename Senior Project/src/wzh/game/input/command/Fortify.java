@@ -13,6 +13,17 @@ public class Fortify extends Command {
 	}
 	
 	public void select(){
+		Unit u = (Unit)e;
+		u.hideMenus();
+		c.setUnitSelect(false);
+		c.setFocus(true);
+		u.setActive(false);
+		u.goGray();
+		c.setMode("Normal");
+		if(c.getGrid().getB(c.getLoc())!=null) {
+			c.getGrid().getB(c.getLoc()).setFaction(u.getFaction());
+		}
 		
+		u.setFortified(true);
 	}
 }
