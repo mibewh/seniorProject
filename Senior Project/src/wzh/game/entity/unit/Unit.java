@@ -27,8 +27,7 @@ public abstract class Unit extends Entity {
 	protected int movePoints;
 	protected int hp;
 	protected double attack;
-	protected int tileDefense;
-	protected int fortification;
+	protected boolean fortified;
 	
 	protected Location lastLoc;
 	
@@ -49,6 +48,7 @@ public abstract class Unit extends Entity {
 		displayMoves = false;
 		displayAttacks = false;
 		hp = 100;
+		fortified = false;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException{
 		super.update(gc, game, delta);
@@ -62,16 +62,16 @@ public abstract class Unit extends Entity {
 		if(displayMoves) {
 			g.setColor(new Color(0,0,1,.3f));
 			for(Location loc:moveLocs) {
-				g.fillRect(loc.getX()*size,loc.getY()*size,size,size);
+				g.fillRect((loc.getX()-grid.getUpperLeftX())*size,(loc.getY()-grid.getUpperLeftY())*size,size,size);
 			}
 		}
 		else if(displayAttacks) {
 			g.setColor(new Color(1,0,0,.3f));
 			for(Location loc:attackLocs) {
-				g.fillRect(loc.getX()*size,loc.getY()*size,size,size);
+				g.fillRect((loc.getX()-grid.getUpperLeftX())*size,(loc.getY()-grid.getUpperLeftY())*size,size,size);
 			}
 		}
-		Color health = new Color(1,0,0,.8f);
+		Color health = new Color(1,0,0,.99f);
 		g.setColor(health);
 		Rectangle healthBar = getHealthBar();
 		g.fill(healthBar);
@@ -141,13 +141,10 @@ public abstract class Unit extends Entity {
 	}
 	public void attack(Unit other) {
 		other.setHp(other.getHp() - (int)((double)getAttack() * (double)((10-other.getDefense()))/10.0));
-		System.out.println("Bubbles" + other.getAttack());
-		System.out.println("Rapture" + other.getHp());
-		System.out.println("Plasmid" + this.getAttack());
-		System.out.println("Comstock" + this.getHp());
 		if(!other.checkKill()) {
 			setHp(getHp() - (int)((double)other.getAttack() * (double)((10-getDefense()))/10));
 			checkKill();
+			System.out.println("oops");
 		}
 	}
 	public int getAttack(){
@@ -163,7 +160,17 @@ public abstract class Unit extends Entity {
 	
 	public int getDefense(){
 		//possibility for game balance
-		return (1+fortification+tileDefense)*(hp/100);
+		return (1+getFortification()+getTileDefense())*(hp/100);
+	}
+	public int getFortification() {
+		if(fortified) return 1;
+		else return 0;
+	}
+	public int getTileDefense() {
+		int def=0;
+		if(grid.getB(loc)!=null) def+=grid.getB(loc).getFortification();
+		if(grid.getMoveCost(loc)==2) def++;
+		return def;
 	}
 	
 	public void setLastLoc(Location loc) {
@@ -194,7 +201,7 @@ public abstract class Unit extends Entity {
 		else return null;
 	}
 	public Rectangle getHealthBar() {
-		return new Rectangle(loc.getX()*size+1, loc.getY()*size+size-2, hp/100*size-1, 2);
+		return new Rectangle((loc.getX()-grid.getUpperLeftX())*size+1, (loc.getY()-grid.getUpperLeftY())*size+size-2, (hp*size/100)-2, 2);
 	}
 	public abstract void goGray();
 	public abstract void goColor();

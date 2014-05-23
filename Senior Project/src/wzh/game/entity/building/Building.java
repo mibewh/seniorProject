@@ -16,6 +16,9 @@ public abstract class Building extends Entity {
 	public int getFaction() {
 		return faction;
 	}
+	public void setFaction(int f){
+		faction = f;
+	}
 	public abstract int getFortification();
 	public Menu getMenu() {
 		//TODO Implement building menus

@@ -12,6 +12,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import wzh.game.Grid;
 import wzh.game.Location;
 import wzh.game.entity.Entity;
+import wzh.game.entity.building.Castle;
 import wzh.game.entity.unit.Unit;
 import wzh.game.input.command.Cancel;
 import wzh.game.input.command.Command;
@@ -25,10 +26,12 @@ public class Cursor extends Entity{
 	private boolean menuSelect;
 	private int curFaction;
 	private Unit u;
+	private Castle b;
 	private String mode;
 	private Menu optionsMenu;
 	private boolean postMove;
 	private int curIndex;
+	private boolean buildingSelect;
 	
 	public Cursor(int x, int y, Grid g, int initFaction) throws SlickException{
 		super(x,y,new SpriteSheet("SpriteSheetz.png",16,16).getSubImage(7, 0),g);
@@ -37,6 +40,7 @@ public class Cursor extends Entity{
 		setFaction(initFaction);
 		unitSelect=false;
 		menuSelect=false;
+		buildingSelect=false;
 		postMove=false;
 	}
 	
@@ -47,7 +51,7 @@ public class Cursor extends Entity{
 			if(mode.equals("Attack"))
 				cycleAttacks(input);
 			else
-				processMoveKeys(input);
+				processMoveKeys(input,gc);
 			checkSpaceBar(input, gc, game);
 		}
 		else if(menuSelect) {
@@ -70,6 +74,11 @@ public class Cursor extends Entity{
 			else if(menuSelect) {
 				optionsMenu.get(optionsMenu.size()-1).select();
 			}
+			else if(buildingSelect) {
+				b.hideMenus();
+				focus=true;
+				buildingSelect = false;
+			}
 			else if(grid.isEmpty(loc)){
 				displayOptionsMenu(this, gc, game);
 				menuSelect=true;
@@ -87,6 +96,15 @@ public class Cursor extends Entity{
 					unitSelect=true;
 					u.displayPremoveMenu(this, gc);	
 					focus = false;
+				}
+			}
+			else if(!buildingSelect && grid.getB(loc)!=null && grid.getB(loc).getFaction()==curFaction && grid.getB(loc) instanceof Castle
+					&& grid.isEmpty(loc) && !unitSelect) {
+				b = (Castle)grid.getB(loc);
+				if(b.isActive()) {
+					b.displayPurchaseMenu(this, gc, game);
+					focus = false;
+					buildingSelect = true;
 				}
 			}
 			else if(unitSelect && mode.equals("Move")){
@@ -117,6 +135,9 @@ public class Cursor extends Entity{
 					u.goGray();
 					u.setDisplayAttacks(false);
 					u.setActive(false);
+					if(grid.getB(loc)!=null) {
+						grid.getB(loc).setFaction(u.getFaction());
+					}
 				}
 				focus = true;
 				unitSelect = false;
@@ -139,21 +160,37 @@ public class Cursor extends Entity{
 			u.displayPremoveMenu(this, gc);
 	}
 
-	private void processMoveKeys(Input input) {
+	private void processMoveKeys(Input input, GameContainer gc) {
+		int upperX = grid.getUpperLeftX();
+		int upperY = grid.getUpperLeftY();
+		int screenWidth = gc.getWidth()/(size*2);
+		int screenHeight = gc.getHeight()/(size*2);
 		if((input.isKeyPressed(Input.KEY_RIGHT) || input.isKeyPressed(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY())){
 			Location moveLoc = new Location(loc.getX()+1,loc.getY());
+			if(!(upperX>=grid.getRows()-screenWidth) && moveLoc.getX()>=grid.getUpperLeftX()+(screenWidth-3)) {
+				grid.setUpperLeftX(upperX+1);
+			}
 			checkMove(moveLoc);
 		}
-		if((input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A)) && grid.isValid(loc.getX()-1, loc.getY())){
+		else if((input.isKeyPressed(Input.KEY_LEFT) || input.isKeyPressed(Input.KEY_A)) && grid.isValid(loc.getX()-1, loc.getY())){
 			Location moveLoc = new Location(loc.getX()-1,loc.getY());
+			if(upperX!=0 && moveLoc.getX()<=upperX+2) {
+				grid.setUpperLeftX(upperX-1);
+			}
 			checkMove(moveLoc);
 		}
-		if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1)){
+		else if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1)){
 			Location moveLoc =new Location(loc.getX(),loc.getY()+1);
+			if(!(upperY>=grid.getCols()-screenHeight) && moveLoc.getY()>=grid.getUpperLeftY()+(screenHeight-3)) {
+				grid.setUpperLeftY(upperY+1);
+			}
 			checkMove(moveLoc);
 		}
-		if((input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) && grid.isValid(loc.getX(), loc.getY()-1)){
+		else if((input.isKeyPressed(Input.KEY_UP) || input.isKeyPressed(Input.KEY_W)) && grid.isValid(loc.getX(), loc.getY()-1)){
 			Location moveLoc = new Location(loc.getX(),loc.getY()-1);
+			if(upperY!=0 && moveLoc.getY()<=upperY+2) {
+				grid.setUpperLeftY(upperY-1);
+			}
 			checkMove(moveLoc);
 		}
 	}
@@ -198,9 +235,6 @@ public class Cursor extends Entity{
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(gc, game, g);
-//		if(menuSelect) {
-//			optionsMenu.render(gc, game, g);
-//		}
 	}
 	public void setFocus(boolean focus){
 		this.focus = focus;
@@ -245,5 +279,9 @@ public class Cursor extends Entity{
 
 	public Menu getMenu() {
 		return optionsMenu;
+	}
+
+	public void setBuildingSelect(boolean c) {
+		buildingSelect = c;		
 	}
 }

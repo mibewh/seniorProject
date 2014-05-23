@@ -6,6 +6,8 @@ import org.newdawn.slick.SpriteSheet;
 import wzh.game.Grid;
 
 public class Spearman extends Unit {
+	
+	public static final int COST = 20;
 
 	public Spearman(int x, int y, Grid g, int faction) {
 		super(x, y, null, g, faction);

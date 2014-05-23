@@ -27,9 +27,11 @@ public class Grid {
 	Entity[][] entities;
 	Building[][] buildings;
 	private Cursor cursor;
+	private Location upperLeft;
 	
 	public Grid(TiledMap map) throws SlickException {
 		this.map = map;
+		upperLeft = new Location(0,0);
 		rows = map.getWidth();
 		cols = map.getHeight();
 		entities = new Entity[rows][cols];
@@ -102,11 +104,52 @@ public class Grid {
 			}
 		}
 	}
+	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
+		//System.out.println(upperLeft);
+		cursor.update(gc, game, delta);
+		for(int x = 0; x<cols;x++) {
+			for(int y = 0; y<rows;y++) {
+				if(entities[x][y] != null) {
+					entities[x][y].update(gc, game, delta);
+				}
+			}
+		}
+		for(int x = 0; x<cols;x++) {
+			for(int y = 0; y<rows;y++) {
+				if(buildings[x][y] != null) {
+					buildings[x][y].update(gc, game, delta);
+				}
+			}
+		}
+	}
+	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
+		for(int l=0;l<map.getLayerCount()-1;l++) {
+			map.render(0,0,upperLeft.getX(),upperLeft.getY(),20,20,l,false);
+		}//map.render(0, 0, 0, 0, 20, 20);
+		for(int x = 0; x<cols;x++) {
+			for(int y = 0; y<rows;y++) {
+				if(buildings[x][y] != null) {
+					buildings[x][y].render(gc,game,g);
+				}
+			}
+		}
+		for(int x = 0; x<cols;x++) {
+			for(int y = 0; y<rows;y++) {
+				if(entities[x][y] != null) {
+					entities[x][y].render(gc,game,g);
+				}
+			}
+		}
+		cursor.render(gc, game, g);
+	}
 	public Entity get(int x, int y) {
 		return entities[x][y];
 	}
 	public Entity get(Location loc) {
 		return entities[loc.getX()][loc.getY()];
+	}
+	public Building getB(Location loc) {
+		return buildings[loc.getX()][loc.getY()];
 	}
 	public ArrayList<Entity> getAllEntities() {
 		ArrayList<Entity> arr = new ArrayList<Entity>();
@@ -114,6 +157,15 @@ public class Grid {
 			for(int y=0;y<rows;y++) {
 				if(!isEmpty(x,y)) //Remove this line if there are complications
 					arr.add(entities[x][y]);
+			}
+		}
+		return arr;
+	}
+	public ArrayList<Building> getAllBuildings() {
+		ArrayList<Building> arr = new ArrayList<Building>();
+		for(int x=0;x<cols;x++) {
+			for(int y=0;y<rows;y++) {
+				if(buildings[x][y]!=null) arr.add(buildings[x][y]);
 			}
 		}
 		return arr;
@@ -142,6 +194,18 @@ public class Grid {
 	public int getCols() {
 		return cols;
 	}
+	public int getUpperLeftX() {
+		return upperLeft.getX();
+	}
+	public void setUpperLeftX(int x) {
+		upperLeft = new Location(x,upperLeft.getY());
+	}
+	public int getUpperLeftY() {
+		return upperLeft.getY();
+	}
+	public void setUpperLeftY(int y) {
+		upperLeft = new Location(upperLeft.getX(),y);
+	}
 	public boolean isEmpty(Location loc) {
 		if(entities[loc.getX()][loc.getY()] == null) return true;
 		else return false;
@@ -163,36 +227,6 @@ public class Grid {
 	}
 	public TiledMap getMap() {
 		return map;
-	}
-	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
-		cursor.update(gc, game, delta);
-		for(int x = 0; x<cols;x++) {
-			for(int y = 0; y<rows;y++) {
-				if(entities[x][y] != null) {
-					entities[x][y].update(gc, game, delta);
-				}
-			}
-		}
-	}
-	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		for(int l=0;l<map.getLayerCount()-1;l++) {
-			map.render(0,0,0,0,20,20,l,false);
-		}//map.render(0, 0, 0, 0, 20, 20);
-		for(int x = 0; x<cols;x++) {
-			for(int y = 0; y<rows;y++) {
-				if(buildings[x][y] != null) {
-					buildings[x][y].render(gc,game,g);
-				}
-			}
-		}
-		for(int x = 0; x<cols;x++) {
-			for(int y = 0; y<rows;y++) {
-				if(entities[x][y] != null) {
-					entities[x][y].render(gc,game,g);
-				}
-			}
-		}
-		cursor.render(gc, game, g);
 	}
 	public Cursor getCursor() {
 		return cursor;

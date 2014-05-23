@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="SpriteSheetz" tilewidth="16" tileheight="16">
+  <image source="SpriteSheetz.png" width="240" height="240"/>
+ </tileset>
+ <tileset firstgid="226" name="Unitz" tilewidth="16" tileheight="16">
+  <image source="Unitz.png" width="240" height="240"/>
+ </tileset>
+ <layer name="Passable" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC52ZUW4jMQxDJ8lVcoO5/90WC2ywxusjpebDaJqxZVEiqSn6uq7rFdYTi89sz2bxHOM+vlgWb3M/z1u8v7/f4c6W0yv8/izPtrGZ74SZ8XjWavOS+MyzYU/52PPGO8PQ+LRZqQ9nfvZ968u5h7kR27nvDrVgLOK3fKzXSctPuce4kHpjmOkNKTfTe8NEDvIeyzH5Gnls3kG9n7ka55h34sLj6vmmvK2v27smH9ns2+iuzYYU48w14T910jS9xWy92vTEftJDUizyLnlPwkWtWCzjfurLGadxyHh/nr0RL+XeZkzSRdI4eUUME49sTlHXjEH/Moz0tYTFcGx9gncZJ1hnw9bmVOPTxGnTNM+Rb8RxxjB+2Z2GbaPL1gNyzPARI3FN95DLyQeIOWGyOjVdWP7GMebyDrWgDs13U542W9lX8ok1T/WyeOfZ+/qJl/U2LtFD6EeTlySeNg1bnc6739fPnBMO1nczX5q2Uy82OuLzNMvNq5Iup33Gb+tFwp7utBiPf71JXEo6NAyN99Zf25PitncR4vnwzbzFvrM9VtOWQ/Jm80HTAONbDd/DvbzL+G1eYL3bzEnrqWGgFplv04vVc+KR4UjxUj9M3613G05ZrcxDqWnTrHnJhKNhPveb59Avk0bMn22WGH+sn9ZX44o9S1wyHdicMY5Oep28MHHS6kJu2Eyz3CYsj/C5LfbB9GAYrTbM8315TVs+STeTHo0biXMTF4nXPhuHjBtJN1b/dH/TzwYDe/XpjfV44wdtfrAnSQ9Tv1ItTAOv6/97gfnSlKPhN201/U39oDYNA+O9w9l29+RdfG5322fjacJg59IMTNgn32rzq3Er6W7K/8w51W8TI+FI9U0YplqRGyfvLIfkSdSeccRmd8K9/S7lwpzZi/vqOaeaPRGz1WLS/cSJxmHqP816xuFcNn5Zvtar3/YnzUjW6b4cS/OxDdeavhNe7jNf3PAy1cpqsfEKcrDxo+nC5u2Wl5M3WN9OHqa7t971KHc3zLc8Y0+TlqY+c/4n72e/qE3rh71r2d8JqR7Nkyzn3+jb8kt4qdHPel8/cZz4zKet3rbXavXNanw4sZ3/I0g1sN6nfdb3bzGk3iUfMq9j/lbTqc7pHWPivd2ReGv+b5pl3e381Ifpfb352NZnPntPD2ua38b8RgfG0+13k2eZFhqOzfvqxP2JYyn+5/xd9m7noZ39A1gOWRsQJwAA
+  </data>
+ </layer>
+ <layer name="Difficult" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3XwQnAIBAAwVRg/+UGIX6EkG9cZsAC9qF3XhfAu/GcU43tnKrYAZyrcocL71FhPhQalkrHVGgAAOBbYe8r/CkKDUulYyo0APxB4T0tzLd936i0nKzQMBUaaLoBiLoPZhAnAAA=
+  </data>
+ </layer>
+ <layer name="Obstructions" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+WYSw4CIQyGZ6MLdWe8j55APYLxAN5/JySQkAkd+oSiX0KIydDhpw/qLAuNIzAgLkT7vaDq8AxFwzmMnfmOeFB9MUtszQp1/55j61/x7pNfyI88Tsh1Hn3irWZRz7S21oNPOHuprR2tpdYrUfRI1moi7fug9S092r0KRgO0rwOwvjVeYdzD2Cc7cZbGGUYDdMYcDaPqGxQvXF9AXNNsXcuszjw/+06/Le9Ky5ip+fqc5pG+kdouczDq0awFtfdp5i7WTvaTRX3rqaNEmkcWdZRrS1uLFKi2YyhzSPpuKRr+5eaMNx2R7BuKHi0dUF8g6Zsp949VjmtpiWDqgIYOTI+moSWypUf73rDqFyJbd6jkzDj98hquvrWPuHZqGiAwGiT1LWt5Iuy0zp6DZrzFWHs0nuuhQeMOq9U2SuxL0NRRopG7HLTslDXtFsZnwesY9b1LyixaqL3A7FoiFrkyCu8aKD7xDvc7lMdcoeI5zjh575WWlhnqMJZZ6nCv/8te4Oj4AiDOmKsQJwAA
+  </data>
+ </layer>
+ <layer name="Objects" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2Z0RECMQhErwQ7EBuwA+2/Hm3AuV/nBEwgGy77fnMkgSUhzG0bIfNzSbZ7JswZzQ20bnXuytjVYf82xqN1+ZVfmh87Hl9mwPLDg6XJDs/LMS33V+SdR13mpEWXiLP8D948bMnX0b5kciZfSAyemklIJqjeifiI6CG+NUa/N1fF0gEZY7S+yF45Uwd0XAkh8Zypn+v15RWyixgq6YKoMxXqkaA3QA4R4NoV8haFdNprsbXu00q6jK4Nkjh3pTo3239QMca198woXx7O7yqdvx40TVaJwYp8ACs4rUIQJwAA
+  </data>
+ </layer>
+</map>

@@ -3,6 +3,7 @@ package wzh.game.input.command;
 import org.newdawn.slick.GameContainer;
 
 import wzh.game.entity.Entity;
+import wzh.game.entity.building.Castle;
 import wzh.game.entity.unit.Unit;
 import wzh.game.input.Cursor;
 
@@ -36,6 +37,12 @@ public class Cancel extends Command {
 			c.hideMenus();
 			c.setMenuSelect(false);
 			c.setFocus(true);
+		}
+		else if (e instanceof Castle) {
+			Castle b = (Castle)e;
+			b.hideMenus();
+			c.setFocus(true);
+			c.setBuildingSelect(false);
 		}
 	}
 	
