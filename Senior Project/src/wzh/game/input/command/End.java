@@ -25,6 +25,9 @@ public class End extends Command {
 			if(e instanceof Unit) {
 				Unit u = (Unit)e;
 				u.goColor();
+				if(u.isFortified()) {
+					u.setHp(u.getHp()+10);
+				}
 				u.setActive(true);
 			}
 		}

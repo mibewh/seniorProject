@@ -29,6 +29,7 @@ public abstract class Unit extends Entity {
 	protected int hp;
 	protected double attack;
 	protected boolean fortified;
+	protected boolean wasFortified;
 	
 	protected Location lastLoc;
 	
@@ -36,9 +37,9 @@ public abstract class Unit extends Entity {
 	protected Menu postmoveMenu;
 	
 	protected ArrayList<Location> moveLocs;
-	private ArrayList<Location> attackLocs;
+	protected ArrayList<Location> attackLocs;
 	protected boolean displayMoves;
-	private boolean displayAttacks;
+	protected boolean displayAttacks;
 	
 	public Unit(int x, int y, Image img, Grid g, int faction) {
 		super(x,y,img,g);
@@ -84,7 +85,7 @@ public abstract class Unit extends Entity {
 		//Fortified buff
 		if(fortified) {
 			SpriteSheet units = new SpriteSheet("Unitz.png",16,16);
-			//units.getSubImage(x, y)
+			units.getSubImage(0, 4).draw((loc.getX()-grid.getUpperLeftX())*size,(loc.getY()-grid.getUpperLeftY())*size);
 		}
 	}
 	public void displayPremoveMenu(Cursor c, GameContainer gc) {
@@ -218,6 +219,12 @@ public abstract class Unit extends Entity {
 	}
 	public void setFortified(boolean f) {
 		fortified=f;
+	}
+	public boolean wasFortified() {
+		return wasFortified;
+	}
+	public void setWasFortified(boolean f) {
+		wasFortified=f;
 	}
 	public abstract void goGray();
 	public abstract void goColor();
