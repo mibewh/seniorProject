@@ -1,5 +1,6 @@
 package wzh.game.entity.unit;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
@@ -14,10 +15,18 @@ public class Spearman extends Unit {
 		SpriteSheet ss;
 		try {
 			ss = new SpriteSheet("Unitz.png",16,16);
-			if(faction==1)
+			if(faction==1){
 				colored = ss.getSubImage(2, 1);
-			else
-				colored = ss.getSubImage(1, 1);
+				standingAnimation=new Animation(ss,0,8,2,8,true,500,true);
+				standingAnimation.setPingPong(true);
+				attackAnimation=new Animation(ss,5,8,10,8,true,300,true);
+			}
+			else{
+				//colored = ss.getSubImage(1, 1);
+				standingAnimation=new Animation(ss,0,7,2,7,true,500,true);
+				standingAnimation.setPingPong(true);
+				attackAnimation=new Animation(ss,5,7,10,7,true,300,true);
+			}
 			sprite = colored;
 			gray = ss.getSubImage(0, 1);
 		} catch (SlickException e) {

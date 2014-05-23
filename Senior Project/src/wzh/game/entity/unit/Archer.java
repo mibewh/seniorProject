@@ -2,6 +2,7 @@ package wzh.game.entity.unit;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
@@ -18,10 +19,18 @@ public class Archer extends Unit {
 		SpriteSheet ss;
 		try {
 			ss = new SpriteSheet("Unitz.png",16,16);
-			if(faction==1)
+			if(faction==1){
 				colored = ss.getSubImage(2, 2);
-			else
+				standingAnimation=new Animation(ss,0,10,2,10,true,500,true);
+				standingAnimation.setPingPong(true);
+				attackAnimation=new Animation(ss,5,10,10,10,true,300,true);
+			}
+			else{
 				colored = ss.getSubImage(1, 2);
+				standingAnimation=new Animation(ss,0,9,2,9,true,500,true);
+				standingAnimation.setPingPong(true);
+				attackAnimation=new Animation(ss,5,9,10,9,true,300,true);
+			}
 			sprite = colored;
 			gray = ss.getSubImage(0, 2);
 		} catch (SlickException e) {
