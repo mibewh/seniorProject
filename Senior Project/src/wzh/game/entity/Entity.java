@@ -65,6 +65,7 @@ public abstract class Entity {
 	public void setActive(boolean a) {
 		active = a;
 	}
+	public abstract String getName();
 	public abstract void hideMenus();
 	public abstract Menu getMenu();
 }

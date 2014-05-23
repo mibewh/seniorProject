@@ -355,4 +355,8 @@ public class Cursor extends Entity{
 	public void setBuildingSelect(boolean c) {
 		buildingSelect = c;		
 	}
+
+	public String getName() {
+		return null;
+	}
 }

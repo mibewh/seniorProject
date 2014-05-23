@@ -68,4 +68,7 @@ public class Archer extends Unit {
 			e.printStackTrace();
 		}	
 	}
+	public String getName() {
+		return "Archer";
+	}
 }

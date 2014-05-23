@@ -78,5 +78,9 @@ public class Castle extends Building {
 	public Menu getMenu() {
 		return menu;
 	}
+
+	public String getName() {
+		return "Castle";
+	}
 }
 

@@ -8,29 +8,40 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.tiled.TiledMap;
 
 import wzh.game.Grid;
 import wzh.game.entity.Entity;
 import wzh.game.entity.building.Building;
 import wzh.game.entity.building.Castle;
 import wzh.game.entity.building.Village;
+import wzh.game.hud.TerrainHud;
+import wzh.game.input.Cursor;
 
 public abstract class Level extends BasicGameState {
+	protected String path;
 
 	protected Grid grid;
 	protected int turn;
 	protected int turnNumber;
 	protected int treasury1;
 	protected int treasury2;
+	protected TerrainHud terrain;
 
-	public Level() {
+	public Level(String path) {
 		super();
+		this.path = path;
 	}
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		turn = 1;
 		turnNumber=1;
 		treasury1=20;
 		treasury2=20;
+		
+		grid = new Grid(new TiledMap(path));
+		grid.setCursor(new Cursor(7,7,grid,turn));
+		grid.getCursor().setFocus(true);
+		terrain = new TerrainHud(grid.getCursor());
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.scale(2, 2);

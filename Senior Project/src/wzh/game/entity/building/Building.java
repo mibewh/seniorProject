@@ -21,7 +21,6 @@ public abstract class Building extends Entity {
 	}
 	public abstract int getFortification();
 	public Menu getMenu() {
-		//TODO Implement building menus
 		return null;
 	} 
 }

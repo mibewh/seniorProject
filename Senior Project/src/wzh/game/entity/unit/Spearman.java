@@ -61,4 +61,7 @@ public class Spearman extends Unit {
 		}
 		
 	}
+	public String getName() {
+		return "Spearman";
+	}
 }

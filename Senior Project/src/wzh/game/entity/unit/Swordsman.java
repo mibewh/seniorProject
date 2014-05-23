@@ -64,4 +64,8 @@ public class Swordsman extends Unit{
 		}
 		
 	}
+
+	public String getName() {
+		return "Swordsman";
+	}
 }
