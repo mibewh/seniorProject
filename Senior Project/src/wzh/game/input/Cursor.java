@@ -51,7 +51,7 @@ public class Cursor extends Entity{
 			if(mode.equals("Attack"))
 				cycleAttacks(input);
 			else
-				processMoveKeys(input);
+				processMoveKeys(input,gc);
 			checkSpaceBar(input, gc, game);
 		}
 		else if(menuSelect) {
@@ -160,12 +160,14 @@ public class Cursor extends Entity{
 			u.displayPremoveMenu(this, gc);
 	}
 
-	private void processMoveKeys(Input input) {
+	private void processMoveKeys(Input input, GameContainer gc) {
 		int upperX = grid.getUpperLeftX();
 		int upperY = grid.getUpperLeftY();
+		int screenWidth = gc.getWidth()/(size*2);
+		int screenHeight = gc.getHeight()/(size*2);
 		if((input.isKeyPressed(Input.KEY_RIGHT) || input.isKeyPressed(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY())){
 			Location moveLoc = new Location(loc.getX()+1,loc.getY());
-			if(!(upperX>=grid.getRows()-20) && moveLoc.getX()>=grid.getUpperLeftX()+17) {
+			if(!(upperX>=grid.getRows()-screenWidth) && moveLoc.getX()>=grid.getUpperLeftX()+(screenWidth-3)) {
 				grid.setUpperLeftX(upperX+1);
 			}
 			checkMove(moveLoc);
@@ -179,7 +181,7 @@ public class Cursor extends Entity{
 		}
 		else if((input.isKeyPressed(Input.KEY_DOWN) || input.isKeyPressed(Input.KEY_S)) && grid.isValid(loc.getX(), loc.getY()+1)){
 			Location moveLoc =new Location(loc.getX(),loc.getY()+1);
-			if(!(upperY>=grid.getCols()-20) && moveLoc.getY()>=grid.getUpperLeftY()+17) {
+			if(!(upperY>=grid.getCols()-screenHeight) && moveLoc.getY()>=grid.getUpperLeftY()+(screenHeight-3)) {
 				grid.setUpperLeftY(upperY+1);
 			}
 			checkMove(moveLoc);
