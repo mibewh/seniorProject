@@ -48,13 +48,13 @@ public class Castle extends Building {
 		Level level = (Level)game.getCurrentState();
 		int money = level.getTreasury(faction);
 		if(money>=Spearman.COST)
-			commands.add(new BuyCommand(this, c, "Spearman-"+Spearman.COST+"g", faction));
+			commands.add(new BuyCommand(this, c, "Spearman-"+Spearman.COST+"g", faction, game));
 		if(money>=Swordsman.COST)
-			commands.add(new BuyCommand(this, c, "Swordsman-"+Swordsman.COST+"g", faction));
+			commands.add(new BuyCommand(this, c, "Swordsman-"+Swordsman.COST+"g", faction, game));
 		if(money>=Archer.COST)
-			commands.add(new BuyCommand(this, c, "Archer-"+Archer.COST+"g", faction));
+			commands.add(new BuyCommand(this, c, "Archer-"+Archer.COST+"g", faction, game));
 		if(money>=Horseman.COST)
-			commands.add(new BuyCommand(this, c, "Horseman-"+Horseman.COST+"g", faction));
+			commands.add(new BuyCommand(this, c, "Horseman-"+Horseman.COST+"g", faction, game));
 		commands.add(new Cancel(this, c, gc));
 		menu = new Menu(c, commands, gc);
 		
