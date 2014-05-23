@@ -24,12 +24,13 @@ public class MoneyHud extends Hud{
 		}
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
-		y=10;
-		if(c.getScreenX()*2>gc.getWidth()/2) {
+		if(c.getScreenX()*2>gc.getWidth()/2 && c.getScreenY()*2<gc.getWidth()/2) {
 			x=10;
+			y=gc.getHeight()-10-height;
 		}
 		else {
 			x=gc.getWidth()-10-width;
+			y=10;
 		}
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {

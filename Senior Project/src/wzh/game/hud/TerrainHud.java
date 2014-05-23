@@ -21,7 +21,7 @@ public class TerrainHud extends Hud {
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		y=gc.getHeight()-10-height;
-		if(c.getScreenX()*2>gc.getWidth()/2) {
+		if(c.getScreenX()*2>gc.getWidth()/2 && c.getScreenY()*2>gc.getWidth()/2) {
 			x=10;
 		}
 		else {

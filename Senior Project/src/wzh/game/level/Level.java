@@ -17,6 +17,7 @@ import wzh.game.entity.building.Castle;
 import wzh.game.entity.building.Village;
 import wzh.game.hud.MoneyHud;
 import wzh.game.hud.TerrainHud;
+import wzh.game.hud.UnitHud;
 import wzh.game.input.Cursor;
 
 public abstract class Level extends BasicGameState {
@@ -27,8 +28,10 @@ public abstract class Level extends BasicGameState {
 	protected int turnNumber;
 	protected int treasury1;
 	protected int treasury2;
+	
 	protected TerrainHud terrain;
 	protected MoneyHud money;
+	protected UnitHud unit;
 
 	public Level(String path) {
 		super();
@@ -43,8 +46,10 @@ public abstract class Level extends BasicGameState {
 		grid = new Grid(new TiledMap(path));
 		grid.setCursor(new Cursor(7,7,grid,turn));
 		grid.getCursor().setFocus(true);
+		
 		terrain = new TerrainHud(grid.getCursor(),150,52);
 		money = new MoneyHud(grid.getCursor(),150,52);
+		unit = new UnitHud(grid.getCursor(),150,75);
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.scale(2, 2);
@@ -53,6 +58,7 @@ public abstract class Level extends BasicGameState {
 		renderMenus(gc, game, g);
 		terrain.render(gc, game, g);
 		money.render(gc, game, g);
+		unit.render(gc, game, g);
 	}
 	private void renderMenus(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		ArrayList<Entity> ents = grid.getAllEntities();
@@ -76,6 +82,7 @@ public abstract class Level extends BasicGameState {
 		grid.update(gc, game, delta);
 		terrain.update(gc, game, delta);
 		money.update(gc, game, delta);
+		unit.update(gc, game, delta);
 	}
 	public void changeTurn() {
 		if(turn==1) {
