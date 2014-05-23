@@ -27,6 +27,7 @@ public class End extends Command {
 				u.goColor();
 				if(u.isFortified()) {
 					u.setHp(u.getHp()+10);
+					if(u.getHp()>100) u.setHp(100);
 				}
 				u.setActive(true);
 			}
