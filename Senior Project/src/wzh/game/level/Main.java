@@ -15,7 +15,6 @@ public class Main extends StateBasedGame{
 		addState(new Level2("maps/map2.tmx"));
 	}
 	public static void main(String[] args) throws SlickException {
-		System.out.println("MAIN METHOD");
 		Main main = new Main("Test");
 		AppGameContainer gc = new AppGameContainer(main);
 		gc.setDisplayMode(640, 480, false);

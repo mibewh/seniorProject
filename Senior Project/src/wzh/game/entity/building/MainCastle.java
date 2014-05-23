@@ -1,8 +1,10 @@
 package wzh.game.entity.building;
 
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.Grid;
 
@@ -16,6 +18,7 @@ import wzh.game.Grid;
 
 public class MainCastle extends Castle {
 
+	
 	public MainCastle(int x, int y, Image img, Grid g, int faction) {
 		super(x, y, img, g, faction);
 	}
@@ -27,14 +30,20 @@ public class MainCastle extends Castle {
 		super.setFaction(f);
 		try {
 			SpriteSheet ss = new SpriteSheet("SpriteSheetz.png",16,16);
-			if(faction==1)
+			if(faction==1) {
 				sprite = ss.getSubImage(1, 4);
-			else
+			}
+			else {
 				sprite = ss.getSubImage(0, 4);
+			}
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 		//TODO Victory attained
+		grid.victory(f);
+	}
+	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
+		super.update(gc, game, delta);
 	}
 	@Override
 	public String getName() {

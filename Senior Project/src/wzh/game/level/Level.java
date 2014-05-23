@@ -1,11 +1,14 @@
 package wzh.game.level;
 
+import java.awt.Font;
 import java.util.ArrayList;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
@@ -46,6 +49,8 @@ public abstract class Level extends BasicGameState {
 		
 		grid = new Grid(new TiledMap(path));
 		grid.setCursor(new Cursor(7,7,grid,turn));
+		grid.getCursor().setLoc(grid.getBlueSpawn());
+		grid.centerOnCursor(gc.getWidth(), gc.getHeight());
 		grid.getCursor().setFocus(true);
 		
 		terrain = new TerrainHud(grid.getCursor(),150,52);
@@ -62,6 +67,19 @@ public abstract class Level extends BasicGameState {
 		money.render(gc, game, g);
 		unit.render(gc, game, g);
 		attack.render(gc, game, g);
+		if(grid.getVictory()) {
+			g.setFont(new TrueTypeFont(new Font("Euphemia", Font.BOLD , 36), false));
+			g.scale(.5f, .5f);
+			if(grid.getVictor()==1) {
+				g.setColor(Color.blue);
+				g.drawString("Blue Wins!", gc.getWidth()/2-100, gc.getHeight()/2-20);
+			}
+			else {
+				g.setColor(Color.red);
+				g.drawString("Red Wins!", gc.getWidth()/2-100, gc.getHeight()/2-20);
+			}
+			g.scale(2, 2);
+		}
 	}
 	private void renderMenus(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		ArrayList<Entity> ents = grid.getAllEntities();
@@ -87,16 +105,27 @@ public abstract class Level extends BasicGameState {
 		money.update(gc, game, delta);
 		unit.update(gc, game, delta);
 		attack.update(gc, game, delta);
+		if(grid.getVictory()) {
+			grid.getCursor().setFocus(false);
+			Input in = gc.getInput();
+			if (in.isKeyPressed(Input.KEY_SPACE) || in.isKeyPressed(Input.KEY_ENTER) || in.isKeyPressed(Input.KEY_ESCAPE) || in.isKeyPressed(Input.KEY_BACK)) {
+				init(gc, game);
+				game.enterState(0);
+			}
+		}
 	}
-	public void changeTurn() {
+	public void changeTurn(GameContainer gc) {
 		if(turn==1) {
 			turn=2;
+			grid.getCursor().setLoc(grid.getRedSpawn());
 		}
 		else  {
 			turn=1;
+			grid.getCursor().setLoc(grid.getBlueSpawn());
 			turnNumber++;
 			calculateGold();
 		}
+		grid.centerOnCursor(gc.getWidth(),gc.getHeight());
 		grid.getCursor().setFaction(turn);
 	}
 	private void calculateGold() {

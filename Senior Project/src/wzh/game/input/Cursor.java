@@ -285,7 +285,7 @@ public class Cursor extends Entity{
 	private void displayOptionsMenu(Cursor cursor, GameContainer gc, StateBasedGame game) {
 		ArrayList<Command> commands = new ArrayList<Command>();
 		Level level = (Level)game.getCurrentState();
-		commands.add(new End(level,this));
+		commands.add(new End(level,this,gc));
 		commands.add(new Cancel(this,this,gc));
 		optionsMenu = new Menu(this,commands,gc);
 	}

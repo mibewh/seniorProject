@@ -28,6 +28,9 @@ public class Grid {
 	Building[][] buildings;
 	private Cursor cursor;
 	private Location upperLeft;
+	private Location redSpawn, blueSpawn;
+	private boolean victory;
+	private int victor;
 	
 	public Grid(TiledMap map) throws SlickException {
 		this.map = map;
@@ -37,6 +40,17 @@ public class Grid {
 		entities = new Entity[rows][cols];
 		buildings = new Building[rows][cols];
 		loadEntities();
+		victory = false;
+	}
+	public void centerOnCursor(int w, int h) {
+		int screenHeight = h/(cursor.getSize()*2);
+		int screenWidth = w/(cursor.getSize()*2);
+		setUpperLeftX(cursor.getLoc().getX()-(screenWidth/2));
+		setUpperLeftY(cursor.getLoc().getY()-(screenHeight/2));
+		if(upperLeft.getX()<0) setUpperLeftX(0);
+		else if(upperLeft.getX()>cols-screenWidth) setUpperLeftX(cols-screenWidth);
+		if(upperLeft.getY()<0) setUpperLeftY(0);
+		else if(upperLeft.getY()>rows-screenHeight) setUpperLeftX(rows-screenHeight);
 	}
 	public void loadEntities() throws SlickException{
 		int layer = map.getLayerIndex("Objects");
@@ -88,9 +102,11 @@ public class Grid {
 					break;
 				case 61:
 					build = new MainCastle(x,y,tiles.getSubImage(0,4),this,2);
+					redSpawn = new Location(x,y);
 					break;
 				case 62:
 					build = new MainCastle(x,y,tiles.getSubImage(1,4),this,1);
+					blueSpawn = new Location(x,y);
 					break;
 				default:
 					build = null;
@@ -285,5 +301,21 @@ public class Grid {
 			//neighbors.add(init); //BRING THIS BACK IF THERE ARE ISSUES
 			return neighbors;
 		}
+	}
+	public Location getBlueSpawn() {
+		return blueSpawn;
+	}
+	public Location getRedSpawn() {
+		return redSpawn;
+	}
+	public void victory(int f) {
+		victory = true;
+		victor = f;
+	}
+	public boolean getVictory() {
+		return victory;
+	}
+	public int getVictor() {
+		return victor;
 	}
 }
