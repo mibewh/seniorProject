@@ -47,7 +47,7 @@ public class Spearman extends Unit {
 		}
 		else if(other instanceof Archer){
 			allyAttModifier = 1.25;
-			other.setHp((int)(other.getHp() - this.getAttack()*allyAttModifier*(double)((10-other.getDefense()))/10));
+			other.setHp((int)(other.getHp() - getAttack()*allyAttModifier*(double)((10-other.getDefense()))/10));
 		}
 		else if(other instanceof Spearman){
 			allyAttModifier = 1;
