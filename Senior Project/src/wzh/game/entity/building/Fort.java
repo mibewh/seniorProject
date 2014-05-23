@@ -17,4 +17,8 @@ public class Fort extends Building {
 		return 2;
 	}
 
+	public String getName() {
+		return "Fort";
+	}
+
 }

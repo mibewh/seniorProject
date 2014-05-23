@@ -29,14 +29,19 @@ public class Swordsman extends Unit{
 		double otherStartAttack = other.getAttackMult();
 		if(other instanceof Spearman) {
 			attack *= 2;
-			other.setAttack(other.getAttackMult()*2);
+			other.setAttack(other.getAttackMult()/2);
 		}
 		else if(other instanceof Horseman) {
 			attack /= 2;
 			other.setAttack(other.getAttackMult()/2);
 		}
 		else if(other instanceof Archer){
-			attack *= 3;
+			attack *= 1.5;
+			other.setAttack(other.getAttackMult()/0.0001);
+		}
+		else if(other instanceof Swordsman){
+			attack *= 2;
+			other.setAttack(other.getAttackMult()/2);
 		}
 		super.attack(other);
 		attack = startAttack;
@@ -63,5 +68,9 @@ public class Swordsman extends Unit{
 			e.printStackTrace();
 		}
 		
+	}
+
+	public String getName() {
+		return "Swordsman";
 	}
 }

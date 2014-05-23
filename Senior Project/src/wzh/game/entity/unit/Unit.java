@@ -151,15 +151,16 @@ public abstract class Unit extends Entity {
 		hp=hpChange;
 	}
 	public void attack(Unit other) {
-		other.setHp(other.getHp() - (int)((double)getAttack() * (double)((10-other.getDefense()))/10.0));
+		other.setHp(other.getHp() - (int)((double)this.getAttack() * (double)(10-other.getDefense())));
+		System.out.println(other.getDefense());
 		if(!other.checkKill()) {
-			setHp(getHp() - (int)((double)other.getAttack() * (double)((10-getDefense()))/10));
+			setHp(this.getHp() - (int)((double)other.getAttack() * (double)((10-this.getDefense()))));
 			checkKill();
-			System.out.println("oops");
+			System.out.println("COUNTER");
 		}
 	}
 	public int getAttack(){
-		return (int)((double)(attack+(int)Math.sqrt(hp)*2));
+		return ((int)Math.log10((Math.sqrt(hp)*5)))*30;
 		//TODO CHECK if attack * is needed here
 	}
 	public double getAttackMult() {
@@ -171,7 +172,7 @@ public abstract class Unit extends Entity {
 	
 	public int getDefense(){
 		//possibility for game balance
-		return (1+getFortification()+getTileDefense())*((hp/100)/2);
+		return (1+getFortification()+getTileDefense())*((hp/100));
 	}
 	public int getFortification() {
 		if(fortified) return 1;

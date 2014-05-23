@@ -35,7 +35,7 @@ public class Spearman extends Unit {
 			other.setAttack(other.getAttackMult()/2);
 		}
 		else if(other instanceof Archer){
-			attack *= 3;
+			attack *= 1.25;
 		}
 		super.attack(other);
 		attack = startAttack;
@@ -60,5 +60,8 @@ public class Spearman extends Unit {
 			e.printStackTrace();
 		}
 		
+	}
+	public String getName() {
+		return "Spearman";
 	}
 }

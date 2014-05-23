@@ -36,4 +36,8 @@ public class Village extends Building {
 
 	public void hideMenus() {
 	}
+
+	public String getName() {
+		return "Village";
+	}
 }

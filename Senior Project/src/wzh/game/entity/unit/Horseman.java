@@ -66,5 +66,8 @@ public class Horseman extends Unit {
 		}
 		
 	}
+	public String getName() {
+		return "Horseman";
+	}
 
 }

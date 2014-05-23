@@ -11,9 +11,9 @@ import wzh.game.Location;
 public class Archer extends Unit {
 	
 	public static final int COST = 50;
-	public final double ATTACK_BUFF = 1.4;
+	public final double ATTACK_BUFF = .8;
 
-	public Archer(int x, int y, Grid g, int faction) {	
+	public Archer(int x, int y, Grid g, int faction) {
 		super(x, y, null, g, faction);
 		SpriteSheet ss;
 		try {
@@ -28,7 +28,7 @@ public class Archer extends Unit {
 	}
 	@Override
 	public void attack(Unit other) {
-		if(other instanceof Archer) {	
+		if(other instanceof Archer) {
 			super.attack(other);
 		}
 		else {
@@ -67,5 +67,8 @@ public class Archer extends Unit {
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}	
+	}
+	public String getName() {
+		return "Archer";
 	}
 }
