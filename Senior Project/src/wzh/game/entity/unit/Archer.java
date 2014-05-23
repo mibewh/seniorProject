@@ -30,13 +30,7 @@ public class Archer extends Unit {
 	}
 	@Override
 	public void attack(Unit other) {
-		if(other instanceof Archer) {
-			super.attack(other);
-		}
-		else {
-			other.setHp(other.getHp() - (int)((double)getAttack() * ATTACK_BUFF * (double)((10-other.getDefense()))/10.0));
-			other.checkKill();
-		}
+		
 	}
 	@Override
 	public ArrayList<Location> getAttackLocations() {
