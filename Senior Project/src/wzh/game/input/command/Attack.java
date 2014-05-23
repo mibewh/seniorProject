@@ -18,5 +18,6 @@ public class Attack extends Command {
 		c.setLoc(u.getAttackLocations().get(0));
 		u.hideMenus();
 		c.setFocus(true);
+		u.setFortified(false);
 	}
 }

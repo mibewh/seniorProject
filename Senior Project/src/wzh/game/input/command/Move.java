@@ -16,5 +16,6 @@ public class Move extends Command {
 		c.setMode("Move");
 		u.hideMenus();
 		c.setFocus(true);
+		u.setFortified(false);
 	}
 }

@@ -7,6 +7,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -58,7 +59,9 @@ public abstract class Unit extends Entity {
 			postmoveMenu.update(gc, game, delta);
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
+		//Sprite
 		super.render(gc, game, g);
+		//Move and Attack locations
 		if(displayMoves) {
 			g.setColor(new Color(0,0,1,.3f));
 			for(Location loc:moveLocs) {
@@ -71,11 +74,17 @@ public abstract class Unit extends Entity {
 				g.fillRect((loc.getX()-grid.getUpperLeftX())*size,(loc.getY()-grid.getUpperLeftY())*size,size,size);
 			}
 		}
+		//Health Bar
 		Color health = new Color(1,0,0,.99f);
 		g.setColor(health);
 		Rectangle healthBar = getHealthBar();
 		g.fill(healthBar);
 		g.draw(healthBar);
+		//Fortified buff
+		if(fortified) {
+			SpriteSheet units = new SpriteSheet("Unitz.png",16,16);
+			//units.getSubImage(x, y)
+		}
 	}
 	public void displayPremoveMenu(Cursor c, GameContainer gc) {
 		moveLocs = getMoveLocations();
@@ -202,6 +211,12 @@ public abstract class Unit extends Entity {
 	}
 	public Rectangle getHealthBar() {
 		return new Rectangle((loc.getX()-grid.getUpperLeftX())*size+1, (loc.getY()-grid.getUpperLeftY())*size+size-2, (hp*size/100)-2, 2);
+	}
+	public boolean isFortified() {
+		return fortified;
+	}
+	public void setFortified(boolean f) {
+		fortified=f;
 	}
 	public abstract void goGray();
 	public abstract void goColor();

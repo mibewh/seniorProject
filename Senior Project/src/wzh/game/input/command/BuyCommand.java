@@ -24,7 +24,6 @@ public class BuyCommand extends Command {
 	}
 
 	public void select() {
-		//TODO Make purchasing cost the player money
 		Castle b = (Castle)e;
 		Unit toAdd;
 		int x = c.getLoc().getX();
