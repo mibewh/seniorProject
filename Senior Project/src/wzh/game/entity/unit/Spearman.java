@@ -24,22 +24,6 @@ public class Spearman extends Unit {
 	}
 	@Override
 	public void attack(Unit other) {
-		double startAttack = attack;
-		double otherStartAttack = other.getAttackMult();
-		if(other instanceof Horseman) {
-			attack *= 2;
-			other.setAttack(other.getAttackMult()*2);
-		}
-		else if(other instanceof Swordsman) {
-			attack /= 2;
-			other.setAttack(other.getAttackMult()/2);
-		}
-		else if(other instanceof Archer){
-			attack *= 1.25;
-		}
-		super.attack(other);
-		attack = startAttack;
-		other.setAttack(otherStartAttack);
 	}
 	public void goGray() {
 		try {
