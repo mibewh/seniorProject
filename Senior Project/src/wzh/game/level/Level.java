@@ -15,6 +15,7 @@ import wzh.game.entity.Entity;
 import wzh.game.entity.building.Building;
 import wzh.game.entity.building.Castle;
 import wzh.game.entity.building.Village;
+import wzh.game.hud.MoneyHud;
 import wzh.game.hud.TerrainHud;
 import wzh.game.input.Cursor;
 
@@ -27,6 +28,7 @@ public abstract class Level extends BasicGameState {
 	protected int treasury1;
 	protected int treasury2;
 	protected TerrainHud terrain;
+	protected MoneyHud money;
 
 	public Level(String path) {
 		super();
@@ -42,6 +44,7 @@ public abstract class Level extends BasicGameState {
 		grid.setCursor(new Cursor(7,7,grid,turn));
 		grid.getCursor().setFocus(true);
 		terrain = new TerrainHud(grid.getCursor(),150,52);
+		money = new MoneyHud(grid.getCursor(),150,52);
 	}
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.scale(2, 2);
@@ -49,6 +52,7 @@ public abstract class Level extends BasicGameState {
 		g.setColor(Color.white);
 		renderMenus(gc, game, g);
 		terrain.render(gc, game, g);
+		money.render(gc, game, g);
 	}
 	private void renderMenus(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		ArrayList<Entity> ents = grid.getAllEntities();
@@ -71,6 +75,7 @@ public abstract class Level extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
 		grid.update(gc, game, delta);
 		terrain.update(gc, game, delta);
+		money.update(gc, game, delta);
 	}
 	public void changeTurn() {
 		if(turn==1) {
@@ -95,6 +100,16 @@ public abstract class Level extends BasicGameState {
 		treasury1+=50;
 		treasury2+=50;
 	}
+	public int gpt(int faction) {
+		int num=50;
+		for(Building b:grid.getAllBuildings()) {
+			if(b instanceof Village) {
+				if(b.getFaction()==faction)
+					num+=20;
+			}
+		}
+		return num;
+	}
 	public int getTreasury(int faction) {
 		if(faction==1) return treasury1;
 		else return treasury2;
@@ -106,6 +121,9 @@ public abstract class Level extends BasicGameState {
 		else {
 			treasury2 = amount;
 		}
+	}
+	public int getTurn() {
+		return turn;
 	}
 	public Grid getGrid() {
 		return grid;
