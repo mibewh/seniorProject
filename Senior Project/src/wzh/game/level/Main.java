@@ -23,6 +23,7 @@ public class Main extends StateBasedGame{
 		gc.setIcon("sword.ico");
 		gc.setShowFPS(false);
 		gc.setTargetFrameRate(60);
+		gc.setAlwaysRender(true);
 		gc.start();
 	}
 

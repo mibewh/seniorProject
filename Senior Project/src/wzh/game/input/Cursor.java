@@ -208,6 +208,7 @@ public class Cursor extends Entity{
 		int upperY = grid.getUpperLeftY();
 		int screenWidth = gc.getWidth()/(size*2);
 		int screenHeight = gc.getHeight()/(size*2);
+		System.out.println(screenHeight);
 		if((input.isKeyPressed(Input.KEY_RIGHT) || input.isKeyPressed(Input.KEY_D)) && grid.isValid(loc.getX()+1, loc.getY())){
 			rightKey(upperX, screenWidth);
 			trackingTime=true;
@@ -241,8 +242,9 @@ public class Cursor extends Entity{
 
 	private void downKey(int upperY, int screenHeight) {
 		Location moveLoc =new Location(loc.getX(),loc.getY()+1);
-		if(!(upperY>=grid.getCols()-screenHeight) && moveLoc.getY()>=grid.getUpperLeftY()+(screenHeight-3)) {
+		if(!(upperY>=grid.getCols()-screenHeight) && moveLoc.getY()>=grid.getUpperLeftY()+(screenHeight)) {
 			grid.setUpperLeftY(upperY+1);
+			System.out.println(grid.getUpperLeftY());
 		}
 		checkMove(moveLoc);
 		lastKey = Key.DOWN;
