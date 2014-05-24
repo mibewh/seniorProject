@@ -35,10 +35,10 @@ public class Grid {
 	public Grid(TiledMap map) throws SlickException {
 		this.map = map;
 		upperLeft = new Location(0,0);
-		rows = map.getWidth();
-		cols = map.getHeight();
-		entities = new Entity[rows][cols];
-		buildings = new Building[rows][cols];
+		rows = map.getHeight();
+		cols = map.getWidth();
+		entities = new Entity[cols][rows];
+		buildings = new Building[cols][rows];
 		loadEntities();
 		victory = false;
 	}

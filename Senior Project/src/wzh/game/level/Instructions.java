@@ -1,4 +1,4 @@
-package wzh.game.input.menuCommands;
+package wzh.game.level;
 
 public class Instructions {
 
@@ -24,4 +24,5 @@ public class Instructions {
 	  the Spearman - this worthless unit are cheap to field and are good against horses. Otherwise they suck. Even against themselves. Use they
 	  early on when you don't have as gold in order to quickly flood the fields.
 	  the Swordsman -  this manly unit is hardy and serves its purpose as a hearty frontline troop.
+	  */
 }

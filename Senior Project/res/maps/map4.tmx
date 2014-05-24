@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="SpriteSheetz" tilewidth="16" tileheight="16">
-  <image source="../SpriteSheetz.png" width="240" height="240"/>
+  <image source="SpriteSheetz.png" width="240" height="240"/>
  </tileset>
  <tileset firstgid="226" name="Unitz" tilewidth="16" tileheight="16">
-  <image source="../Unitz.png" width="240" height="240"/>
+  <image source="Unitz.png" width="240" height="240"/>
  </tileset>
  <layer name="Passable" width="20" height="15">
   <data encoding="base64" compression="gzip">
@@ -23,7 +23,7 @@
  </layer>
  <layer name="Objects" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGDpAgQZm6qHxBXCwYUCRBm7ABrDZTQjA/EKOXmKBLRJbAYf9+MSQw8+OGg7CAWBhgM1NxOqlNVAgYDe6O8jxCyFAr/RMLQAA9mnO4LAEAAA=
+   H4sIAAAAAAAAC2NgGDpAgQZm6gGxACOCL8CAnQ0DijRwAzr4hMNufECQEeIXBqjez9R1EhzYAjEj0K7HDJjxoYepHEMMFH5PgJgJaIYd9Z0HBsjhhx6/xABahh8yUMBhNzY2cvxSE9AjPVMTAACmaQpIsAQAAA==
   </data>
  </layer>
 </map>
