@@ -13,17 +13,17 @@
  </layer>
  <layer name="Obstructions" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgQAU7GIgHu4hQQ0vzVgLxKjS8mkTzcJmNzQxS3UcL8wyR+IZEmoHPPHRAifsIgYEIP3Sz8YXfYIhffOYRA5DNOA7EJ9DwSQrcRwjQwzwAaoKe4bAEAAA=
+   H4sIAAAAAAAAC2NgQAU7GIgHu4hQQ0vzVgLxKjS8mkTzcJmNzQxS3Udv84gBQyl+qWEeIbOHc/weB+ITaPgkBe4jBOhhHgBjdgx0sAQAAA==
   </data>
  </layer>
  <layer name="Difficult" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC6WTwQqAMAxDe1CPXtz+Z3cv/v/XuIGFUJutYw8KTmyaNSgicsuf05yz842Q3gioZ2et6m21DlIK+rbzW/9DtGdpWqnWVWsP6LF96p3QV/nepY4O24P2oBd9XsnD05sF53t6o3y9Hc7ub4R60Vw1Z4/IP4L3LI4Wy2SUr9VmWI89z7njJwrL2AO9vMD2RLiwBAAA
+   H4sIAAAAAAAAC6WTvQ7AIAiEGdqOLtX3ce/S93+aSiIJoZy/lzCUyOfJpURED/0VzHdyzhCYHZHm2bt2eUepC5RI+7b38/wL2LNiVix1lzoHeGif8ibtK9debHDQHngmGC+p9lbz8HirHMTjXi9fb4ez++tJfEmukrOnkX9EvzM7LJRJK1+PjWQ9tjxLDjvS8z1/2ssHF/OSlbAEAAA=
   </data>
  </layer>
  <layer name="Objects" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGDpAgQZm6gGxACOCL8CAnQ0DijRwAzr4hMNufECQEeIXBqjez9R1EhzYAjEj0K7HDJjxoYepHEMMFH5PgJgJaIYd9Z0HBsjhhx6/xABahh8yUMBhNzY2cvxSE9AjPVMTAACmaQpIsAQAAA==
+   H4sIAAAAAAAAC2NgGDpAgQZm6gHxJyS+AA42DCjSwA3o4BMOu/GBzwwQvzBA9X4mQo8ekWLIwBaIGRkZGB4zYMYHMeaBwu8JEDMBzbCjgftAADn80OOXGEBs+FEKFHDYjY2NHL/UBPRIz9QEACWZczmwBAAA
   </data>
  </layer>
 </map>
