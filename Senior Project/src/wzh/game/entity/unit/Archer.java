@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 
 import wzh.game.Grid;
@@ -33,6 +34,9 @@ public class Archer extends Unit {
 				attackAnimation=new Animation(ss,5,9,9,9,true,100,true);
 				attackAnimation.setLooping(false);
 			}
+			attackSound=new Sound("sounds/archer_attack.wav");
+			moveSound=new Sound("sounds/unit_march.wav");
+			selectSound=new Sound("sounds/archer_select.wav");
 			sprite = colored;
 			gray = ss.getSubImage(0, 2);
 		} catch (SlickException e) {
@@ -41,7 +45,9 @@ public class Archer extends Unit {
 	}
 	@Override
 	public void attack(Unit other) {
-		if(other instanceof Archer) {	
+		if(other instanceof Archer) {
+			allyAttModifier = 1.5;
+			enemAttModifier = 1.5;
 			super.attack(other);
 		}
 		else{

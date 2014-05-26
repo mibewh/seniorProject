@@ -2,6 +2,7 @@ package wzh.game.entity.unit;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 
 import wzh.game.Grid;
@@ -29,6 +30,9 @@ public class Spearman extends Unit {
 				attackAnimation=new Animation(ss,5,7,9,7,true,150,true);
 				attackAnimation.setLooping(false);
 			}
+			attackSound=new Sound("sounds/spear_attack.wav");
+			moveSound=new Sound("sounds/unit_march.wav");
+			selectSound=new Sound("sounds/spear_select.wav");
 			sprite = colored;
 			gray = ss.getSubImage(0, 1);
 		} catch (SlickException e) {

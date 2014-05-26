@@ -2,6 +2,7 @@ package wzh.game.entity.unit;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 
 import wzh.game.Grid;
@@ -29,6 +30,9 @@ public class Swordsman extends Unit{
 				attackAnimation=new Animation(ss,5,5,11,5,true,100,true);
 				attackAnimation.setLooping(false);
 			}
+			attackSound=new Sound("sounds/sword_attack.wav");
+			moveSound=new Sound("sounds/unit_march.wav");
+			selectSound=new Sound("sounds/sword_select.wav");
 			sprite = colored;
 			gray = ss.getSubImage(0,0);
 			
@@ -56,7 +60,7 @@ public class Swordsman extends Unit{
 		}
 		else if(other instanceof Spearman){
 			allyAttModifier = 1.25;
-			enemAttModifier = 0.8;
+			enemAttModifier = 0.4;
 			super.attack(other);
 		}
 	}

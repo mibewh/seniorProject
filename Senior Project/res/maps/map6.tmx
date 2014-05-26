@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="SpriteSheetz" tilewidth="16" tileheight="16">
+  <image source="SpriteSheetz.png" width="240" height="240"/>
+  <terraintypes>
+   <terrain name="New Terrain" tile="-1"/>
+   <terrain name="New Terrain" tile="-1"/>
+  </terraintypes>
+ </tileset>
+ <tileset firstgid="226" name="Units" tilewidth="16" tileheight="16">
+  <image source="Unitz.png" width="240" height="240"/>
+ </tileset>
+ <layer name="Passable" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC4WVMRLEIAzEeHvg4dekYBTJVzBkEjBGa2/2Wmu/42A87/t7tndHZu5/rnM4uPZceyyfjbj32jveQazay3vX/faaczkS31ic9eW9cfadd8Xaso/r+Uzmxap0feTMLTHqu9WT8SAXy4m8p3oynYox52JL3Ww2Jrb2vgPrsOqEDJkvzyf3YlOs7xhVP8WA+kxe8a83yiPIjjViuVVdm36WG+9SjCYvoZbmH9XrxaxyNU+uNaWTxZrONbZkzL6d+oe1a/lSg/L+aX/5htWQ/QumeKWp+fN0T+NZ/xreeeox8yTzwcnPzItMx+pbfp96ivFKa+vF6gvTqliW5/0AUuS9v2AJAAA=
+  </data>
+ </layer>
+ <layer name="Difficult" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+  </data>
+ </layer>
+ <layer name="Obstructions" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgwA/4gZiPCuKkglF7B9ZeaqkfKvZSGs7kuo9SfaP2Dm97yVU3Wm7Qx96RVi+M2kuavQDQJcgWYAkAAA==
+  </data>
+ </layer>
+ <layer name="Objects" width="30" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+  </data>
+ </layer>
+</map>

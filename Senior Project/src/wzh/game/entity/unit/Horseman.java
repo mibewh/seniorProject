@@ -2,6 +2,7 @@ package wzh.game.entity.unit;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 
 import wzh.game.Grid;
@@ -12,7 +13,7 @@ public class Horseman extends Unit {
 
 	public Horseman(int x, int y, Grid g, int faction) {
 		super(x, y, null, g, faction);
-		movePoints = 6;
+		movePoints = 12;
 		SpriteSheet ss;
 		try {
 			ss = new SpriteSheet("Unitz.png",16,16);
@@ -30,6 +31,9 @@ public class Horseman extends Unit {
 				attackAnimation=new Animation(ss,5,11,9,11,true,100,true);
 				attackAnimation.setLooping(false);
 			}
+			attackSound=new Sound("sounds/sword_attack.wav");
+			moveSound=new Sound("sounds/horse_gallop.wav");
+			selectSound=new Sound("sounds/horse_select.wav");
 			sprite = colored;
 			gray = ss.getSubImage(0, 3);
 		} catch (SlickException e) {
