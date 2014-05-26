@@ -19,6 +19,7 @@ import wzh.game.entity.unit.Archer;
 import wzh.game.entity.unit.Horseman;
 import wzh.game.entity.unit.Spearman;
 import wzh.game.entity.unit.Swordsman;
+import wzh.game.entity.unit.Unit;
 import wzh.game.input.Cursor;
 
 public class Grid {
@@ -121,7 +122,6 @@ public class Grid {
 		}
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
-		//System.out.println(upperLeft);
 		cursor.update(gc, game, delta);
 		for(int x = 0; x<cols;x++) {
 			for(int y = 0; y<rows;y++) {
@@ -251,13 +251,13 @@ public class Grid {
 		this.cursor = cursor;
 	}
 	public int getMoveCost(Location loc) {
-		if(!isEmpty(loc)) return 100;
-		else if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Obstructions")) != 0) return 100;
+		//if(!isEmpty(loc)) return 100;
+		if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Obstructions")) != 0) return 100;
 		else if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Difficult")) != 0) return 2;
 		else return 1;
 	}
 	public boolean isObstructed(Location loc) {
-		if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Obstructions")) != 0 || !isEmpty(loc)) return true;
+		if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Obstructions")) != 0) return true;
 		else return false;
 	}
 	public int getPathCost(ArrayList<Location> path) {

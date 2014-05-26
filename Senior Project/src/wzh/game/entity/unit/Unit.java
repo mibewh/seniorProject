@@ -135,7 +135,14 @@ public abstract class Unit extends Entity {
 	//Returns all existent, non-obstructed locations that are either adjacent or within movePoint radius of the unit
 	public ArrayList<Location> getMoveLocations() {
 		ArrayList<Location> locs = grid.emptyTilesInRange(loc, movePoints);
-		return Location.removeDuplicates(locs);
+		locs = Location.removeDuplicates(locs);
+		for(int i=locs.size()-1;i>=0;i--) {
+			if(!grid.isEmpty(locs.get(i))) {
+				Unit u = (Unit)grid.get(locs.get(i));
+				if(u.getFaction()!=faction) locs.remove(i);
+			}
+		}
+		return locs;
 	}
 	public ArrayList<Location> getAttackLocations() {
 		ArrayList<Location> arr = grid.getAdjacentNeighbors(loc);
@@ -173,7 +180,9 @@ public abstract class Unit extends Entity {
 		this.checkKill();
 		if(!other.checkKill()){
 			setHp((int)(this.getHp() - other.getAttack()*enemAttModifier*(double)((10-getDefense()))/10));
-		}		
+		}
+		this.checkKill();
+		other.checkKill();
 	}
 	public int getAttack(){
 		return (int)(attack*((double)hp/100));

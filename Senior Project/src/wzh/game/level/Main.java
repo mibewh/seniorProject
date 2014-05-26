@@ -14,7 +14,6 @@ public class Main extends StateBasedGame{
 		addState(new MainMenu());
 		addState(new Level2("maps/map4.tmx"));
 		//addState(new Level1("maps/map.tmx"));
-		//TODO REMOVE THE DEBUG
 		addState(new Play());
 	}
 	public static void main(String[] args) throws SlickException {
