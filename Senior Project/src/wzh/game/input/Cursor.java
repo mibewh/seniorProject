@@ -265,7 +265,6 @@ public class Cursor extends Entity{
 			//!(upperX>=grid.getRows()-screenWidth) && moveLoc.getX()>=grid.getUpperLeftX()+(screenWidth-3)
 			grid.setUpperLeftX(upperX+1);
 		}
-		System.out.println(grid.getUpperLeftX()+","+grid.getUpperLeftY());
 		checkMove(moveLoc);
 		lastKey = Key.RIGHT;
 	}
