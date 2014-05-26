@@ -273,4 +273,13 @@ public abstract class Unit extends Entity {
 	public void setAttacking(boolean b) {
 		attacking = b;
 	}
+	public void playMove() {
+		moveSound.play();
+	}
+	public void playSelect() {
+		selectSound.play();
+	}
+	public void playAttack() {
+		attackSound.play();
+	}
 }
