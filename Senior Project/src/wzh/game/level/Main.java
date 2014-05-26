@@ -11,9 +11,9 @@ public class Main extends StateBasedGame{
 		super(title);
 	}
 	public void initStatesList(GameContainer arg0) throws SlickException {
+		addState(new Level1("maps/map.tmx"));
 		addState(new MainMenu());
 		addState(new Level2("maps/map4.tmx"));
-		//addState(new Level1("maps/map.tmx"));
 		addState(new Play());
 	}
 	public static void main(String[] args) throws SlickException {
