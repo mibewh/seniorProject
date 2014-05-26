@@ -17,6 +17,7 @@ import wzh.game.entity.unit.Unit;
 import wzh.game.input.command.Cancel;
 import wzh.game.input.command.Command;
 import wzh.game.input.command.End;
+import wzh.game.input.command.Exit;
 import wzh.game.level.Level;
 
 public class Cursor extends Entity{
@@ -289,6 +290,7 @@ public class Cursor extends Entity{
 		ArrayList<Command> commands = new ArrayList<Command>();
 		Level level = (Level)game.getCurrentState();
 		commands.add(new End(level,this,gc));
+		commands.add(new Exit(this,this,game));
 		commands.add(new Cancel(this,this,gc));
 		optionsMenu = new Menu(this,commands,gc);
 	}
