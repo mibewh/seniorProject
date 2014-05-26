@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 
 import wzh.game.Grid;
@@ -23,14 +24,19 @@ public class Archer extends Unit {
 				colored = ss.getSubImage(2, 2);
 				standingAnimation=new Animation(ss,0,10,2,10,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,10,8,10,true,300,true);
+				attackAnimation=new Animation(ss,5,10,9,10,true,100,true);
+				attackAnimation.setLooping(false);
 			}
 			else{
 				colored = ss.getSubImage(1, 2);
 				standingAnimation=new Animation(ss,0,9,2,9,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,9,8,9,true,300,true);
+				attackAnimation=new Animation(ss,5,9,9,9,true,100,true);
+				attackAnimation.setLooping(false);
 			}
+			attackSound=new Sound("sounds/archer_attack.wav");
+			moveSound=new Sound("sounds/unit_march.wav");
+			selectSound=new Sound("sounds/archer_select.wav");
 			sprite = colored;
 			gray = ss.getSubImage(0, 2);
 		} catch (SlickException e) {
@@ -45,6 +51,7 @@ public class Archer extends Unit {
 			super.attack(other);
 		}
 		else{
+			attacking=true;
 			other.setHp((int)(other.getHp() - getAttack()*allyAttModifier*(double)((10-other.getDefense()))/10));
 			other.checkKill();
 		}

@@ -2,6 +2,7 @@ package wzh.game.entity.unit;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 
 import wzh.game.Grid;
@@ -20,14 +21,19 @@ public class Horseman extends Unit {
 				colored = ss.getSubImage(2, 3);
 				standingAnimation=new Animation(ss,0,12,2,12,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,12,8,12,true,200,true);
+				attackAnimation=new Animation(ss,5,12,9,12,true,100,true);
+				attackAnimation.setLooping(false);
 			}
 			else{
 				colored = ss.getSubImage(1, 3);
 				standingAnimation=new Animation(ss,0,11,2,11,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,11,8,11,true,200,true);
+				attackAnimation=new Animation(ss,5,11,9,11,true,100,true);
+				attackAnimation.setLooping(false);
 			}
+			attackSound=new Sound("sounds/sword_attack.wav");
+			moveSound=new Sound("sounds/horse_gallop.wav");
+			selectSound=new Sound("sounds/horse_select.wav");
 			sprite = colored;
 			gray = ss.getSubImage(0, 3);
 		} catch (SlickException e) {
@@ -47,6 +53,7 @@ public class Horseman extends Unit {
 			super.attack(other);
 		}
 		else if(other instanceof Archer){
+			attacking=true;
 			allyAttModifier = 2;
 			other.setHp((int)(other.getHp() - getAttack()*allyAttModifier*(double)((10-other.getDefense()))/10));
 		}

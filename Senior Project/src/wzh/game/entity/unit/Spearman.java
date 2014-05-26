@@ -2,6 +2,7 @@ package wzh.game.entity.unit;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 
 import wzh.game.Grid;
@@ -19,14 +20,19 @@ public class Spearman extends Unit {
 				colored = ss.getSubImage(2, 1);
 				standingAnimation=new Animation(ss,0,8,2,8,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,8,8,8,true,200,true);
+				attackAnimation=new Animation(ss,5,8,9,8,true,150,true);
+				attackAnimation.setLooping(false);
 			}
 			else{
 				colored = ss.getSubImage(1, 1);
 				standingAnimation=new Animation(ss,0,7,2,7,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,7,8,7,true,200,true);
+				attackAnimation=new Animation(ss,5,7,9,7,true,150,true);
+				attackAnimation.setLooping(false);
 			}
+			attackSound=new Sound("sounds/spear_attack.wav");
+			moveSound=new Sound("sounds/unit_march.wav");
+			selectSound=new Sound("sounds/spear_select.wav");
 			sprite = colored;
 			gray = ss.getSubImage(0, 1);
 		} catch (SlickException e) {
@@ -46,6 +52,7 @@ public class Spearman extends Unit {
 			super.attack(other);
 		}
 		else if(other instanceof Archer){
+			attacking=true;
 			allyAttModifier = 1.25;
 			other.setHp((int)(other.getHp() - getAttack()*allyAttModifier*(double)((10-other.getDefense()))/10));
 		}

@@ -8,6 +8,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
@@ -50,6 +51,10 @@ public abstract class Unit extends Entity {
 	protected SpriteSheet spriteSheet;
 	protected Animation standingAnimation;
 	protected Animation attackAnimation;
+	
+	protected Sound moveSound;
+	protected Sound attackSound;
+	protected Sound selectSound;
 	
 	public Unit(int x, int y, Image img, Grid g, int faction) {
 		super(x,y,img,g);
@@ -264,5 +269,8 @@ public abstract class Unit extends Entity {
 	}
 	public Animation getStandingAnim() {
 		return standingAnimation;
+	}
+	public void setAttacking(boolean b) {
+		attacking = b;
 	}
 }
