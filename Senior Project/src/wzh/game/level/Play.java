@@ -27,24 +27,28 @@ public class Play extends BasicGameState{
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		menu.draw();
 		cursor.draw(170,115+77*curIndex,3);
+		Level level = null;
 		switch(curIndex) {
 		case 0:
-			g.scale(.25f, .25f);
-			Level level1 = (Level)game.getState(1);
-			//level1.getGrid().getMap().render(0, (int) (gc.getHeight()-level1.getGrid().getMap().getHeight()*.25));
+			level = (Level)game.getState(1);
 			break;
 		case 1:
-			
+			level = (Level)game.getState(2);
 			break;
 		case 2:
-			
+			level = (Level)game.getState(3);
 			break;
 		case 3:
 			
 			break;
 		case 4:
-			
+			level = (Level)game.getState(5);
 			break;
+		}
+		if(level!=null) {
+			g.scale(.25f, .25f);
+			level.getGrid().getMap().render(0, (int) ((float)(gc.getHeight()*4)-(float)(level.getGrid().getMap().getHeight()*16)));
+			g.scale(4, 4);
 		}
 	}
 
