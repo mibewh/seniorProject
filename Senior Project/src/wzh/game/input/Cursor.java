@@ -290,7 +290,7 @@ public class Cursor extends Entity{
 		ArrayList<Command> commands = new ArrayList<Command>();
 		Level level = (Level)game.getCurrentState();
 		commands.add(new End(level,this,gc));
-		commands.add(new Exit(this,this,game));
+		commands.add(new Exit(this,this,gc,game));
 		commands.add(new Cancel(this,this,gc));
 		optionsMenu = new Menu(this,commands,gc);
 	}
