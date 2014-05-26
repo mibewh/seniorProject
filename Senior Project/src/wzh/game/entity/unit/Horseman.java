@@ -12,7 +12,7 @@ public class Horseman extends Unit {
 
 	public Horseman(int x, int y, Grid g, int faction) {
 		super(x, y, null, g, faction);
-		movePoints = 6;
+		movePoints = 12;
 		SpriteSheet ss;
 		try {
 			ss = new SpriteSheet("Unitz.png",16,16);

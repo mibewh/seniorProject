@@ -53,7 +53,7 @@ public abstract class Unit extends Entity {
 	public Unit(int x, int y, Image img, Grid g, int faction) {
 		super(x,y,img,g);
 		this.faction = faction;
-		movePoints = 4;
+		movePoints = 8;
 		moveLocs = getMoveLocations();
 		attackLocs = getAttackLocations();
 		displayMoves = false;
