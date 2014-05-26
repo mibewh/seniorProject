@@ -20,13 +20,15 @@ public class Horseman extends Unit {
 				colored = ss.getSubImage(2, 3);
 				standingAnimation=new Animation(ss,0,12,2,12,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,12,8,12,true,200,true);
+				attackAnimation=new Animation(ss,5,12,9,12,true,100,true);
+				attackAnimation.setLooping(false);
 			}
 			else{
 				colored = ss.getSubImage(1, 3);
 				standingAnimation=new Animation(ss,0,11,2,11,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,11,8,11,true,200,true);
+				attackAnimation=new Animation(ss,5,11,9,11,true,100,true);
+				attackAnimation.setLooping(false);
 			}
 			sprite = colored;
 			gray = ss.getSubImage(0, 3);
@@ -47,6 +49,7 @@ public class Horseman extends Unit {
 			super.attack(other);
 		}
 		else if(other instanceof Archer){
+			attacking=true;
 			allyAttModifier = 2;
 			other.setHp((int)(other.getHp() - getAttack()*allyAttModifier*(double)((10-other.getDefense()))/10));
 		}
