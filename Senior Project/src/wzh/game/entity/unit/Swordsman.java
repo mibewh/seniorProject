@@ -53,7 +53,7 @@ public class Swordsman extends Unit{
 		}
 		else if(other instanceof Spearman){
 			allyAttModifier = 1.25;
-			enemAttModifier = 0.8;
+			enemAttModifier = 0.4;
 			super.attack(other);
 		}
 	}
