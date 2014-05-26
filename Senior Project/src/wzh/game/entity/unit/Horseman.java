@@ -2,6 +2,7 @@ package wzh.game.entity.unit;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 
 import wzh.game.Grid;
@@ -28,6 +29,9 @@ public class Horseman extends Unit {
 				standingAnimation.setPingPong(true);
 				attackAnimation=new Animation(ss,5,11,8,11,true,200,true);
 			}
+			attackSound=new Sound("sounds/sword_attack.wav");
+			moveSound=new Sound("sounds/horse_gallop.wav");
+			selectSound=new Sound("sounds/horse_select.wav");
 			sprite = colored;
 			gray = ss.getSubImage(0, 3);
 		} catch (SlickException e) {

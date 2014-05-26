@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 
 import wzh.game.Grid;
@@ -31,6 +32,9 @@ public class Archer extends Unit {
 				standingAnimation.setPingPong(true);
 				attackAnimation=new Animation(ss,5,9,8,9,true,300,true);
 			}
+			attackSound=new Sound("sounds/archer_attack.wav");
+			moveSound=new Sound("sounds/unit_march.wav");
+			selectSound=new Sound("sounds/archer_select.wav");
 			sprite = colored;
 			gray = ss.getSubImage(0, 2);
 		} catch (SlickException e) {
