@@ -26,7 +26,7 @@ public class Play extends BasicGameState{
 
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		menu.draw();
-		
+		cursor.draw(170,115+77*curIndex,3);
 	}
 
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
@@ -63,6 +63,10 @@ public class Play extends BasicGameState{
 				break;
 			}
 		}
+		else if(input.isKeyPressed(Input.KEY_ESCAPE) || input.isKeyPressed(Input.KEY_BACK)) {
+			game.enterState(0);
+		}
+		
 	}
 
 	public int getID() {
