@@ -24,9 +24,28 @@ public class Play extends BasicGameState{
 		menu = new Image("MenuLevels.png");
 	}
 
-	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		menu.draw();
 		cursor.draw(170,115+77*curIndex,3);
+		switch(curIndex) {
+		case 0:
+			g.scale(.25f, .25f);
+			Level level1 = (Level)game.getState(1);
+			//level1.getGrid().getMap().render(0, (int) (gc.getHeight()-level1.getGrid().getMap().getHeight()*.25));
+			break;
+		case 1:
+			
+			break;
+		case 2:
+			
+			break;
+		case 3:
+			
+			break;
+		case 4:
+			
+			break;
+		}
 	}
 
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
