@@ -38,6 +38,7 @@ public class Level extends BasicGameState {
 	protected UnitHud attack;
 	
 	protected int levelNum;
+	
 
 	public Level(String path, int levelNum) {
 		super();

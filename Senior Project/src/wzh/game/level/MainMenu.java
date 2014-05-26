@@ -55,7 +55,7 @@ public class MainMenu extends BasicGameState {
 		if(input.isKeyPressed(Input.KEY_SPACE) || input.isKeyPressed(Input.KEY_ENTER)) {
 			switch(curIndex) {
 			case 0:
-				game.enterState(2);
+				game.enterState(1);
 				break;
 			case 1:
 				gc.exit();
