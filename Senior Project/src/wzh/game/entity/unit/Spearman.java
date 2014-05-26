@@ -20,14 +20,14 @@ public class Spearman extends Unit {
 				colored = ss.getSubImage(2, 1);
 				standingAnimation=new Animation(ss,0,8,2,8,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,8,9,8,true,150,true);
+				attackAnimation=new Animation(ss,5,8,9,8,true,100,true);
 				attackAnimation.setLooping(false);
 			}
 			else{
 				colored = ss.getSubImage(1, 1);
 				standingAnimation=new Animation(ss,0,7,2,7,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,7,9,7,true,150,true);
+				attackAnimation=new Animation(ss,5,7,9,7,true,100,true);
 				attackAnimation.setLooping(false);
 			}
 			attackSound=new Sound("sounds/spear_attack.wav");

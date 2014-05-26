@@ -23,7 +23,7 @@ import wzh.game.hud.TerrainHud;
 import wzh.game.hud.UnitHud;
 import wzh.game.input.Cursor;
 
-public abstract class Level extends BasicGameState {
+public class Level extends BasicGameState {
 	protected String path;
 
 	protected Grid grid;
@@ -36,10 +36,13 @@ public abstract class Level extends BasicGameState {
 	protected MoneyHud money;
 	protected UnitHud unit;
 	protected UnitHud attack;
+	
+	protected int levelNum;
 
-	public Level(String path) {
+	public Level(String path, int levelNum) {
 		super();
 		this.path = path;
+		this.levelNum=levelNum;
 	}
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		turn = 1;
@@ -168,6 +171,8 @@ public abstract class Level extends BasicGameState {
 	public Grid getGrid() {
 		return grid;
 	}
-	public abstract int getID();
+	public int getID() {
+		return levelNum;
+	}
 
 }

@@ -54,7 +54,7 @@ public class Swordsman extends Unit{
 			super.attack(other);
 		}
 		else if(other instanceof Archer){
-			attacking=true;
+			attacking=true; 
 			allyAttModifier = 1.5;
 			other.setHp((int)(other.getHp() - getAttack()*allyAttModifier*(double)((10-other.getDefense()))/10));
 		}
