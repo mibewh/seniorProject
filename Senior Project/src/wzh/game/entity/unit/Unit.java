@@ -16,6 +16,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import wzh.game.Grid;
 import wzh.game.Location;
 import wzh.game.entity.Entity;
+import wzh.game.entity.building.Fort;
 import wzh.game.input.Cursor;
 import wzh.game.input.Menu;
 import wzh.game.input.command.Attack;
@@ -123,7 +124,7 @@ public abstract class Unit extends Entity {
 		if(getAttackLocations().size()>0)
 		commands.add(new Attack(this, c));
 		commands.add(new Fortify(this, c));
-		commands.add(new Wait(this, c));
+		commands.add(new Wait(this, c, "Wait"));
 		commands.add(new Cancel(this,c,gc));
 		setLastLoc(loc);
 		premoveMenu = new Menu(c, commands, gc);
@@ -137,7 +138,10 @@ public abstract class Unit extends Entity {
 		ArrayList<Command> commands = new ArrayList<Command>();
 		if(getAttackLocations().size()>0)
 		commands.add(new Attack(this, c));
-		commands.add(new Wait(this, c));
+		if(grid.getB(c.getLoc())!=null && !(grid.getB(c.getLoc()) instanceof Fort))
+			commands.add(new Wait(this,c, "Capture"));
+		else
+			commands.add(new Wait(this, c, "Wait"));
 		commands.add(new Cancel(this, c,gc));
 		postmoveMenu = new Menu(c,commands,gc);
 		

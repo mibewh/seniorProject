@@ -6,9 +6,9 @@ import wzh.game.input.Cursor;
 public class Wait extends Command {
 	
 
-	public Wait(Unit u, Cursor c){
+	public Wait(Unit u, Cursor c, String cn){
 		 super(u,c);
-		 commandName="Wait";
+		 commandName=cn;
 		}
 
 	public void select(){
