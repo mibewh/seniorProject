@@ -45,6 +45,7 @@ public abstract class Unit extends Entity {
 	protected ArrayList<Location> attackLocs;
 	protected boolean displayMoves;
 	protected boolean displayAttacks;
+	protected boolean attacking;
 	
 	protected SpriteSheet spriteSheet;
 	protected Animation standingAnimation;
@@ -63,6 +64,7 @@ public abstract class Unit extends Entity {
 		attack = 30;
 		enemAttModifier = 1.0;
 		allyAttModifier = 1.0;
+		attacking=false;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException{
 		super.update(gc, game, delta);
@@ -76,6 +78,9 @@ public abstract class Unit extends Entity {
 		//Sprite
 		if(active)
 			standingAnimation.draw(getScreenX(), getScreenY());
+		else if(attacking){
+			attackAnimation.draw(getScreenX(),getScreenY());
+		}
 		
 		else
 			super.render(gc, game, g);
@@ -176,6 +181,7 @@ public abstract class Unit extends Entity {
 		hp=hpChange;
 	}
 	public void attack(Unit other) {
+		attacking=true;
 		other.setHp((int)(other.getHp() - getAttack()*allyAttModifier*(double)((10-other.getDefense()))/10));
 		this.checkKill();
 		if(!other.checkKill()){

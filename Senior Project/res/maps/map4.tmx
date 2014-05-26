@@ -11,6 +11,11 @@
    H4sIAAAAAAAAC5WTQQrAIAwERT/ZPqDUT+ilPbaP8KdVUFiWJKSHJR502GxiDCHErmfW1nUZuqG2+WboVSrzbgevdCXyFYk37m+gAyT5S8DWeCdI4yV6z2J/BykL/irktXrm/JY/5rG/lRfmhxn+5fF8rXl4/RWBW37yGvljafllJ49z8/a7K7wy58w76OXhPHAHed5Sv8iV9s/aaeRpQl4VeK/B087SfxvnD3RDweuwBAAA
   </data>
  </layer>
+ <layer name="Roads" width="20" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMgqEBAGlKTgywBAAA
+  </data>
+ </layer>
  <layer name="Obstructions" width="20" height="15">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgQAU7GIgHu4hQQ0vzVgLxKjS8mkTzcJmNzQxS3Udv84gBQyl+qWEeIbOHc/weB+ITaPgkBe4jBOhhHgBjdgx0sAQAAA==
@@ -18,12 +23,12 @@
  </layer>
  <layer name="Difficult" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC6WTvQ7AIAiEGdqOLtX3ce/S93+aSiIJoZy/lzCUyOfJpURED/0VzHdyzhCYHZHm2bt2eUepC5RI+7b38/wL2LNiVix1lzoHeGif8ibtK9debHDQHngmGC+p9lbz8HirHMTjXi9fb4ez++tJfEmukrOnkX9EvzM7LJRJK1+PjWQ9tjxLDjvS8z1/2ssHF/OSlbAEAAA=
+   H4sIAAAAAAAAC61TMQ6AIBC7QRxZgP+4u/j/1wjDJZezhTPa5AYvtpRWRUROeSK75wbeEcKNwOr5s77qbX12Mgrr258/+BfRfouhVfuUPimgx/LUO1WzK2DndVgOg4Nyz2QfwR89Wh3mb9UvylA5CexQfitoh9qr9owQ+UfsN3EALZbtrF+kzeA9zjy3iZ8oLH/lz3q5ATGdEsuwBAAA
   </data>
  </layer>
  <layer name="Objects" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA4EcYiDgBAeOVoCBRqYqQfEn5D4AjjYMKBIAzegg0+ElWCAzwwQv4CAAJRPCOgRKYYMbIGYkZGB4TEDZnwQYx4o/J4AMRPQDDsauA8EkMMPPX6JAcSGH6VAAYfd2NjI8UtNQI/0jA2QW74AALJVZ0uwBAAA
+   H4sIAAAAAAAAC2NgwA4EcIgTksMGPhGh5jMRahRItJcYoIfGF8DBhgFFGriBWgDdL+SoJ2SGLRJbAYdeAUYGhic4zEMOPzsCdpHjPkrV0xMoYBHDl/5o4Rdi0jO18i8yILd8AQCSzAKmsAQAAA==
   </data>
  </layer>
 </map>
