@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="SpriteSheetz" tilewidth="16" tileheight="16">
+  <image source="../SpriteSheetz.png" width="240" height="240"/>
+ </tileset>
+ <tileset firstgid="226" name="Unitz" tilewidth="16" tileheight="16">
+  <image source="../Unitz.png" width="240" height="240"/>
+ </tileset>
+ <layer name="Passable" width="20" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC7WTUQ4DIQhEPbUHQHfvwU3bJpq8vOJ+tR8TEWWAEbO1lj/GfGPA3vsBOxZ8FljJF7LN0+Uby8c75NvoCwFfFGuAi/1l0RtrsM81DnGlck7FVHVlkbPi6+37DViD831wPdTnGPNdyOcY8lGXeYip+Pfe82edThoOnfldN6yb9QvkHYWv+h8Vl3vnPc73Ex/n/T5oxHzskfrd4kz4PJv+r//EC1SwkJawBAAA
+  </data>
+ </layer>
+ <layer name="Obstruction" width="20" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMgqEBAGlKTgywBAAA
+  </data>
+ </layer>
+ <layer name="Difficult" width="20" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoA3gwyLGTyO7iLF7uAH0sBxoP9MrbocqICd8yInTgU4H1ATYwgwAQzdm3bAEAAA=
+  </data>
+ </layer>
+ <layer name="Object" width="20" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgwARMjAwMgoxYJJCAAFCekYAaWpr3hICaxwzDy7zPBNR8opN5dlQ0z5YG7qOXeYM9vVDbvMFSHgAAN9osJbAEAAA=
+  </data>
+ </layer>
+</map>
