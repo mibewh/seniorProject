@@ -2,7 +2,6 @@ package wzh.game.level;
 
 import java.awt.Font;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -43,14 +42,6 @@ public class MainMenu extends BasicGameState {
 	}
 
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
-		g.setColor(Color.black);
-//		g.drawRect(0, 0, gc.getWidth(), gc.getHeight());
-//		font.drawString(gc.getWidth()/2-175, 100, "Medieval Battle BETA (Working title)",Color.white);
-//		font.drawString(100, 175, "Play",Color.white);
-//		font.drawString(100, 225, "Exit",Color.white);
-//		g.setColor(Color.white);
-//		g.fill(cursor);
-//		g.draw(cursor);
 		menu.draw();
 		cursor.draw(170,170+80*curIndex,3);
 	}
