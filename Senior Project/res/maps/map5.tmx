@@ -18,7 +18,7 @@
  </layer>
  <layer name="Difficult" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgoA3gwyLGTyO7iLF7uAH0sBxoP9MrbocqICd8yInTgU4H1ATYwgwAQzdm3bAEAAA=
+   H4sIAAAAAAAAC2NgoA3gwyLGTyO7iLF7uANK/CwBxJJALEWBGchxqw7EGkCsSYF5yMAMiM2B2IJK5g0EICftkxOnwyntYwszAGWq0gSwBAAA
   </data>
  </layer>
  <layer name="Obstruction" width="20" height="15">
