@@ -270,4 +270,7 @@ public abstract class Unit extends Entity {
 	public Animation getStandingAnim() {
 		return standingAnimation;
 	}
+	public void setAttacking(boolean b) {
+		attacking = b;
+	}
 }

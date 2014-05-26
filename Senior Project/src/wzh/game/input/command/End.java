@@ -36,6 +36,7 @@ public class End extends Command {
 					if(u.getHp()>100) u.setHp(100);
 				}
 				u.setActive(false);
+				u.setAttacking(false);
 				u.getStandingAnim().restart();
 				u.setActive(true);
 			}
