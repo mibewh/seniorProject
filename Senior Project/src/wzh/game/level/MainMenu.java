@@ -5,27 +5,28 @@ import java.awt.Font;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.TrueTypeFont;
-import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class MainMenu extends BasicGameState {
 	
-	private static final int MAX_ENTRIES = 1;
+	private static final int MAX_ENTRIES = 2;
 	
-	private TrueTypeFont font;
 	private final String FONT_STYLE = "Euphemia";
 	private int curIndex;
-	private Rectangle cursor;
 	private Music music;
+	private Image menu;
+	private Image cursor;
 	
 	public MainMenu() {
 		super();
-		font = new TrueTypeFont(new Font(FONT_STYLE, Font.BOLD , 20), false);
+		new TrueTypeFont(new Font(FONT_STYLE, Font.BOLD , 20), false);
 		curIndex = 0;
 		try {
 			music = new Music("music/menuMusic.ogg");
@@ -35,19 +36,23 @@ public class MainMenu extends BasicGameState {
 	}
 
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
-		cursor = new Rectangle(75, 185, 10, 10);
+		SpriteSheet temp = new SpriteSheet("Unitz.png",16,16);
+		cursor = temp.getSubImage(3, 0);
 		music.loop();
+		menu = new Image("MenuFront.png");
 	}
 
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
 		g.setColor(Color.black);
-		g.drawRect(0, 0, gc.getWidth(), gc.getHeight());
-		font.drawString(gc.getWidth()/2-175, 100, "Medieval Battle BETA (Working title)",Color.white);
-		font.drawString(100, 175, "Play",Color.white);
-		font.drawString(100, 225, "Exit",Color.white);
-		g.setColor(Color.white);
-		g.fill(cursor);
-		g.draw(cursor);
+//		g.drawRect(0, 0, gc.getWidth(), gc.getHeight());
+//		font.drawString(gc.getWidth()/2-175, 100, "Medieval Battle BETA (Working title)",Color.white);
+//		font.drawString(100, 175, "Play",Color.white);
+//		font.drawString(100, 225, "Exit",Color.white);
+//		g.setColor(Color.white);
+//		g.fill(cursor);
+//		g.draw(cursor);
+		menu.draw();
+		cursor.draw(170,170+80*curIndex,3);
 	}
 
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {
@@ -66,11 +71,13 @@ public class MainMenu extends BasicGameState {
 				game.enterState(1);
 				break;
 			case 1:
+				game.enterState(11);
+				break;
+			case 2:
 				gc.exit();
 				break;
 			}
 		}
-		cursor.setY(185+curIndex*50);
 	}
 	public Music getMusic() {
 		return music;

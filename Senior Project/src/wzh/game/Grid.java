@@ -47,10 +47,18 @@ public class Grid {
 		int screenWidth = w/(cursor.getSize()*2);
 		setUpperLeftX(cursor.getLoc().getX()-(screenWidth/2));
 		setUpperLeftY(cursor.getLoc().getY()-(screenHeight/2));
-		if(upperLeft.getX()<0) setUpperLeftX(0);
-		else if(upperLeft.getX()>cols-screenWidth) setUpperLeftX(cols-screenWidth);
-		if(upperLeft.getY()<0) setUpperLeftY(0);
-		else if(upperLeft.getY()>rows-screenHeight) setUpperLeftX(rows-screenHeight);
+		if(upperLeft.getX()<0) {
+			setUpperLeftX(0);
+		}
+		else if(upperLeft.getX()>cols-screenWidth) {
+			setUpperLeftX(cols-screenWidth);
+		}
+		if(upperLeft.getY()<0) {
+			setUpperLeftY(0);
+		}
+		else if(upperLeft.getY()>rows-screenHeight) {
+			setUpperLeftY(rows-screenHeight);
+		}
 	}
 	public void loadEntities() throws SlickException{
 		int layer = map.getLayerIndex("Objects");
