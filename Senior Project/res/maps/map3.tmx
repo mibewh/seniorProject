@@ -13,12 +13,12 @@
  </layer>
  <layer name="Roads" width="29" height="30">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC83X0Q0CIQwAUEZxNAaQCW6DcwJzfvDpGIziKLY5SC6klLbcoSQNBoUnDV7Ruf9uq3MxQI/xyn3Yx9PIuqERG8Tj8Ln74TWMx42Za2lL5dVmcSG8kajXSrVHmWe5La9ljrpUPiWm1cXzuXbmcGZeQ3yeJZ7ElLpST2r2XI2nMVuu1tOalKudPzoHfxNP2Cf08UoTnffe4zPb41i4OLch7yn8yIS9esitX5T1yJBbD7lNxZl9hsp3mHGG6lxqXY1JeRZXanKe1pWYEk/jCmqZ+nnaq0Odmv2BuGk8icvcTcxez23cwYY9zq3N3v2Ja7BWpALuzKlV/9DD96l51jt1abhf6r+DdX8z2xd6Zhx7mA0AAA==
+   H4sIAAAAAAAAC83XAQrDIAwFUA/cnqA7QXeE7QA9ZjtoIIhJ/jfOLSAIVV+VVG0p/x3bVda7vFX9kRx3NcrrKk/VblH1/X5u9e2JrfJqU9zsfD2vZY5yLc8ys67neWavG3mRybqIh5ioi3qoGbmMx5iWy3qs2XLZ/tk+nzkehc9t1tSO9GXH6G2//MiUM2FGDmlndg7JO8zIoXotWZcxve+fcVET2W9QFzGZ/Q1xI7NnP41cz+zxENcyM17ktswRnufWZsaz7sX12aNNOTNG3qkl9tL+dxi1nt+MExn3vseYDQAA
   </data>
  </layer>
  <layer name="Difficult" width="29" height="30">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC8VWwQ3DMAjk0bf9sNL5MkU3SOfIKJmpXaCpiiuEsA0pNCdZKAm+A2QTLgAwAcx1FYANHLHzrZx/Qo0H+kyegoSP8H81oyFp9vLMSl7JT8qzfOxa1/48W/lvHb+j/Bb9CCxoU7BONLzrZOWz+nvUOzPrgWXsooJXTHcHjl4slj6T0NL1fncVllVH+t46I7nho4nDwtfy0epwrlb/pHVNxNLa9uDdu/iZi+7BURjVRZtX77/3T/B4rXfKun+Es+ty5rk8cucKmY9wRto0+7R5Svx1FnyijZo1Kb/33D4C1ezl+asG54+aeSsk/hc8dibamA0AAA==
+   H4sIAAAAAAAAC81Wyw7DMAjj0O2YHPb41P1B993TpE5iiCQmNessIZTWNQQllEVEzspOwsXi6N8Mx673wtNnx0ByQPZZQT2P5+lf5Lve1wn9R4c3qx+Jn4F18yU5TjbYdYrqRfmMelfjGVjHFAisnJ4EjV4ukT5TNq/t/ezuWDSO9751RmqDg+QR0Wtx0DhWq9U/dV2L8rq2PbB7lz1z2T04C6O6oPvq/fd+CZtv9E5Fvx/h6LoceS5n7pw38yJA9zk7U7NnzX+dqffGsOusmfcDT/8F+3F3wZgNAAA=
   </data>
  </layer>
  <layer name="Obstructions" width="29" height="30">
@@ -28,7 +28,7 @@
  </layer>
  <layer name="Objects" width="29" height="30">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgIB60IrFtSdCHDShAaQEKzcEFYOYq4FNEB0Brd8DMpVU4jgLcoJWwklEwCgYc6KHRpOojRb0Akj55EvUzMJBXjsnjYNPDTnQ/EwvIVU+qvlEwCkbB4AG0bDPAyjFFGpkPM3eg25q0dge1wtGOAr0AcopP9pgNAAA=
+   H4sIAAAAAAAAC2NgIB60IrFtSdCHDSgA8ScgFqDQHFxAAGq+Ao3MHyzuUGCgbTiOAtyglbCSUTAKBhzoodGk6iNFvQCSPnkS9TMwkFeOyeNg08NOdD8TC8hVT6q+UTAKRsHgAbRsM4DKoc9ArEgj8xWh5g90W5PW7qBWONpRoBcAl+dh6JgNAAA=
   </data>
  </layer>
 </map>
