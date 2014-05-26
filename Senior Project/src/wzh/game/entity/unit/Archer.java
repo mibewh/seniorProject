@@ -39,7 +39,9 @@ public class Archer extends Unit {
 	}
 	@Override
 	public void attack(Unit other) {
-		if(other instanceof Archer) {	
+		if(other instanceof Archer) {
+			allyAttModifier = 1.5;
+			enemAttModifier = 1.5;
 			super.attack(other);
 		}
 		else{
