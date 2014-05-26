@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="16" tileheight="16">
+<map version="1.0" orientation="orthogonal" width="24" height="19" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="SpriteSheetz" tilewidth="16" tileheight="16">
   <image source="SpriteSheetz.png" width="240" height="240"/>
   <terraintypes>
@@ -10,24 +10,29 @@
  <tileset firstgid="226" name="Units" tilewidth="16" tileheight="16">
   <image source="Unitz.png" width="240" height="240"/>
  </tileset>
- <layer name="Passable" width="30" height="20">
+ <layer name="Passable" width="24" height="19">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC4WVMRLEIAzEeHvg4dekYBTJVzBkEjBGa2/2Wmu/42A87/t7tndHZu5/rnM4uPZceyyfjbj32jveQazay3vX/faaczkS31ic9eW9cfadd8Xaso/r+Uzmxap0feTMLTHqu9WT8SAXy4m8p3oynYox52JL3Ww2Jrb2vgPrsOqEDJkvzyf3YlOs7xhVP8WA+kxe8a83yiPIjjViuVVdm36WG+9SjCYvoZbmH9XrxaxyNU+uNaWTxZrONbZkzL6d+oe1a/lSg/L+aX/5htWQ/QumeKWp+fN0T+NZ/xreeeox8yTzwcnPzItMx+pbfp96ivFKa+vF6gvTqliW5/0AUuS9v2AJAAA=
+   H4sIAAAAAAAAC4WUQRIEIQgDfbvw8Nm9UV0dPFjOqAQIgT7n9Fj3twq7nbXstL9y1rijXcF+vq3gj1h9crz18Nnhn9gt2IzXfEy7i/uNU/LJndiWv9XV8mOe5jvxZLwZN9xTzS0++mNNZp7Ug2kk3VP75CxpmrVL2jGNmB3raTEaV/w2rjYdJV0wZ+JsPcf+tp7YcrWYbFYlHs1mwzdOEjemZfadaSvNopfmrKZpppleCu+tv18zk35tpthsIrblvPW3acZ0bzpLWiXef31ogUZeIAcAAA==
   </data>
  </layer>
- <layer name="Difficult" width="30" height="20">
+ <layer name="Difficult" width="24" height="19">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+   H4sIAAAAAAAAC2NgwAT8QMyHRRwXGFVPnjit3YNLjhruh4mRYj4uQKr51ACj5g9e82mdfqiZ/ol1Dz4wnMufoa4eAAoPIysgBwAA
   </data>
  </layer>
- <layer name="Obstructions" width="30" height="20">
+ <layer name="Obstructions" width="24" height="19">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA/4gZiPCuKkglF7B9ZeaqkfKvZSGs7kuo9SfaP2Dm97yVU3Wm7Qx96RVi+M2kuavQDQJcgWYAkAAA==
+   H4sIAAAAAAAAC2NgIB7wQjGtwFA3fxTgB0M9fkfNH97mjwL8YKjHLznmAwBrEMC+IAcAAA==
   </data>
  </layer>
- <layer name="Objects" width="30" height="20">
+ <layer name="Roads" width="24" height="19">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3BMQEAAADCoPVPbQlPoAAAeBoqs0udYAkAAA==
+   H4sIAAAAAAAAC2NgGAUDDXKhuAaHfDWSGlLUooMcHHqwiZOidtR8/OKw+JjDgBmPIDwTi55ZONQim0Ev94+aj18cFh/dOPR0MWDGIzFqR8HAAwDIsHfXIAcAAA==
+  </data>
+ </layer>
+ <layer name="Objects" width="24" height="19">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgQAUCONi4AKnqRwEqUEBi6+FQg02cGLWK5DhoiAB5GqmlNrBFYlM7fu3IchF1wFAJf1oDBST2aP4deEDt+gsAiFG12CAHAAA=
   </data>
  </layer>
 </map>

@@ -137,6 +137,7 @@ public class Cursor extends Entity{
 				if(curFaction==u.getFaction()) {
 					unitSelect=true;
 					u.displayPremoveMenu(this, gc);	
+					u.playSelect();
 					focus = false;
 				}
 			}
@@ -152,8 +153,7 @@ public class Cursor extends Entity{
 			else if(unitSelect && mode.equals("Move")){
 				if(grid.isEmpty(loc.getX(), loc.getY())){
 					u.moveTo(loc.getX(), loc.getY());
-					//unitSelect=false;
-					//u.hideMenus();
+					u.playMove();
 					u.setDisplayMoves(false);
 					focus=false;
 					postMove=true;
@@ -175,6 +175,7 @@ public class Cursor extends Entity{
 				if(u!=null) {
 					loc = u.getLoc();
 					u.goGray();
+					u.playAttack();
 					u.setDisplayAttacks(false);
 					u.setActive(false);
 					if(grid.getB(loc)!=null) {
