@@ -22,7 +22,7 @@
  </layer>
  <layer name="Obstructions" width="24" height="19">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgIB7wQjGtwFA3fxTgB0M9fkfNH97mjwL8YKjHLznmAwBrEMC+IAcAAA==
+   H4sIAAAAAAAAC2NgIB4chGJagaFu/ijAD4Z6/I6aP7zNHwX4wVCPX3LMBwA0kmjIIAcAAA==
   </data>
  </layer>
  <layer name="Roads" width="24" height="19">
@@ -32,7 +32,7 @@
  </layer>
  <layer name="Objects" width="24" height="19">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgQAUCONi4AKnqRwEqUEBi6+FQg02cGLWK5DhoiAB5GqmlNrBFYlM7fu3IchF1wFAJf1oDBST2aP4deEDt+gsAiFG12CAHAAA=
+   H4sIAAAAAAAAC2NgQAUCONi4ADHqPxFhDqngMw3MHAiggMTWw6EGmzgxahXJcdAQAfI0UEuNdIqeLm2R2NSOXzs0OVq4HxegRfgPRaCAxB7Nv9gBPct/atdfAFTFLA8gBwAA
   </data>
  </layer>
 </map>

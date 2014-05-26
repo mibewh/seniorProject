@@ -13,11 +13,12 @@ public class Main extends StateBasedGame{
 	public void initStatesList(GameContainer arg0) throws SlickException {
 		addState(new MainMenu());
 		addState(new Level("maps/map.tmx",1));
-		//addState(new Play());
+		addState(new Play());
 	}
 	public static void main(String[] args) throws SlickException {
 		Main main = new Main("Medieval Battle");
 		AppGameContainer gc = new AppGameContainer(main);
+		gc.setDisplayMode(640, 480, false);
 		gc.setIcon("sword.ico");
 		gc.setShowFPS(false);
 		gc.setTargetFrameRate(60);
