@@ -21,12 +21,12 @@
    H4sIAAAAAAAAC2NgoA3gwyLGTyO7iLF7uANK/CwBxJJALEWBGchxqw7EGkCsSYF5yMAMiM2B2IJK5g0EICftkxOnwyntYwszAGWq0gSwBAAA
   </data>
  </layer>
- <layer name="Obstruction" width="20" height="15">
+ <layer name="Obstructions" width="20" height="15">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgGAWjYBSMgqEBAGlKTgywBAAA
   </data>
  </layer>
- <layer name="Object" width="20" height="15">
+ <layer name="Objects" width="20" height="15">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgwARMjAwMgoxYJJCAAFCekYAaWpr3hICaxwxD2zxFNPM+EzDvE5J5CkS4jxTzkIEdFd1nSwP3wQCtw2+wpRdamzdYygMAQAD+XLAEAAA=
   </data>

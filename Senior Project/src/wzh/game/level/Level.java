@@ -7,6 +7,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.BasicGameState;
@@ -38,12 +39,18 @@ public class Level extends BasicGameState {
 	protected UnitHud attack;
 	
 	protected int levelNum;
+	protected Music music;
 	
 
 	public Level(String path, int levelNum) {
 		super();
 		this.path = path;
 		this.levelNum=levelNum;
+		try {
+			music = new Music("music/levelMusic.ogg");
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
 	}
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		turn = 1;
@@ -175,5 +182,7 @@ public class Level extends BasicGameState {
 	public int getID() {
 		return levelNum;
 	}
-
+	public Music getMusic() {
+		return music;
+	}
 }

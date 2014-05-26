@@ -242,7 +242,8 @@ public class Cursor extends Entity{
 
 	private void downKey(int upperY, int screenHeight) {
 		Location moveLoc =new Location(loc.getX(),loc.getY()+1);
-		if(!(upperY>=grid.getCols()-screenHeight) && moveLoc.getY()>=grid.getUpperLeftY()+(screenHeight)) {
+		if(moveLoc.getY()>=grid.getUpperLeftY()+(screenHeight-3) && grid.isValid(new Location(moveLoc.getX(),moveLoc.getY()+3))) {
+			//!(upperY+screenHeight>=grid.getCols()-screenHeight) &&
 			grid.setUpperLeftY(upperY+1);
 		}
 		checkMove(moveLoc);
@@ -260,7 +261,8 @@ public class Cursor extends Entity{
 
 	private void rightKey(int upperX, int screenWidth) {
 		Location moveLoc = new Location(loc.getX()+1,loc.getY());
-		if(!(upperX>=grid.getRows()-screenWidth) && moveLoc.getX()>=grid.getUpperLeftX()+(screenWidth-3)) {
+		if(moveLoc.getX()>=grid.getUpperLeftX()+(screenWidth-3) && grid.isValid(new Location(moveLoc.getX()+3,moveLoc.getY()))) {
+			//!(upperX>=grid.getRows()-screenWidth) && moveLoc.getX()>=grid.getUpperLeftX()+(screenWidth-3)
 			grid.setUpperLeftX(upperX+1);
 		}
 		checkMove(moveLoc);
