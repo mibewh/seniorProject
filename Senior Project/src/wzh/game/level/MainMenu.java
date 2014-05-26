@@ -6,6 +6,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.geom.Rectangle;
@@ -20,15 +21,22 @@ public class MainMenu extends BasicGameState {
 	private final String FONT_STYLE = "Euphemia";
 	private int curIndex;
 	private Rectangle cursor;
+	private Music music;
 	
 	public MainMenu() {
 		super();
 		font = new TrueTypeFont(new Font(FONT_STYLE, Font.BOLD , 20), false);
 		curIndex = 0;
+		try {
+			music = new Music("music/menuMusic.ogg");
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		cursor = new Rectangle(75, 185, 10, 10);
+		music.loop();
 	}
 
 	public void render(GameContainer gc, StateBasedGame game, Graphics g) throws SlickException {
@@ -63,6 +71,9 @@ public class MainMenu extends BasicGameState {
 			}
 		}
 		cursor.setY(185+curIndex*50);
+	}
+	public Music getMusic() {
+		return music;
 	}
 
 	public int getID() {
