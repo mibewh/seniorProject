@@ -19,7 +19,6 @@ import wzh.game.entity.unit.Archer;
 import wzh.game.entity.unit.Horseman;
 import wzh.game.entity.unit.Spearman;
 import wzh.game.entity.unit.Swordsman;
-import wzh.game.entity.unit.Unit;
 import wzh.game.input.Cursor;
 
 public class Grid {
@@ -253,8 +252,9 @@ public class Grid {
 	public int getMoveCost(Location loc) {
 		//if(!isEmpty(loc)) return 100;
 		if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Obstructions")) != 0) return 100;
-		else if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Difficult")) != 0) return 2;
-		else return 1;
+		else if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Roads")) != 0) return 1;
+		else if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Difficult")) != 0) return 4;
+		else return 2;
 	}
 	public boolean isObstructed(Location loc) {
 		if(map.getTileId(loc.getX(), loc.getY(), map.getLayerIndex("Obstructions")) != 0) return true;

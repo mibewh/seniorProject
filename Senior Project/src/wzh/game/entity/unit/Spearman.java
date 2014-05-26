@@ -19,13 +19,13 @@ public class Spearman extends Unit {
 				colored = ss.getSubImage(2, 1);
 				standingAnimation=new Animation(ss,0,8,2,8,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,8,10,8,true,300,true);
+				attackAnimation=new Animation(ss,5,8,8,8,true,200,true);
 			}
 			else{
 				colored = ss.getSubImage(1, 1);
 				standingAnimation=new Animation(ss,0,7,2,7,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,7,10,7,true,300,true);
+				attackAnimation=new Animation(ss,5,7,8,7,true,200,true);
 			}
 			sprite = colored;
 			gray = ss.getSubImage(0, 1);

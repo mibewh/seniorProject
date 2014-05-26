@@ -23,13 +23,13 @@ public class Archer extends Unit {
 				colored = ss.getSubImage(2, 2);
 				standingAnimation=new Animation(ss,0,10,2,10,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,10,10,10,true,300,true);
+				attackAnimation=new Animation(ss,5,10,8,10,true,300,true);
 			}
 			else{
 				colored = ss.getSubImage(1, 2);
 				standingAnimation=new Animation(ss,0,9,2,9,true,500,true);
 				standingAnimation.setPingPong(true);
-				attackAnimation=new Animation(ss,5,9,10,9,true,300,true);
+				attackAnimation=new Animation(ss,5,9,8,9,true,300,true);
 			}
 			sprite = colored;
 			gray = ss.getSubImage(0, 2);
