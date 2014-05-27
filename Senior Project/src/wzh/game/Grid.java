@@ -65,6 +65,7 @@ public class Grid {
 		SpriteSheet tiles = new SpriteSheet("SpriteSheetz.png",16,16);
 		for(int x=0;x<cols;x++) {
 			for(int y=0;y<rows;y++) {
+				System.out.println(x+","+y);
 				int ID = map.getTileId(x, y, layer);
 				Entity toAdd = null;
 				Building build = null;
