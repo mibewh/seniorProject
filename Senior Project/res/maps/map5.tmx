@@ -6,6 +6,11 @@
  <tileset firstgid="226" name="Unitz" tilewidth="16" tileheight="16">
   <image source="../Unitz.png" width="240" height="240"/>
  </tileset>
+ <layer name="Difficult" width="35" height="35">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3VQQoAIAhE0U5Q979tCG6mtoKD/AftPxK6Fiqc7oC083WjQ9Gh6FB0qNinDh2Y7b3bLnccnvgv9WLPO8zR5fbRoehQdCg6fg77dIoLehePFCQTAAA=
+  </data>
+ </layer>
  <layer name="Passable" width="35" height="35">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC6VXW27DMAwz0rslOcF6gmb3v8FWoAIIlqS07kNo/YhMU5Rsb2ut28u2l7n/qX3+2g52kFX/Ce36//x9GL8KG5saQxwnmOtHTDut7/bO63ZjHQ87jVe/8pnazB9zU3OYh0P0MZbkl9dIMVQ4cW1cF+OC44l7Fz/Fg5uPWkFNq/il2DAnjqvE07bec2Ynq/5ur0nLzKn79rZ0/rCOp/mccj/hwXGlWeRJYfhPfjssqGfULeuli/kkRo5LxSHXn8I13ZPD2MXT9XNeHY2/ju/urEi1p/ipHFK1TtWJjvNOs6kOYJ4nLUw56fTv9sjxug++SXvr1lK+1P7wHJjow3GitJP4cu1v4KaL+Sc5l3hkPxirTmefcObiotaqHL+MH8dT0urEh/JXOXU1/E10OMnpxH1hKd0k/5N8m/KgDM9N5qaLf5cbf819PA+e3Hyt95qj9Js4+2R+6YXvxRwvF+MUvy6OCifeH+qMKo647rj9TvLdaRr7+R6K7Uv469ZI8ermqLdk3XNSbjl+kmY7nCfZAwzxOA2keuG04wzvM8gRYmI8iZNJXXP88P0XMTk8bn9d7ev45Ds5v1mwD/WT8KS8S7jU+40x4H1d1Z5pHelqAK/H7yfWtuNHaSJpSvGGa/DbUsWr5qv8UvnSxQv7fwC84DQEJBMAAA==
@@ -16,19 +21,14 @@
    H4sIAAAAAAAAC8XWUQ6DIAwG4B7VA8gJ9ATzBNt88HHH8GiDYZOGgdLSyp+QbTGOb9gVAHiZAfaZeY9lxt6AI5MfHz8c/Naoq8OPHT/3el6pA3O3p+TA3OW5cmBKHq06r3WceTQsXEfJ02qROnKeFkurAzMmr70cUoufe9N2LP57sDev0bPlRsYyTPGaWsbC+5oEz9PI8oK4Ppz9C9en1RGe9UrmX8g1Tn+WeCYyL9aH1n7B9aT1UFMfVh6JxcojtWh70jp1wO9RLZ4wP/aqqzqtCfZFjgd/N+1DGnsw/ucfgvtbemrq4Kypy4xjfwl9epA+H+2zgBP2aIuzgMSi6aAWbn/WdlALx2PhSC01HitHznLmsXScJdefezio5w3/Z6heCR7vGHo7MNLz6hfOmN+xJBMAAA==
   </data>
  </layer>
- <layer name="Difficult" width="35" height="35">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3VQQoAIAhE0U5Q979tCG6mtoKD/AftPxK6Fiqc7oC083WjQ9Gh6FB0qNinDh2Y7b3bLnccnvgv9WLPO8zR5fbRoehQdCg6fg77dIoLehePFCQTAAA=
-  </data>
- </layer>
- <layer name="Obstruction" width="35" height="35">
+ <layer name="Obstructions" width="35" height="35">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3Yyw3CMAwGYN/LALzulHKHjsMmMAFiAmCUjkYiFIiiNHbsPzcs/Zce4CNPl56IekEGlzXpqhNG4gjZKy1Sj9RxIJpGg0Xi0TiORK8W86VxuGdN1o/GYV3PtRbO0cJjcaA9VgfSg3CgPFuQA+Fx30knF4QDdSb+HUXLd/1w2dBnbkOQjlqPv7MvLtckuVqS/r6QeLzlJvgs73BjOFnuL85TstwTh3W/lzzu2XlkLKmjhSc4iLHsMr8B6YkdpeIsCM+c45HkKbCgz6O4/PpYRSmdmXOOBciRW6cShz/rvd3PV2f0WB1h/Ab69Q4aD8oREvdVtSW9L6S9UWzRjA3nqenR0v4X6antFXPvBppKPZqeNWfR7qvg0fbOc+9wFo+2dy69a1vPwdqelfsfwmLi7iSNxbK/aixvxgMcfSQTAAA=
   </data>
  </layer>
- <layer name="Object" width="35" height="35">
+ <layer name="Objects" width="35" height="35">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAXUAHoD7YAhAgQG2gEkAMWBdgABYDfQDhgFo4BGgNrl6WcizB3s+Z2W4DNhJUMCkFq/wNKDABp/pANYeMij8YnVN1zBaHqBgE9UNm+ohaMCDnGYP6gdPqNgFFAL2A60AygAA1G/KAyAnZSCoVaeDmYAAEcrGXQkEwAA
+   H4sIAAAAAAAAC2NgGAXUAHoD7YAhAgQG2gEkAMWBdgABYDfQDhgFo4BGgNrl6WcizKVnfmdipKNlRIDPhJUMCUBq/QJLDwJo/JEOYOEhj8YnVt9wBaPpBQI+Udk8SsORkc7lqQIOcZg/qB0+o2AUUAvYDrQDKAADUb8oDICdlIKRWi/RAgAAw6xg2SQTAAA=
   </data>
  </layer>
 </map>
