@@ -39,7 +39,7 @@ public class Play extends BasicGameState{
 			level = (Level)game.getState(3);
 			break;
 		case 3:
-			
+			level = (Level)game.getState(4);
 			break;
 		case 4:
 			level = (Level)game.getState(5);
@@ -63,6 +63,9 @@ public class Play extends BasicGameState{
 			if(curIndex<0) curIndex=MAX_ENTRIES;
 		}
 		if(input.isKeyPressed(Input.KEY_SPACE) || input.isKeyPressed(Input.KEY_ENTER)) {
+			Main g = (Main)game;
+			g.music1.stop();
+			g.music2.loop(1, .1f);
 			switch(curIndex) {
 			case 0:
 				game.getState(1).init(gc, game);;

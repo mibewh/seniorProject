@@ -2,20 +2,30 @@ package wzh.game.level;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+
 public class Main extends StateBasedGame{
+	
+	public Music music1;
+	public Music music2;
 
 	public Main(String title) {
 		super(title);
+		try {
+			music2 = new Music("music/levelMusic.ogg");
+		} catch(SlickException e){
+			e.printStackTrace();
+		}
 	}
 	public void initStatesList(GameContainer arg0) throws SlickException {
 		addState(new MainMenu());
 		addState(new Level("maps/map2.tmx",1));
 		addState(new Level("maps/map3.tmx",2));
 		addState(new Level("maps/map4.tmx",3));
-    	//addState(new Level("maps/map5.tmx",4));
+    	addState(new Level("maps/map5.tmx",4));
 		addState(new Level("maps/map6.tmx",5));
 		addState(new Instructions());
 		addState(new Play());

@@ -5,6 +5,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import wzh.game.entity.Entity;
 import wzh.game.input.Cursor;
+import wzh.game.level.Main;
 
 public class Exit extends Command {
 	
@@ -25,6 +26,9 @@ public class Exit extends Command {
 		}
 		else {
 			game.enterState(0);
+			Main g = (Main)game;
+			g.music2.stop();
+			g.music1.play();
 		}
 	}
 }

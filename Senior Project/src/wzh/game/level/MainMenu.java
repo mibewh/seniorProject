@@ -19,7 +19,6 @@ public class MainMenu extends BasicGameState {
 	
 	private final String FONT_STYLE = "Euphemia";
 	private int curIndex;
-	private Music music;
 	private Image menu;
 	private Image cursor;
 	
@@ -27,17 +26,18 @@ public class MainMenu extends BasicGameState {
 		super();
 		new TrueTypeFont(new Font(FONT_STYLE, Font.BOLD , 20), false);
 		curIndex = 0;
-		try {
-			music = new Music("music/menuMusic.ogg");
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		SpriteSheet temp = new SpriteSheet("Unitz.png",16,16);
 		cursor = temp.getSubImage(3, 0);
-		music.loop();
+		Main g = (Main)game;
+		try {
+			g.music1 = new Music("music/menuMusic.ogg");
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
+		g.music1.loop(1,.5f);
 		menu = new Image("MenuFront.png");
 	}
 
@@ -69,9 +69,6 @@ public class MainMenu extends BasicGameState {
 				break;
 			}
 		}
-	}
-	public Music getMusic() {
-		return music;
 	}
 
 	public int getID() {
