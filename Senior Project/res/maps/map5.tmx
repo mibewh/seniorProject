@@ -28,7 +28,7 @@
  </layer>
  <layer name="Object" width="35" height="35">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAXUAHoD7YAhAgQG2gEkAMWBdgABYDfQDhgFo4BGgFblKT5zB3t+HwWEAan1Cyw9CKDxRzqAhYc8Gp9YfcMVjKYX2oChFo4KOMSHmj9GwcgDtgPtAArAQNQvCgNgJ6VgtByiHgAAqM4U4SQTAAA=
+   H4sIAAAAAAAAC2NgGAXUAHoD7YAhAgQG2gEkAMWBdgABYDfQDhgFo4BGgNrl6WcizB3s+Z2W4DNhJUMCkFq/wNKDABp/pANYeMij8YnVN1zBaHqBgE9UNm+ohaMCDnGYP6gdPqNgFFAL2A60AygAA1G/KAyAnZSCoVaeDmYAAEcrGXQkEwAA
   </data>
  </layer>
 </map>
