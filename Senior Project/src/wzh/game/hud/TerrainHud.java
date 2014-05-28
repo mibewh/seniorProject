@@ -16,7 +16,7 @@ public class TerrainHud extends Hud {
 	public int getDefense() {
 		int def=0;
 		if(c.getGrid().getB(c.getLoc())!=null) def+=c.getGrid().getB(c.getLoc()).getFortification();
-		if(c.getGrid().getMoveCost(c.getLoc())==2) def++;
+		if(c.getGrid().getMoveCost(c.getLoc())==4) def++;
 		return def;
 	}
 	public void update(GameContainer gc, StateBasedGame game, int delta) throws SlickException {

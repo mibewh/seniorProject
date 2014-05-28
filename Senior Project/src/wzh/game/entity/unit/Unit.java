@@ -216,7 +216,7 @@ public abstract class Unit extends Entity {
 	public int getTileDefense() {
 		int def=0;
 		if(grid.getB(loc)!=null) def+=grid.getB(loc).getFortification();
-		if(grid.getMoveCost(loc)==2) def++;
+		if(grid.getMoveCost(loc)==4) def++;
 		return def;
 	}
 	
