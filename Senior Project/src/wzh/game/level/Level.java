@@ -121,6 +121,9 @@ public class Level extends BasicGameState {
 			Input in = gc.getInput();
 			if (in.isKeyPressed(Input.KEY_SPACE) || in.isKeyPressed(Input.KEY_ENTER) || in.isKeyPressed(Input.KEY_ESCAPE) || in.isKeyPressed(Input.KEY_BACK)) {
 				init(gc, game);
+				Main g = (Main)game;
+				g.music2.stop();
+				g.music1.loop();
 				game.enterState(0);
 			}
 		}

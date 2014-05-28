@@ -148,7 +148,7 @@ public abstract class Unit extends Entity {
 	}
 	//Returns all existent, non-obstructed locations that are either adjacent or within movePoint radius of the unit
 	public ArrayList<Location> getMoveLocations() {
-		ArrayList<Location> locs = grid.emptyTilesInRange(loc, movePoints);
+		ArrayList<Location> locs = grid.emptyTilesInRange(loc, movePoints, faction);
 		locs = Location.removeDuplicates(locs);
 		for(int i=locs.size()-1;i>=0;i--) {
 			if(!grid.isEmpty(locs.get(i))) {

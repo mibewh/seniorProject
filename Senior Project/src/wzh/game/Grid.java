@@ -19,6 +19,7 @@ import wzh.game.entity.unit.Archer;
 import wzh.game.entity.unit.Horseman;
 import wzh.game.entity.unit.Spearman;
 import wzh.game.entity.unit.Swordsman;
+import wzh.game.entity.unit.Unit;
 import wzh.game.input.Cursor;
 
 public class Grid {
@@ -294,13 +295,13 @@ public class Grid {
 	 * Recursive method giving unobstructed neighbors within a range to a location
 	 * @Author Michael
 	 */
-	public ArrayList<Location> emptyTilesInRange(Location init, int n) {
+	public ArrayList<Location> emptyTilesInRange(Location init, int n, int f) {
 		ArrayList<Location> neighbors = new ArrayList<Location>();
 		if(n>0) {
 			for(Location loc:init.getAdjacentLocations()) {
-				if(isValid(loc) && !isObstructed(loc)) {
+				if(isValid(loc) && !isObstructed(loc) && !checkEnemy(loc, f)) {
 					neighbors.add(loc);
-					neighbors.addAll(emptyTilesInRange(loc,n-getMoveCost(loc))); //Recursive call to branch out and get more neighbors
+					neighbors.addAll(emptyTilesInRange(loc,n-getMoveCost(loc),f)); //Recursive call to branch out and get more neighbors
 				}
 			}
 			return neighbors;
@@ -309,6 +310,12 @@ public class Grid {
 			//neighbors.add(init); //BRING THIS BACK IF THERE ARE ISSUES
 			return neighbors;
 		}
+	}
+	private boolean checkEnemy(Location loc, int f) {
+		Unit u = (Unit)get(loc);
+		if(u!=null && u.getFaction()!=f)
+			return true;
+		return false;
 	}
 	public Location getBlueSpawn() {
 		return blueSpawn;

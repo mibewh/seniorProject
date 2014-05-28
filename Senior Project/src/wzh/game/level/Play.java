@@ -65,7 +65,7 @@ public class Play extends BasicGameState{
 		if(input.isKeyPressed(Input.KEY_SPACE) || input.isKeyPressed(Input.KEY_ENTER)) {
 			Main g = (Main)game;
 			g.music1.stop();
-			g.music2.loop(1, .1f);
+			g.music2.loop(1, .2f);
 			switch(curIndex) {
 			case 0:
 				game.getState(1).init(gc, game);;
