@@ -37,7 +37,7 @@ public class MainMenu extends BasicGameState {
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
-		g.music1.loop(1,.5f);
+		g.music1.loop(1,.3f);
 		menu = new Image("MenuFront.png");
 	}
 

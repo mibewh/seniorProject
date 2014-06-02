@@ -28,7 +28,7 @@ public class Exit extends Command {
 			game.enterState(0);
 			Main g = (Main)game;
 			g.music2.stop();
-			g.music1.play();
+			g.music1.loop(1,.3f);
 		}
 	}
 }
