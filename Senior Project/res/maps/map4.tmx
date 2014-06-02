@@ -23,7 +23,7 @@
  </layer>
  <layer name="Difficult" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC61TQQ6AMAjj4Dzusvkf7178/2uEA0mD4FhmExIltusoEhFd9EY174fzDQXcDFDPnrWqt3HtQSnQtz1f+HegPQvR6lyNqyT0onnqnTr0mtOzOnhvnINwvLnXoJ/BHzmiTuTP5kvm2ZuhcorT8+Y3gmaouWrOHjL/CO7EOeEp2nPkZ/bXevzyLHqrWSN/5A+9PKBxQ1OwBAAA
+   H4sIAAAAAAAAC6VTQQ6AIAzbQTxyAf/j3Yv/f41wWNLMVYY0WQILLWUbIiKXvJHN/nDOCOFGgHr2rlW9rcVOQoG+7f2dfxPtWXSt2qK0SAE9Vk99U4VccXJWB9+Ndegcr+6Z5CNgen91mJ7tr5i1V0PlJCfn1W8E7aH2VfvsIfJHcCbOCU9szpEfmV/r8ctz11v9s8gf+UMvDzH5HWOwBAAA
   </data>
  </layer>
  <layer name="Objects" width="20" height="15">
