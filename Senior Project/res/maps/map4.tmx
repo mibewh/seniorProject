@@ -8,7 +8,7 @@
  </tileset>
  <layer name="Passable" width="20" height="15">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC52T0Q2AIBBDCaziUDqA0SXwRz81zsCmQgJJU+8u6EdzfMhLaU/vnPNZZ50pazd0wEz1TtGlTOYdHbyYFciXJ175fgTNIMlfALbGW0AaL9B9FvubSavgb4O82ps5v+aPeeyv5YX5FQ0/edyv1Uevvyhw74+8BP4G9+5By2/t4GFuVr+Sv0nhxdoz72AvD/vAHeS+pfciV9o/a6eRpwl5m8C7DJ52lv63cn4A7kuZC7AEAAA=
+   H4sIAAAAAAAAC42TwQ2FMAxDq3YVZoEugv4U5QLHj5ihm/5UaiTLJNE/WO2BPjl2yCmlLPrOs4vOQBecfb4Zup2TedcfvCYq5CsTb3y/iapoBVXHXwG2x1PGRifyCr1nIa8CQ++WvwPy0pk5P5wXmexP88L8hpbAXyVu1G/Ux0e0E3c3/DWD+zh9cH7K6+BvSe8erPx0TsxuNXiYW9Svzot7Ux1emz3zDjIPvenM3AfuIPdt9Ys+rf2Ldhp5npB3GLw74Hl3638b9x+Ws6j0sAQAAA==
   </data>
  </layer>
  <layer name="Roads" width="20" height="15">
